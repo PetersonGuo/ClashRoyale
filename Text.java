@@ -22,6 +22,7 @@ public class Text extends Actor {
     }
     
     // Used for updating score
+    public void updateText(int str) {updateText(Integer.toString(str));}
     public void updateText(String str) {
         this.str = str;
         text = new GreenfootImage(str, size, color, background);
