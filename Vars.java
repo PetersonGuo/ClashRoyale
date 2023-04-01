@@ -1,5 +1,5 @@
 /**
- * Holds all changeable
+ * Holds all variables which can be modified by the world instances
  * 
  * 
  * @author Peterson Guo

@@ -1,5 +1,5 @@
 /**
- * Holds all Final variables for the simulation.
+ * Holds all Final variables for the simulation which should only be modified outside of the simulation
  * 
  * @author Peterson Guo
  * @version 1.0
