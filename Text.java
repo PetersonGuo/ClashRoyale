@@ -10,10 +10,8 @@ public class Text extends Actor {
     private Color color, background;
     private int size;
     
-    public Text(String str, Color color, int size) {
-        this(str, color, new Color(0, 0, 0, 0), size);
-    }
-    
+    public Text(int value, Color color, int size) {this(Integer.toString(value), color, new Color(0, 0, 0, 0), size);}
+    public Text(String str, Color color, int size) {this(str, color, new Color(0, 0, 0, 0), size);}
     public Text(String str, Color color, Color background, int size) { // Create a greenfoot TextImage (was not able to centre text in a greenfoot image)
         this.str = str;
         this.color = color;
@@ -40,11 +38,9 @@ public class Text extends Actor {
         updateText(str);
     }
     
-    public int getWidth() {
-        return getImage().getWidth();
-    }
-    
-    public int getHeight() {
-        return getImage().getHeight();
-    }
+    // Accessors
+    public int fontSize() {return size;}
+    public int getWidth() {return getImage().getWidth();}
+    public int getHeight() {return getImage().getHeight();}
+    public String getString() {return str;}
 }

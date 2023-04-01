@@ -8,11 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Arrow extends Actor {
     private boolean left;
-    private int point;
-    public Arrow(boolean left, int point) {
+    private String selector;
+    public Arrow(boolean left, String selector) {
         this.left = left;
-        this.point = point;
-        getImage().scale(getImage().getWidth()*25/getImage().getHeight(), 25);
+        this.selector = selector;
+        getImage().scale(getImage().getWidth() * 25 / getImage().getHeight(), 25);
         if (left)
             getImage().rotate(-90);
         else
@@ -21,6 +21,14 @@ public class Arrow extends Actor {
     
     public void act() {
         if (Greenfoot.mouseClicked(this))
-            ((ChooseScreen) getWorld()).setValue(point);
+            ((ChooseScreen) getWorld()).setValue(this);
+    }
+    
+    public String getSelector() {
+        return selector;
+    }
+    
+    public boolean isLeft() {
+        return left;
     }
 }
