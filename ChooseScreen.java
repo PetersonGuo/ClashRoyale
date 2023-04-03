@@ -34,26 +34,15 @@ public class ChooseScreen extends Worlds {
         public int getX() {return x;}
         public int getY() {return y;}
     }
-    private final int statsPerPage = FINAL.WORLD_HEIGHT / 4 / (FINAL.STAT_SIZE + FINAL.ARROW_OFFSET);
-    private final static String[] statNames = {
-        "Difficulty0",
-        "Difficulty1",
-        "Difficulty2",
-        "Difficulty3",
-        "Difficulty4",
-        "Difficulty5",
-        "Difficulty6",
-        "Difficulty7",
-        "Difficulty8",
-    };
+    private final int statsPerPage = FINAL.STAT_SECTION_SIZE / (FINAL.STAT_SIZE + FINAL.ARROW_OFFSET);
     private final List<SetContainer> statText = new ArrayList<>() {{
-        for (int i = 0; i < statNames.length; i++)
-            add(new SetContainer(new Text(statNames[i], Color.BLACK, FINAL.STAT_SIZE), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT / 3 + (i % statsPerPage) * FINAL.STAT_SIZE * 3));
+        for (int i = 0; i < FINAL.STAT_NAMES.length; i++)
+            add(new SetContainer(new Text(FINAL.STAT_NAMES[i], Color.BLACK, FINAL.STAT_SIZE), FINAL.WORLD_SIZE / 2, FINAL.WORLD_SIZE / 3 + (i % statsPerPage) * (FINAL.STAT_SIZE + FINAL.ARROW_OFFSET) * 2));
     }};
     private final Set<SetContainer> staticText = new HashSet<>() {{
-        add(new SetContainer(new Text("Choose variables for the simulation", Color.BLACK, (FINAL.WORLD_WIDTH - 80) * 2 / "Choose variables for the simulation".length()), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT / 5));
+        add(new SetContainer(new Text("Choose variables for the simulation", Color.BLACK, FINAL.STAT_SIZE * 5 / 4), FINAL.WORLD_SIZE / 2, FINAL.WORLD_SIZE / 5));
     }};
-    private static int pageNum;
+    private static int pageNum, act;
     private static Map<String, Integer> stats;
     private static Button cont;
     private static Arrow left, right;
@@ -62,23 +51,23 @@ public class ChooseScreen extends Worlds {
      * 
      */
     public ChooseScreen() {
-        pageNum = 0;
+        pageNum = act = 0;
         initializeStats();
         updateStatPage();
         
         cont = new Button("Continue");
-        addObject(cont, FINAL.WORLD_WIDTH - cont.getWidth() / 2 - 20, FINAL.WORLD_HEIGHT - cont.getHeight() / 2);
+        addObject(cont, FINAL.WORLD_SIZE - cont.getWidth() / 2 - 20, FINAL.WORLD_SIZE - cont.getHeight() / 2);
     }
     
     private void initializeStats() {
         stats = new HashMap<>() {{
-            for (String i : statNames)
+            for (String i : FINAL.STAT_NAMES)
                 put(i, 0);
         }};
     }
     
     public void act() {
-        if (Greenfoot.mouseClicked(cont))
+        if (Greenfoot.mouseClicked(cont) || (Greenfoot.isKeyDown(FINAL.NEXT_WORLD_BUTTON) && act >= 30)) // Prevents world skipping by adding a .5s delay
             nextWorld();
         else if (Greenfoot.mouseClicked(left) && pageNum > 0) {
             pageNum--;
@@ -87,6 +76,7 @@ public class ChooseScreen extends Worlds {
             pageNum++;
             updateStatPage();
         }
+        act++;
     }
     
     private void updateStatPage() {
@@ -98,16 +88,16 @@ public class ChooseScreen extends Worlds {
             SetContainer setValue = statText.get(i);
             addObject(setValue.getText(), setValue.getX(), setValue.getY());
             int y = setValue.getY() + FINAL.STAT_SIZE + FINAL.ARROW_OFFSET;
-            Text t = new Text(stats.get(setValue.getText().getString()), Color.BLACK, 30);
-            addObject(t, FINAL.WORLD_WIDTH / 2, y); // Update text
-            addObject(new Arrow(true, setValue.getText().getString(), t), FINAL.WORLD_WIDTH / 4, y);
-            addObject(new Arrow(false, setValue.getText().getString(), t), FINAL.WORLD_WIDTH * 3 / 4, y);
+            Text t = new Text(stats.get(setValue.getText().getString()), Color.BLACK, FINAL.STAT_SIZE);
+            addObject(t, FINAL.WORLD_SIZE / 2, y);
+            addObject(new Arrow(true, setValue.getText().getString(), FINAL.STAT_SIZE, t), FINAL.WORLD_SIZE / 4, y);
+            addObject(new Arrow(false, setValue.getText().getString(), FINAL.STAT_SIZE, t), FINAL.WORLD_SIZE * 3 / 4, y);
         }
-        left = new Arrow(true, null);
-        right = new Arrow(false, null);
-        addObject(new Text((pageNum + 1) + " / " + (statText.size() / statsPerPage + 1), Color.BLACK, 30), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT - 75);
-        addObject(left, FINAL.WORLD_WIDTH * 2 / 5, FINAL.WORLD_HEIGHT - 75);
-        addObject(right, FINAL.WORLD_WIDTH * 3 / 5, FINAL.WORLD_HEIGHT - 75);
+        left = new Arrow(true, null, FINAL.STAT_SIZE);
+        right = new Arrow(false, null, FINAL.STAT_SIZE);
+        addObject(new Text((pageNum + 1) + " / " + (statText.size() / statsPerPage + 1), Color.BLACK, FINAL.STAT_SIZE), FINAL.WORLD_SIZE / 2, FINAL.WORLD_SIZE * 9 / 10);
+        addObject(left, FINAL.WORLD_SIZE * 2 / 5, FINAL.WORLD_SIZE * 9 / 10);
+        addObject(right, FINAL.WORLD_SIZE * 3 / 5, FINAL.WORLD_SIZE * 9 / 10);
     }
     
     public void setValue(Arrow selector) {

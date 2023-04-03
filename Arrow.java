@@ -10,12 +10,12 @@ public class Arrow extends Actor {
     private boolean left;
     private String selector;
     private Text text;
-    public Arrow(boolean left, String selector) {this(left, selector, null);}
-    public Arrow(boolean left, String selector, Text text) {
+    public Arrow(boolean left, String selector, int size) {this(left, selector, size, null);}
+    public Arrow(boolean left, String selector, int size, Text text) {
         this.left = left;
         this.selector = selector;
         this.text = text;
-        getImage().scale(getImage().getWidth() * 25 / getImage().getHeight(), 25);
+        getImage().scale(getImage().getWidth() * size / getImage().getHeight(), size);
         if (left)
             getImage().rotate(-90);
         else
