@@ -5,6 +5,7 @@ import greenfoot.*;
  * Choose between no background, different colors and font sizes
    */
 public class Text extends Actor {
+    private final double P_TO_PX = 4/3;
     private GreenfootImage text;
     private String str;
     private Color color, background;
@@ -18,6 +19,17 @@ public class Text extends Actor {
         this.background = background;
         this.size = size;
         text = new GreenfootImage(str, size, color, background);
+        setImage(text);
+    }
+    public Text(String str, Color color, int size, String f) { // Create a greenfoot TextImage (was not able to centre text in a greenfoot image)
+        this.str = str;
+        this.color = color;
+        this.background = background;
+        this.size = size;
+        Font font = new Font(f, size);
+        text = new GreenfootImage((int)(str.length() * font.getSize() * P_TO_PX), size);
+        text.setFont(font);
+        text.drawString(str, 0, 0);
         setImage(text);
     }
     

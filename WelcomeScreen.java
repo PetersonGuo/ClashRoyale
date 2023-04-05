@@ -15,13 +15,14 @@ public class WelcomeScreen extends Worlds {
     public WelcomeScreen() {
         act = 0;
         
-        addObject(new Text("Welcome to PACMAN!", Color.BLACK, 50), FINAL.WORLD_SIZE / 2, FINAL.WORLD_SIZE / 4);
-        addObject(new Text("Press '" + FINAL.NEXT_WORLD_BUTTON + "' to continue", Color.BLACK, 30), FINAL.WORLD_SIZE / 2, FINAL.WORLD_SIZE * 3 / 4);
+        addObject(new Text("Welcome to PACMAN!", Color.WHITE, 50), FINAL.WORLD_SIZE / 2, FINAL.WORLD_SIZE / 4);
+        addObject(new Text("Press '" + FINAL.NEXT_WORLD_BUTTON + "' to continue", Color.WHITE, 30), FINAL.WORLD_SIZE / 2, FINAL.WORLD_SIZE * 3 / 4);
     }
     // .--. .-. . ... ... / .----. ... .--. .- -.-. . .----. / - --- / -.-. --- -. - .. -. ..- .
     
     public void act() {
-        if (Greenfoot.isKeyDown(FINAL.NEXT_WORLD_BUTTON)) nextWorld();
+        if (Greenfoot.isKeyDown(FINAL.NEXT_WORLD_BUTTON))
+            nextWorld();
     }
     
     public void nextWorld() {

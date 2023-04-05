@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.Map;
 /**
  * Write a description of class MainWorld here.
  * 
@@ -13,7 +13,7 @@ public class MainWorld extends Worlds {
     /**
      * Constructor for objects of class MainWorld.
      */
-    public MainWorld() {
+    public MainWorld(Map<String, Integer> stats) {
         
     }
     

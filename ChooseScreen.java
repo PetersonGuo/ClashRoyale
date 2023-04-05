@@ -37,12 +37,13 @@ public class ChooseScreen extends Worlds {
     private final int statsPerPage = FINAL.STAT_SECTION_SIZE / (FINAL.STAT_SIZE + FINAL.ARROW_OFFSET);
     private final List<SetContainer> statText = new ArrayList<>() {{
         for (int i = 0; i < FINAL.STAT_NAMES.length; i++)
-            add(new SetContainer(new Text(FINAL.STAT_NAMES[i], Color.BLACK, FINAL.STAT_SIZE), FINAL.WORLD_SIZE / 2, FINAL.WORLD_SIZE / 3 + (i % statsPerPage) * (FINAL.STAT_SIZE + FINAL.ARROW_OFFSET) * 2));
+            add(new SetContainer(new Text(FINAL.STAT_NAMES[i], Color.WHITE, FINAL.STAT_SIZE), FINAL.WORLD_SIZE / 2, FINAL.WORLD_SIZE / 3 + (i % statsPerPage) * (FINAL.STAT_SIZE + FINAL.ARROW_OFFSET) * 2));
     }};
     private final Set<SetContainer> staticText = new HashSet<>() {{
-        add(new SetContainer(new Text("Choose variables for the simulation", Color.BLACK, FINAL.STAT_SIZE * 5 / 4), FINAL.WORLD_SIZE / 2, FINAL.WORLD_SIZE / 5));
+        add(new SetContainer(new Text("Choose variables for the simulation", Color.WHITE, FINAL.STAT_SIZE * 5 / 4), FINAL.WORLD_SIZE / 2, FINAL.WORLD_SIZE / 5));
     }};
     private static int pageNum, act;
+    private boolean lastPress;
     private static Map<String, Integer> stats;
     private static Button cont;
     private static Arrow left, right;
@@ -52,6 +53,7 @@ public class ChooseScreen extends Worlds {
      */
     public ChooseScreen() {
         pageNum = act = 0;
+        lastPress = false;
         initializeStats();
         updateStatPage();
         
@@ -75,8 +77,15 @@ public class ChooseScreen extends Worlds {
         } else if (Greenfoot.mouseClicked(right) && pageNum < statText.size() / statsPerPage) {
             pageNum++;
             updateStatPage();
+        } else if (Greenfoot.isKeyDown("Left") && !lastPress && pageNum > 0) {
+            pageNum--;
+            updateStatPage();
+        } else if (Greenfoot.isKeyDown("Right") && !lastPress && pageNum < statText.size() / statsPerPage) {
+            pageNum++;
+            updateStatPage();
         }
         act++;
+        lastPress = Greenfoot.isKeyDown("Left") || Greenfoot.isKeyDown("Right");
     }
     
     private void updateStatPage() {
@@ -88,14 +97,14 @@ public class ChooseScreen extends Worlds {
             SetContainer setValue = statText.get(i);
             addObject(setValue.getText(), setValue.getX(), setValue.getY());
             int y = setValue.getY() + FINAL.STAT_SIZE + FINAL.ARROW_OFFSET;
-            Text t = new Text(stats.get(setValue.getText().getString()), Color.BLACK, FINAL.STAT_SIZE);
+            Text t = new Text(stats.get(setValue.getText().getString()), Color.WHITE, FINAL.STAT_SIZE);
             addObject(t, FINAL.WORLD_SIZE / 2, y);
             addObject(new Arrow(true, setValue.getText().getString(), FINAL.STAT_SIZE, t), FINAL.WORLD_SIZE / 4, y);
             addObject(new Arrow(false, setValue.getText().getString(), FINAL.STAT_SIZE, t), FINAL.WORLD_SIZE * 3 / 4, y);
         }
         left = new Arrow(true, null, FINAL.STAT_SIZE);
         right = new Arrow(false, null, FINAL.STAT_SIZE);
-        addObject(new Text((pageNum + 1) + " / " + (statText.size() / statsPerPage + 1), Color.BLACK, FINAL.STAT_SIZE), FINAL.WORLD_SIZE / 2, FINAL.WORLD_SIZE * 9 / 10);
+        addObject(new Text((pageNum + 1) + " / " + (statText.size() / statsPerPage + 1), Color.WHITE, FINAL.STAT_SIZE), FINAL.WORLD_SIZE / 2, FINAL.WORLD_SIZE * 9 / 10);
         addObject(left, FINAL.WORLD_SIZE * 2 / 5, FINAL.WORLD_SIZE * 9 / 10);
         addObject(right, FINAL.WORLD_SIZE * 3 / 5, FINAL.WORLD_SIZE * 9 / 10);
     }
@@ -106,6 +115,6 @@ public class ChooseScreen extends Worlds {
     }
     
     public void nextWorld() {
-        Greenfoot.setWorld(new MainWorld());
+        Greenfoot.setWorld(new MainWorld(stats));
     }
 }

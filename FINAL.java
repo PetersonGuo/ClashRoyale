@@ -10,6 +10,8 @@ public interface FINAL {
     int STAT_SIZE = 30;
     int STAT_SECTION_SIZE = WORLD_SIZE / 4;
     
+    
+    String FONT = "Joystix";
     String NEXT_WORLD_BUTTON = "Space";
     String[] STAT_NAMES = {
         "Difficulty0",
@@ -21,6 +23,7 @@ public interface FINAL {
         "Difficulty6",
         "Difficulty7",
         "Difficulty8",
-        "HI"
+        "HI",
+        "JI"
     };
 }
