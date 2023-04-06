@@ -25,6 +25,7 @@ public interface FINAL {
         "Difficulty7",
         "Difficulty8",
         "HI",
-        "JI"
+        "JI",
+        "W"
     };
 }
