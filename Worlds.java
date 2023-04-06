@@ -10,11 +10,11 @@ public abstract class Worlds extends World {
      * Constructor for objects of class Worlds
      */
     public Worlds() {
-        super(FINAL.WORLD_SIZE, FINAL.WORLD_SIZE, 1);
+        super(FINAL.WORLD_WIDTH, FINAL.WORLD_HEIGHT, 1);
         
-        GreenfootImage bg = new GreenfootImage(FINAL.WORLD_SIZE, FINAL.WORLD_SIZE);
+        GreenfootImage bg = new GreenfootImage(FINAL.WORLD_WIDTH, FINAL.WORLD_HEIGHT);
         bg.setColor(Color.BLACK);
-        bg.fillRect(0, 0, FINAL.WORLD_SIZE, FINAL.WORLD_SIZE);
+        bg.fillRect(0, 0, FINAL.WORLD_WIDTH, FINAL.WORLD_HEIGHT);
         setBackground(bg);
     }
     

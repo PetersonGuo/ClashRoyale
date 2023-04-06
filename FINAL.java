@@ -5,10 +5,11 @@
  * @version 1.0
  */
 public interface FINAL {
-    int WORLD_SIZE = 800;
+    int WORLD_HEIGHT = 800;
+    int WORLD_WIDTH = 500;
     int ARROW_OFFSET = 10;
     int STAT_SIZE = 30;
-    int STAT_SECTION_SIZE = WORLD_SIZE / 4;
+    int STAT_SECTION_SIZE = WORLD_HEIGHT / 4;
     
     
     String FONT = "Joystix";
