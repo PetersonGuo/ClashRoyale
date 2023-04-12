@@ -15,6 +15,7 @@ public class King extends Towers
         image.fill();
         range = 80;
         setImage(image);
+        shootingCooldown = 30;
     }
     
     /**

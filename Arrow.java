@@ -9,9 +9,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Arrow extends Actor
 {
     private int direction;
+    private Troops target;
     
-    public Arrow(int direction){
-        this.direction = direction;
+    public Arrow(Troops target){
+        this.target = target;
     }
     
     /**

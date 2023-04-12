@@ -15,6 +15,7 @@ public class Princess extends Towers
         image.fill();
         range = 60;
         setImage(image);
+        shootingCooldown = 45;
     }
     
     /**
