@@ -8,11 +8,23 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Arrow extends Actor
 {
-    private int direction;
+    private int speed;
+    private int damage;
     private Troops target;
+    private int targetX, targetY;
+    private GreenfootImage image;
     
     public Arrow(Troops target){
+        speed = 5;
+        damage = 2;
         this.target = target;
+        image = new GreenfootImage("arrow.png");
+    }
+    
+    public void addedToWorld(World w){
+        targetX = target.getX();
+        targetY = target.getY();
+        turnTowards(targetX, targetY);
     }
     
     /**
@@ -21,6 +33,14 @@ public class Arrow extends Actor
      */
     public void act()
     {
-        // Add your action code here.
+        move(speed);
+        if(intersects(target)){
+            //hit
+            target.getHit(damage);
+            getWorld().removeObject(this);
+        }else if(Math.abs(getX()-targetX) < 6 || Math.abs(getY()-targetY) < 6 ){
+            //miss
+            getWorld().removeObject(this);
+        }
     }
 }
