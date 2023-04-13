@@ -5,12 +5,12 @@
  * @version 1.0
  */
 public interface FINAL {
-    int WORLD_HEIGHT = 800;
-    int WORLD_WIDTH = 500;
+    int WORLD_HEIGHT = 750;
+    int WORLD_WIDTH = 423;
     int ARROW_OFFSET = 10;
     int STAT_SIZE = 30;
     int STAT_SECTION_SIZE = WORLD_HEIGHT / 4;
-    
+    int CARD_SPACING = 10;
     
     String FONT = "Joystix";
     String NEXT_WORLD_BUTTON = "Space";
@@ -23,9 +23,6 @@ public interface FINAL {
         "Difficulty5",
         "Difficulty6",
         "Difficulty7",
-        "Difficulty8",
-        "HI",
-        "JI",
-        "W"
+        "Difficulty8"
     };
 }

@@ -12,9 +12,8 @@ public abstract class Worlds extends World {
     public Worlds() {
         super(FINAL.WORLD_WIDTH, FINAL.WORLD_HEIGHT, 1);
         
-        GreenfootImage bg = new GreenfootImage(FINAL.WORLD_WIDTH, FINAL.WORLD_HEIGHT);
-        bg.setColor(Color.BLACK);
-        bg.fillRect(0, 0, FINAL.WORLD_WIDTH, FINAL.WORLD_HEIGHT);
+        GreenfootImage bg = new GreenfootImage("cr.jpg");
+        bg.scale(FINAL.WORLD_WIDTH, FINAL.WORLD_HEIGHT);
         setBackground(bg);
     }
     
