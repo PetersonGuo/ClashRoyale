@@ -12,7 +12,7 @@ public class Giant extends Troops
      * Act - do whatever the Giant wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Giant(boolean ally){
+    public Giant(boolean ally) {
         super(ally);
         
         //giant stats
@@ -28,12 +28,12 @@ public class Giant extends Troops
     
     public void act()
     {
-        if(spawning){
+        if (spawning) {
             spawn();
         }
-        if (!crossedBridge){
+        if (!crossedBridge) {
             moveTowardsTarget(findTarget(Bridge.class));
-            if(isTouching(Bridge.class)){
+            if (isTouching(Bridge.class)) {
                 crossBridge();
             }
         } else {
@@ -41,9 +41,9 @@ public class Giant extends Troops
         }
     }
     
-    public void attack(Actor a){
+    public void attack(Actor a) {
         //animation
-        if(actCounter % attackSpeed == 0){
+        if (actCounter % attackSpeed == 0) {
             ((Towers)a).getHit(damage);
         }
     }

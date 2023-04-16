@@ -17,7 +17,7 @@ public class Towers extends Actor
         // Add your action code here.
     }
     
-    public void getHit(int damage){
+    public void getHit(int damage) {
         
     }
 }

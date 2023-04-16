@@ -67,7 +67,7 @@ public class Button extends Actor {
     /** 
      * Return to check for mouse clicks
      */
-    public boolean MouseClicked(){
+    public boolean MouseClicked() {
         return touching;
     }
     
@@ -77,9 +77,9 @@ public class Button extends Actor {
      */
     public void act() 
     {
-        if (Greenfoot.mouseMoved(this)){
+        if (Greenfoot.mouseMoved(this)) {
             setImage(touchingImage);
-        } else if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this)){
+        } else if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this)) {
            setImage(image);
         }
     }

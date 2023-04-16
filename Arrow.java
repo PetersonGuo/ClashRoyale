@@ -3,39 +3,43 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Arrow here.
  * 
- * @author Peterson Guo
- * @version 1.0
+ * @author Kelby To 
+ * @version (a version number or a date)
  */
-public class Arrow extends Actor {
-    private boolean left;
-    private String selector;
-    private Text text;
-    public Arrow(boolean left, String selector, int size) {this(left, selector, size, null);}
-    public Arrow(boolean left, String selector, int size, Text text) {
-        this.left = left;
-        this.selector = selector;
-        this.text = text;
-        getImage().scale(getImage().getWidth() * size / getImage().getHeight(), size);
-        if (left)
-            getImage().rotate(-90);
-        else
-            getImage().rotate(90);
+public class Arrow extends Actor
+{
+    private int speed;
+    private int damage;
+    private Troops target;
+    private int targetX, targetY;
+    private GreenfootImage image;
+    
+    public Arrow(Troops target) {
+        speed = 5;
+        damage = 2;
+        this.target = target;
+        image = new GreenfootImage("arrow.png");
     }
     
+    public void addedToWorld(World w) {
+        targetX = target.getX();
+        targetY = target.getY();
+        turnTowards(targetX, targetY);
+    }
+    
+    /**
+     * Act - do whatever the Arrow wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act() {
-        if (Greenfoot.mouseClicked(this) && text != null)
-            ((ChooseScreen) getWorld()).setValue(this);
-    }
-    
-    public String getSelector() {
-        return selector;
-    }
-    
-    public boolean isLeft() {
-        return left;
-    }
-    
-    public Text getText() {
-        return text;
+        move(speed);
+        if (intersects(target)) {
+            //hit
+            target.getHit(damage);
+            getWorld().removeObject(this);
+        }else if (Math.abs(getX()-targetX) < 6 || Math.abs(getY()-targetY) < 6 ) {
+            //miss
+            getWorld().removeObject(this);
+        }
     }
 }

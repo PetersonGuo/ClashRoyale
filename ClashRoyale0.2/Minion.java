@@ -12,7 +12,7 @@ public class Minion extends Troops
      * Act - do whatever the Minion wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Minion(boolean ally){
+    public Minion(boolean ally) {
         super(ally);
         
         //minion stats
@@ -29,21 +29,21 @@ public class Minion extends Troops
     public void act()
     {
         actCounter++;
-        if(spawning){
+        if (spawning) {
             spawn();
         }
-        if(findTarget(Troops.class) != null){
+        if (findTarget(Troops.class) != null) {
             moveTowardsTarget(findTarget(Troops.class));
         } else {
             moveTowardsTarget(findTarget(Towers.class));
         }
     }
     
-    public void attack(Actor a){
+    public void attack(Actor a) {
         //animation
-        if(actCounter % attackSpeed == 0){
+        if (actCounter % attackSpeed == 0) {
             Troops target = (Troops)findTarget(Troops.class);
-            if(target != null){
+            if (target != null) {
                 moveTowardsTarget(target);
             } else {
                 ((Towers)a).getHit(damage);
