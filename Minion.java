@@ -6,8 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Minion extends Troops
-{
+public class Minion extends Troops {
     /**
      * Act - do whatever the Minion wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -26,28 +25,22 @@ public class Minion extends Troops
         air = true;
     }
     
-    public void act()
-    {
-        actCounter++;
-        if (spawning) {
-            spawn();
-        }
-        if (findTarget(Troops.class) != null) {
+    public void act() {
+        super.act();
+        if (findTarget(Troops.class) != null)
             moveTowardsTarget(findTarget(Troops.class));
-        } else {
+        else
             moveTowardsTarget(findTarget(Towers.class));
-        }
     }
     
     public void attack(Actor a) {
         //animation
         if (actCounter % attackSpeed == 0) {
             Troops target = (Troops)findTarget(Troops.class);
-            if (target != null) {
+            if (target != null)
                 moveTowardsTarget(target);
-            } else {
+            else
                 ((Towers)a).getHit(damage);
-            }
         }
     }
 }

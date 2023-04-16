@@ -52,6 +52,10 @@ public class Towers extends Actor
         actsSinceShooting = 0;
     }
     
+    public void getHit(int dmg) {
+        
+    }
+    
     private double getDistanceFromTower(Troops t) {
         return Math.sqrt(Math.pow(t.getX() - getX(), 2) + Math.pow(t.getY() - getY(), 2));
     }

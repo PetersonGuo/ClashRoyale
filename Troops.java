@@ -30,6 +30,7 @@ public abstract class Troops extends Actor {
     }
     
     public void act() {
+        actCounter++;
         if (spawning)
             spawn();
         if (findTarget(Troops.class) != null)
