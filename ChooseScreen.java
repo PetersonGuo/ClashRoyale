@@ -16,12 +16,12 @@ public class ChooseScreen extends Worlds {
     class SetContainer {
         // Instance Variables
         private Text display;
-        private Arrow left, right;
+        private Chevron left, right;
         private int x, y;
         
         // Initialize variables
         public SetContainer(Text display, int x, int y) {this(display, x, y, null, null);}
-        public SetContainer(Text display, int x, int y, Arrow left, Arrow right) {
+        public SetContainer(Text display, int x, int y, Chevron left, Chevron right) {
             this.x = x;
             this.y = y;
             this.display = display;
@@ -46,7 +46,7 @@ public class ChooseScreen extends Worlds {
     private boolean lastPress;
     private static Map<String, Integer> stats;
     private static Button cont;
-    private static Arrow left, right;
+    private static Chevron left, right;
     /**
      * Constructor for objects of class ChooseScreen.
      * 
@@ -63,11 +63,11 @@ public class ChooseScreen extends Worlds {
     
     private void initializeStats() {
         stats = new HashMap<>() {{
-            for (String i : FINAL.STAT_NAMES)
-                put(i, 0);
+            for (int i = 0; i < FINAL.STAT_NAMES.length; i++)
+                put(FINAL.STAT_NAMES[i], FINAL.DEFAULT_VALUES[i]);
         }};
     }
-    
+    // Add Nametag
     public void act() {
         if (Greenfoot.mouseClicked(cont) || (Greenfoot.isKeyDown(FINAL.NEXT_WORLD_BUTTON) && act >= 30)) // Prevents world skipping by adding a .5s delay
             nextWorld();
@@ -90,7 +90,7 @@ public class ChooseScreen extends Worlds {
     
     private void updateStatPage() {
         removeObjects(getObjects(Text.class));
-        removeObjects(getObjects(Arrow.class));
+        removeObjects(getObjects(Chevron.class));
         for (SetContainer setValue : staticText)
             addObject(setValue.getText(), setValue.getX(), setValue.getY());
         for (int i = pageNum * statsPerPage; i < (pageNum + 1) * statsPerPage && i < statText.size(); i++) {
@@ -99,17 +99,17 @@ public class ChooseScreen extends Worlds {
             int y = setValue.getY() + FINAL.STAT_SIZE + FINAL.ARROW_OFFSET;
             Text t = new Text(stats.get(setValue.getText().getString()), Color.WHITE, FINAL.STAT_SIZE);
             addObject(t, FINAL.WORLD_WIDTH / 2, y);
-            addObject(new Arrow(true, setValue.getText().getString(), FINAL.STAT_SIZE, t), FINAL.WORLD_WIDTH / 4, y);
-            addObject(new Arrow(false, setValue.getText().getString(), FINAL.STAT_SIZE, t), FINAL.WORLD_WIDTH * 3 / 4, y);
+            addObject(new Chevron(true, setValue.getText().getString(), FINAL.STAT_SIZE, t), FINAL.WORLD_WIDTH / 4, y);
+            addObject(new Chevron(false, setValue.getText().getString(), FINAL.STAT_SIZE, t), FINAL.WORLD_WIDTH * 3 / 4, y);
         }
-        left = new Arrow(true, null, FINAL.STAT_SIZE);
-        right = new Arrow(false, null, FINAL.STAT_SIZE);
+        left = new Chevron(true, null, FINAL.STAT_SIZE);
+        right = new Chevron(false, null, FINAL.STAT_SIZE);
         addObject(new Text((pageNum + 1) + " / " + (statText.size() / statsPerPage + 1), Color.WHITE, FINAL.STAT_SIZE), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT * 9 / 10);
         addObject(left, FINAL.WORLD_WIDTH * 2 / 5, FINAL.WORLD_HEIGHT * 9 / 10);
         addObject(right, FINAL.WORLD_WIDTH * 3 / 5, FINAL.WORLD_HEIGHT * 9 / 10);
     }
     
-    public void setValue(Arrow selector) {
+    public void setValue(Chevron selector) {
         stats.put(selector.getSelector(), stats.get(selector.getSelector()) + (selector.isLeft() ? -1 : 1));
         selector.getText().updateText(stats.get(selector.getSelector()));
     }

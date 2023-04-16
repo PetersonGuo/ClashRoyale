@@ -1,3 +1,4 @@
+import greenfoot.*;
 /**
  * Holds all Final variables for the simulation which should only be modified outside of the simulation.
  * 
@@ -10,14 +11,25 @@ public interface FINAL {
     int ARROW_OFFSET = 10;
     int STAT_SIZE = 30;
     int STAT_SECTION_SIZE = WORLD_HEIGHT / 4;
-    int CARD_SPACING = 10;
+    int CARD_SPACING = 8;
+    int[] DEFAULT_VALUES = {
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+    };
     
     String FONT = "Joystix";
     String NEXT_WORLD_BUTTON = "Space";
     String[] STAT_NAMES = {
-        "Difficulty0",
-        "Difficulty1",
-        "Difficulty2",
+        "Start Elixir",
+        "Max Elixir",
+        "Elixir Time",
         "Difficulty3",
         "Difficulty4",
         "Difficulty5",
@@ -25,4 +37,6 @@ public interface FINAL {
         "Difficulty7",
         "Difficulty8"
     };
+    
+    Color ELIXIR_COLOR = Color.RED;
 }

@@ -1,17 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Arrow here.
+ * Write a description of class Chevron here.
  * 
  * @author Peterson Guo
  * @version 1.0
  */
-public class Arrow extends Actor {
+public class Chevron extends Actor {
     private boolean left;
     private String selector;
     private Text text;
-    public Arrow(boolean left, String selector, int size) {this(left, selector, size, null);}
-    public Arrow(boolean left, String selector, int size, Text text) {
+    public Chevron(boolean left, String selector, int size) {this(left, selector, size, null);}
+    public Chevron(boolean left, String selector, int size, Text text) {
         this.left = left;
         this.selector = selector;
         this.text = text;

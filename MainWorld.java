@@ -10,17 +10,23 @@ import java.util.Map;
  * @version 1.0
  */
 public class MainWorld extends Worlds {
-    private int elixir, elixirTimer;
     /**
      * Constructor for objects of class MainWorld.
      */
     public MainWorld(Map<String, Integer> stats) {
-        for (int i = 0; i < 4; i++) {
-            Card c = new Card(1);
-            addObject(c, (FINAL.CARD_SPACING + c.getWidth()) * i + c.getWidth() / 2 + FINAL.CARD_SPACING, FINAL.WORLD_HEIGHT * 7 / 8);
+        for (int i = 0; i < 8; i++) {
+            Card c = new Card(1, 70, 90);
+            addObject(c, (FINAL.CARD_SPACING + c.getWidth()) * (i % 4) + c.getWidth() / 2 + FINAL.CARD_SPACING + 90, i > 3 ? 90 : 665);
         }
-        elixir = 5;
-        elixirTimer = 0;
+        
+        addObject(new ElixirBar(stats.get("Start Elixir"), stats.get("Max Elixir"), stats.get("Elixir Time")), 250, 730);
+        addObject(new ElixirBar(stats.get("Start Elixir"), stats.get("Max Elixir"), stats.get("Elixir Time")), 250, 20);
+        addObject(new Card(1, 40, 53), 40, 720);
+        addObject(new Card(1, 40, 53), 40, 35);
+        addObject(new Text("Next:", Color.WHITE, 18), 40, 680);
+        addObject(new Text("Next:", Color.WHITE, 18), 40, 70);
+        addObject(new Text(0, Color.BLUE, 30), 401, 395);
+        addObject(new Text(0, Color.RED, 30), 401, 237);
     }
     
     public void nextWorld() {
@@ -28,7 +34,6 @@ public class MainWorld extends Worlds {
     }
     
     public void act() {
-        elixir += elixirTimer % 60;
-        elixirTimer %= 60;
+        
     }
 }

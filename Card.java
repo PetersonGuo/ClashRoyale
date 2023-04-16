@@ -9,10 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Card extends Actor {
     private GreenfootImage img;
     private int cost;
-    public Card(int cost) {
-        img = new GreenfootImage((FINAL.WORLD_WIDTH - FINAL.CARD_SPACING * 5) / 5, FINAL.WORLD_HEIGHT / 7);
+    public Card(int cost, int width, int height) {
+        img = new GreenfootImage(width, height);
         img.setColor(Color.GREEN);
         img.fillRect(0, 0, img.getWidth(), img.getHeight());
+        img.scale(width, height);
         setImage(img);
         this.cost = cost;
     }
