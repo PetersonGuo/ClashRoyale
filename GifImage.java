@@ -35,7 +35,7 @@ public class GifImage
     public GifImage(String file)
     {
         pause = false;
-        if(file.toLowerCase().endsWith(".gif")) {
+        if (file.toLowerCase().endsWith(".gif")) {
             loadImages(file);
         }
         else {
@@ -124,7 +124,7 @@ public class GifImage
         GifDecoder decode = new GifDecoder();
         decode.read(file);
         int numFrames = decode.getFrameCount();
-        if(numFrames>0) {
+        if (numFrames>0) {
             images = new GreenfootImage[numFrames];
             delay = new int[numFrames];
         }

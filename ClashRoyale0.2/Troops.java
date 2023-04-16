@@ -6,7 +6,8 @@ import java.util.*;
  * @author Isaac Chan 
  * @version (a version number or a date)
  */
-public abstract class Troops extends Actor {
+public abstract class Troops extends Actor
+{
     //movement variables
     protected double speed, maxSpeed, attackSpeed, animationSpeed, direction;
     protected int distX, distY;
@@ -29,18 +30,22 @@ public abstract class Troops extends Actor {
         this.ally = ally;
     }
     
-    public void act() {
-        actCounter++;
-        if (spawning)
+    public void act()
+    {
+        if (spawning) {
             spawn();
-        if (findTarget(Troops.class) != null)
-            moveTowardsTarget(findTarget(Troops.class));
-        else if (!crossedBridge) {
+        }
+        Troops target = (Troops)findTarget(Troops.class);
+        if (target != null) {
+            moveTowardsTarget(target);
+        } else if (!crossedBridge) {
             moveTowardsTarget(findTarget(Bridge.class));
-            if (isTouching(Bridge.class))
+            if (isTouching(Bridge.class)) {
                 crossBridge();
-        } else
+            }
+        } else {
             moveTowardsTarget(findTarget(Towers.class));
+        }
     }
     
     public void addedToWorld(World w) {
@@ -53,9 +58,10 @@ public abstract class Troops extends Actor {
         //find the nearest target
         if (actors.size() > 0) { //if there is a target found within the range
             target = (Actor)actors.get(0);
-            for (T actor : actors) { //finds the closest troop as a target
-                if (distFromTarget((Actor)actor) < distFromTarget(target))
+            for(T actor : actors) { //finds the closest troop as a target
+                if (distFromTarget((Actor)actor) < distFromTarget(target)) {
                     target = (Actor)actor;
+                }
             }
         }
         return target;
@@ -73,14 +79,15 @@ public abstract class Troops extends Actor {
             setRotation((int)direction);
             turned = true;
         } else {
-            if (distFromTarget(a) <= attackRange && a.getClass() != Bridge.class) //within attack range, attack
+            if (distFromTarget(a) <= attackRange && a.getClass() != Bridge.class) { //within attack range, attack
                 attack(a);
-            else { //move towards the target
+            } else { //move towards the target
                 if (actCounter % animationSpeed == 0) {
                     //change the image to the next frame
                     currentImage++;
-                    if (currentImage > images.length)
+                    if (currentImage > images.length) {
                         currentImage = 0;
+                    }
                     setImage(images[currentImage]); //set the image to the new frame
                 }
                 move((int)speed);
@@ -94,13 +101,15 @@ public abstract class Troops extends Actor {
         if (ally) {
             setRotation(0);
             move((int)speed);
-            if (getY() < b.getY() - b.getImage().getHeight()/2) //pass the bridge from the ally side
+            if (getY() < b.getY() - b.getImage().getHeight()/2) { //pass the bridge from the ally side
                 crossedBridge = true;
+            }
         } else {
             setRotation(180);
             move((int)speed);
-            if (getY() > b.getY() + b.getImage().getHeight()/2) //pass the bridge from the enemy side
+            if (getY() > b.getY() + b.getImage().getHeight()/2) { //pass the bridge from the enemy side
                 crossedBridge = true;
+            }
         }
     }
     
@@ -108,10 +117,11 @@ public abstract class Troops extends Actor {
         alive = true;
         if (actCounter <= 60) { //if the troop hasn't existed for 1 second
             speed = 0;
-            if (ally)
+            if (ally) {
                 direction = 0;
-            else
+            } else {
                 direction = 180;
+            }
         } else {
             spawning = false;
             speed = maxSpeed;
@@ -142,8 +152,4 @@ public abstract class Troops extends Actor {
     }
     
     protected abstract void attack(Actor a);
-    
-    /**
-     * once the tower is found, only attack the tower
-     */
 }
