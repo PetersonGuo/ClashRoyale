@@ -17,9 +17,8 @@ public class ElixirBar extends Actor {
         elixir = startElixir;
         elixirTimer = 0;
         img = new GreenfootImage(320, 20);
-        img.setColor(FINAL.ELIXIR_COLOR);
-        img.fillRect(0, 0, 320 / maxElixir * elixir, img.getHeight());
-        setImage(img);
+        drawImg();
+        sectionSize = img.getWidth() / maxElixir;
     }
     
     public void addedToWorld(World w) {
@@ -32,20 +31,35 @@ public class ElixirBar extends Actor {
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() {
-        elixirTimer++;        
+        elixirTimer++;
         if (elixirTimer >= (elixirTime * 60)) {
             elixirTimer = 0;
             elixir++;
             if (elixir >= maxElixir)
                 elixir = maxElixir;
             elixirText.updateText(elixir);
-            img.clear();
-            img.setColor(FINAL.ELIXIR_COLOR);
-            img.fillRect(0, 0, 320 / maxElixir * elixir, img.getHeight());
-            img.setColor(Color.BLACK);
-            img.drawLine(0,0,0,img.getHeight());
-            img.drawLine(img.getWidth(), 0, img.getWidth(), img.getHeight());
-            setImage(img);
         }
+        drawImg();
+    }
+    
+    private void drawImg() {
+        img.clear();
+        // Background Elixir Color
+        img.setColor(Color.GRAY);
+        if (elixirTimer != 0)
+            img.fillRect(0, 0, img.getWidth() / maxElixir * elixir + img.getWidth() / (maxElixir * elixirTime * 60 / elixirTimer), img.getHeight());
+        // Main Elixir Color
+        img.setColor(FINAL.ELIXIR_COLOR);
+        img.fillRect(0, 0, sectionSize * elixir, img.getHeight());
+        // Borders
+        img.setColor(Color.BLACK);
+        img.drawLine(0, 0, img.getWidth() - 1, 0);
+        img.drawLine(0, img.getHeight() - 1, img.getWidth() - 1, img.getHeight() - 1);
+        img.drawLine(0, 0, 0, img.getHeight());
+        img.drawLine(img.getWidth() - 1, 0, img.getWidth() - 1, img.getHeight());
+        // Inside Lines
+        for (int i = 1; i <= maxElixir; i++)
+            img.drawLine(img.getWidth() / maxElixir * i, 0, img.getWidth() / maxElixir * i, img.getHeight());
+        setImage(img);
     }
 }
