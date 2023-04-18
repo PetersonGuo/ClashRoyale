@@ -24,10 +24,12 @@ public class Knight extends Troops
         elixerCost = 3;
         air = true;
         
-        walkImages = new GreenfootImage[2];
-        walkImages[0] = new GreenfootImage("knight walk 1.png");
-        walkImages[1] = new GreenfootImage("knight walk 2.png");
+        walkImages = new GreenfootImage[3];
+        walkImages[0] = new GreenfootImage("knight walk 0.png");
+        walkImages[1] = new GreenfootImage("knight walk 1.png");
+        walkImages[2] = new GreenfootImage("knight walk 2.png");
         attackImage = new GreenfootImage("knight attack.png");
+        setImage(walkImages[0]);
     }
     
     public void attack(Actor a){
