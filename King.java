@@ -10,9 +10,7 @@ public class King extends Towers
 {
     public King(boolean ally) {
         super(ally);
-        image = new GreenfootImage(40,40);
-        image.setColor(Color.RED);
-        image.fill();
+        image = (ally) ? new GreenfootImage("king tower 1.png") : new GreenfootImage("king tower 2.png") ;
         range = 80;
         setImage(image);
         shootingCooldown = 30;
