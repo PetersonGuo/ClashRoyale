@@ -1,18 +1,18 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Arrow here.
+ * Write a description of class Bullet here.
  * 
- * @author Kelby To 
+ * @author Kevin Luo
  * @version (a version number or a date)
  */
-public class Arrow extends Projectile
+public class Pellet extends Projectile
 {
-    public Arrow(Troops target){
+    public Pellet(Troops target){
         super(target);
         
         speed = 5;
-        damage = 2;
+        damage = 5;
         this.target = target;
         image = new GreenfootImage("arrow.png");
     }
