@@ -51,7 +51,7 @@ public class Musketeer extends Troops
     }
     
     private void shootpelletAtTarget() {
-        getWorld().addObject(new Arrow(target), getX(), getY());
+        getWorld().addObject(new Pellet(target), getX(), getY());
         actCounter = 0;
     }
 }
