@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Giant
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Giant\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=ally
+comment1.target=Giant(boolean)
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Giant\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.params=
+comment2.target=void\ act()
+comment3.params=a
+comment3.target=void\ attack(greenfoot.Actor)
+numComments=4
