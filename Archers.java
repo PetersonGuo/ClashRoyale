@@ -10,7 +10,7 @@ public class Archers extends Troops
 {
     protected Troops target; 
     int imageNumber;
-    GreenfootImage[] images;
+    
     public Archers(boolean ally){
         super(ally);
         
@@ -24,9 +24,14 @@ public class Archers extends Troops
         elixerCost = 3;
         air = false;
         
-        images = new GreenfootImage[imageNumber];
+        setImage("new archer.png");
         
-        String[] images = {"walking archer 0.png", "walking archer 1.png", "walking archer 2.png", "new archer.png", "archer attack.png"};
+        walkImages = new GreenfootImage[3];
+        
+        walkImages[0] = new GreenfootImage("walking archer 0.png");
+        walkImages[1] = new GreenfootImage("walking archer 1.png");
+        walkImages[2] = new GreenfootImage("walking archer 2.png");
+        attackImage = new GreenfootImage("archer attack.png");
     }
     
     public void act()
@@ -44,6 +49,7 @@ public class Archers extends Troops
     public void attack(Actor a){
         if (actCounter % attackSpeed == 0){
             Troops target = (Troops)findTarget(Troops.class);
+            shootArrowAtTarget();
             if (target != null){
                 moveTowardsTarget(target);
             }   
