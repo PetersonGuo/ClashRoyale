@@ -12,8 +12,8 @@ public class Fireball extends Spells
         super(ally);
         
         speed = 20;
-        image = new GreenfootImage("arrow spell.png");
-        image = new GreenfootImage("arrow spell2.png");
+        image = new GreenfootImage("fireball.png");
+        image2 = new GreenfootImage("fireball2.png");
     }
     
     public void act()
