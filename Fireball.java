@@ -12,6 +12,7 @@ public class Fireball extends Spells
         super(ally);
         
         speed = 20;
+        setImage("fireball.png");
     }
     
     public void act()
