@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.target=Arrow
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Arrow\ here.\r\n\ \r\n\ @author\ Kelby\ To\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=target
 comment1.target=Arrow(Troops)
-comment2.params=
-comment2.target=void\ act()
-numComments=3
+comment2.params=w
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment3.params=
+comment3.target=void\ act()
+comment3.text=\n\ Act\ -\ do\ whatever\ the\ Arrow\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+numComments=4

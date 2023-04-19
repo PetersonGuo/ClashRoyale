@@ -10,7 +10,7 @@ public class Archers extends Troops
 {
     protected Troops target; 
     int imageNumber;
-    
+    GreenfootImage[] images;
     public Archers(boolean ally){
         super(ally);
         

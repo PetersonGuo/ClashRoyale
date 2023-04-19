@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Archers
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Archers\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Archers\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=ally
 comment1.target=Archers(boolean)
 comment2.params=
