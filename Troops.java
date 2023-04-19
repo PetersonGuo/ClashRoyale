@@ -19,8 +19,9 @@ public abstract class Troops extends Actor {
     protected int elixerCost;
     
     protected boolean air, ally, spawning, alive = true, turned = false;
-    protected int actCounter = 0, currentImage = 0;
-    protected GreenfootImage[] images;
+    protected int actCounter = 0, walkImageIndex = 0;
+    protected GreenfootImage[] walkImages;
+    protected GreenfootImage attackImage;
     
     //sounds
     protected GreenfootSound spawn, die;
@@ -78,10 +79,10 @@ public abstract class Troops extends Actor {
             else { //move towards the target
                 if (actCounter % animationSpeed == 0) {
                     //change the image to the next frame
-                    currentImage++;
-                    if (currentImage > images.length)
-                        currentImage = 0;
-                    setImage(images[currentImage]); //set the image to the new frame
+                    walkImageIndex++;
+                    if (walkImageIndex > walkImages.length)
+                        walkImageIndex = 0;
+                    setImage(walkImages[walkImageIndex]); //set the image to the new frame
                 }
                 move((int)speed);
             }
