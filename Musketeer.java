@@ -18,10 +18,10 @@ public class Musketeer extends Troops
         maxSpeed = 5;
         attackSpeed = 900;
         animationSpeed = 20;
-        health = 14;
+        currentHealth = maxHealth = 14;
         damage = 8;
         attackRange = 60;
-        elixerCost = 4;
+        elixirCost = 4;
         air = false;
         
         setImage("musketeer.png");
@@ -31,7 +31,7 @@ public class Musketeer extends Troops
         walkImages[0] = new GreenfootImage("musketeer 0.png");
         walkImages[1] = new GreenfootImage("musketeer 1.png");
         walkImages[2] = new GreenfootImage("musketeer 2.png");
-        attackImage = new GreenfootImage("musketeer attack.png");
+        attackImages[0] = new GreenfootImage("musketeer attack.png");
     }
     
     public void act()

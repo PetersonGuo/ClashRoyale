@@ -13,7 +13,7 @@ public class Spells extends Actor
     protected Troops target;
     protected Towers target2;
     
-    protected GreenfootImage image;
+    protected GreenfootImage image, image2;
     
     public Spells(boolean ally){
         this.ally = ally;
@@ -65,7 +65,7 @@ public class Spells extends Actor
     
     public void damage(){
         for(Troops enemy : getObjectsInRange(areaOfEffect, Troops.class)){
-            enemy.health -= damage * 2;
+            enemy.getHit(damage * 2);
         }
         /*
         for(Tower tower : getObjectsInRange(areaOfEffect, Tower.class))

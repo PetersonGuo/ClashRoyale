@@ -16,18 +16,18 @@ public class Knight extends Troops
         attackSpeed = 60;
         animationSpeed = 15;
         
-        health = 8;
+        currentHealth = 8;
         damage = 3;
         attackRange = 15;
         detectionRange = 60;
 
-        elixerCost = 3;
+        elixirCost = 3;
         air = true;
         
         walkImages = new GreenfootImage[2];
         walkImages[0] = new GreenfootImage("knight walk 1.png");
         walkImages[1] = new GreenfootImage("knight walk 2.png");
-        attackImage = new GreenfootImage("knight attack.png");
+        attackImages[0] = new GreenfootImage("knight attack.png");
     }
     
     public void attack(Actor a){

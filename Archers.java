@@ -18,10 +18,10 @@ public class Archers extends Troops
         maxSpeed = 5;
         attackSpeed = 60;
         animationSpeed = 10;
-        health = 10;
+        currentHealth = 10;
         damage = 4;
         attackRange = 40;
-        elixerCost = 3;
+        elixirCost = 3;
         air = false;
         
         setImage("new archer.png");
@@ -31,7 +31,7 @@ public class Archers extends Troops
         walkImages[0] = new GreenfootImage("walking archer 0.png");
         walkImages[1] = new GreenfootImage("walking archer 1.png");
         walkImages[2] = new GreenfootImage("walking archer 2.png");
-        attackImage = new GreenfootImage("archer attack.png");
+        attackImages[0] = new GreenfootImage("archer attack.png");
     }
     
     public void act()
