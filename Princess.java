@@ -10,12 +10,11 @@ public class Princess extends Towers
 {
     public Princess(boolean ally) {
         super(ally);
-        image = new GreenfootImage(24,24);
-        image.setColor(Color.YELLOW);
-        image.fill();
+        hp = 100;
         range = 60;
-        setImage(image);
         shootingCooldown = 45;
+        image = (ally) ? new GreenfootImage("princess tower 1.png") : new GreenfootImage("princess tower 2.png") ;
+        setImage(image);
     }
     
     /**

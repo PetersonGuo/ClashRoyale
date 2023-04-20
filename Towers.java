@@ -6,10 +6,11 @@ import java.util.ArrayList;
  * @author Kelby To 
  * @version (a version number or a date)
  */
-public class Towers extends Actor
+public abstract class Towers extends Actor
 {
     protected boolean ally;
     protected GreenfootImage image;
+    protected int hp;
     protected int range;
     protected Troops target;
     protected int shootingCooldown;
@@ -53,7 +54,7 @@ public class Towers extends Actor
     }
     
     public void getHit(int dmg) {
-        
+        hp -= dmg;
     }
     
     private double getDistanceFromTower(Troops t) {

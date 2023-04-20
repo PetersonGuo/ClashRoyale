@@ -24,14 +24,31 @@ public class Knight extends Troops
         elixirCost = 3;
         air = true;
         
-        walkImages = new GreenfootImage[2];
-        walkImages[0] = new GreenfootImage("knight walk 1.png");
-        walkImages[1] = new GreenfootImage("knight walk 2.png");
-        attackImages[0] = new GreenfootImage("knight attack.png");
+        walkImages = new GreenfootImage[3];
+        //walkImages[0] = new GreenfootImage("knight walk 0.png");
+        //walkImages[1] = new GreenfootImage("knight walk 1.png");
+        //walkImages[2] = new GreenfootImage("knight walk 2.png");
+        attackImage = new GreenfootImage("knight attack.png");
+        for(int i = 0; i < walkImages.length; i++){
+            walkImages[i] = new GreenfootImage("knight walk "+ i + ".png");
+            walkImages[i].scale(walkImages[i].getWidth()/2, walkImages[i].getHeight()/2);
+        }
+        attackImage.scale(attackImage.getWidth()/2, attackImage.getHeight()/2);
+        setImage(walkImages[0]);
     }
     
     public void attack(Actor a){
-        
+        if(actCounter % attackSpeed == 0){
+            //hit
+            setImage(attackImage);
+            if(a instanceof Troops){
+                ((Troops)a).getHit(damage);
+            }else if(a instanceof Towers){
+                ((Towers)a).getHit(damage);
+            }
+        } else { //while not attacking
+            setImage(walkImages[0]);
+        }        
     }
         
     /**
@@ -40,7 +57,17 @@ public class Knight extends Troops
      */
     public void act()
     {
-        super.act();
-        
+        actCounter++;
+        if(spawning){
+            spawn();
+        }
+        Actor troop = findTarget(Troops.class);
+        if(troop != null){
+            moveTowardsTarget(troop);
+        }else if(!crossedBridge){
+            moveTowardsTarget(findTarget(Bridge.class));
+        }else{
+            moveTowardsTarget(findTarget(Towers.class));
+        }
     }
 }

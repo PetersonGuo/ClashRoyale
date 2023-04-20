@@ -10,10 +10,11 @@ public class King extends Towers
 {
     public King(boolean ally) {
         super(ally);
-        image = (ally) ? new GreenfootImage("king tower 1.png") : new GreenfootImage("king tower 2.png") ;
+        hp = 200;
         range = 80;
-        setImage(image);
         shootingCooldown = 30;
+        image = (ally) ? new GreenfootImage("king tower 1.png") : new GreenfootImage("king tower 2.png") ;
+        setImage(image);
     }
     
     /**
