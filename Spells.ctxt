@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=Spells
+comment0.text=\n\ Write\ a\ description\ of\ class\ Spells\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=ally
+comment1.target=Spells(boolean)
+comment2.params=w
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment3.params=
+comment3.target=Troops\ troopTarget()
+comment4.params=
+comment4.target=Towers\ towerTarget()
+comment5.params=t
+comment5.target=double\ getDistanceFromTower(Troops)
+comment6.params=
+comment6.target=void\ act()
+comment7.params=
+comment7.target=void\ damage()
+comment8.params=
+comment8.target=void\ hit()
+numComments=9

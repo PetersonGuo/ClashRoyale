@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Projectile
+comment0.text=\n\ Write\ a\ description\ of\ class\ Projectile\ here.\n\ \n\ @author\ Kevin\ Luo\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=target
+comment1.target=Projectile(Troops)
+comment2.params=w
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment3.params=
+comment3.target=void\ act()
+comment4.params=
+comment4.target=void\ hit()
+numComments=5
