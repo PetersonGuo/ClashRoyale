@@ -24,6 +24,14 @@ public class Musketeer extends Troops
         elixerCost = 4;
         air = false;
         
+        setImage("musketeer.png");
+        
+        walkImages = new GreenfootImage[3];
+        
+        walkImages[0] = new GreenfootImage("musketeer 0.png");
+        walkImages[1] = new GreenfootImage("musketeer 1.png");
+        walkImages[2] = new GreenfootImage("musketeer 2.png");
+        attackImage = new GreenfootImage("musketeer attack.png");
     }
     
     public void act()

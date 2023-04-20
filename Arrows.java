@@ -12,6 +12,8 @@ public class Arrows extends Spells
         super(ally);
         
         speed = 15;
+        image = new GreenfootImage("arrow spell.png");
+        image = new GreenfootImage("arrow spell2.png");
     }
     
     public void act()
