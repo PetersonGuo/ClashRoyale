@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class ElixirBar here.
  * Add text animation later :(
  * 
- * @author (your name) 
+ * @author Peterson Guo
  * @version (a version number or a date)
  */
 public class ElixirBar extends Actor {
@@ -61,5 +61,12 @@ public class ElixirBar extends Actor {
         for (int i = 1; i <= maxElixir; i++)
             img.drawLine(img.getWidth() / maxElixir * i, 0, img.getWidth() / maxElixir * i, img.getHeight());
         setImage(img);
+    }
+    
+    public boolean useElixir(int use) {
+        if (use > elixir)
+            return false;
+        elixir -= use;
+        return true;
     }
 }

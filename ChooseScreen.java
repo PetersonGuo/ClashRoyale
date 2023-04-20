@@ -17,7 +17,7 @@ public class ChooseScreen extends Worlds {
         // Instance Variables
         private Text display;
         private Chevron left, right;
-        private int x, y;
+        private int x, y, min;
         
         // Initialize variables
         public SetContainer(Text display, int x, int y) {this(display, x, y, null, null);}
@@ -35,11 +35,11 @@ public class ChooseScreen extends Worlds {
         public int getY() {return y;}
     }
     private final int statsPerPage = FINAL.STAT_SECTION_SIZE / (FINAL.STAT_SIZE + FINAL.ARROW_OFFSET);
-    private final List<SetContainer> statText = new ArrayList<>() {{
+    private final List<SetContainer> statText = new ArrayList<>() {{ // Add stats to a list
         for (int i = 0; i < FINAL.STAT_NAMES.length; i++)
             add(new SetContainer(new Text(FINAL.STAT_NAMES[i], Color.WHITE, FINAL.STAT_SIZE), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT / 3 + (i % statsPerPage) * (FINAL.STAT_SIZE + FINAL.ARROW_OFFSET) * 2));
     }};
-    private final Set<SetContainer> staticText = new HashSet<>() {{
+    private final Set<SetContainer> staticText = new HashSet<>() {{ // Text that doesnt change
         add(new SetContainer(new Text("Choose variables for the simulation", Color.WHITE, FINAL.WORLD_WIDTH / "Choose variables for the simulation".length() * 2), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT / 5));
     }};
     private static int pageNum, act;
@@ -61,14 +61,14 @@ public class ChooseScreen extends Worlds {
         addObject(cont, FINAL.WORLD_WIDTH - cont.getWidth() / 2 - 20, FINAL.WORLD_HEIGHT - cont.getHeight() / 2);
     }
     
-    private void initializeStats() {
+    private void initializeStats() { // Add stats to map
         stats = new HashMap<>() {{
             for (int i = 0; i < FINAL.STAT_NAMES.length; i++)
                 put(FINAL.STAT_NAMES[i], FINAL.DEFAULT_VALUES[i]);
         }};
     }
-    // Add Nametag
-    public void act() {
+    
+    public void act() { // Act
         if (Greenfoot.mouseClicked(cont) || (Greenfoot.isKeyDown(FINAL.NEXT_WORLD_BUTTON) && act >= 30)) // Prevents world skipping by adding a .5s delay
             nextWorld();
         else if (Greenfoot.mouseClicked(left) && pageNum > 0) {
@@ -88,7 +88,7 @@ public class ChooseScreen extends Worlds {
         lastPress = Greenfoot.isKeyDown("Left") || Greenfoot.isKeyDown("Right");
     }
     
-    private void updateStatPage() {
+    private void updateStatPage() { // Update values of the page
         removeObjects(getObjects(Text.class));
         removeObjects(getObjects(Chevron.class));
         for (SetContainer setValue : staticText)
@@ -109,12 +109,13 @@ public class ChooseScreen extends Worlds {
         addObject(right, FINAL.WORLD_WIDTH * 3 / 5, FINAL.WORLD_HEIGHT * 9 / 10);
     }
     
-    public void setValue(Chevron selector) {
-        stats.put(selector.getSelector(), stats.get(selector.getSelector()) + (selector.isLeft() ? -1 : 1));
+    public void setValue(Chevron selector) { // Change values of the variables
+        if ((!selector.isLeft() || stats.get(selector.getSelector()) > 1) && (selector.isLeft() || stats.get(selector.getSelector()) < 20))
+            stats.put(selector.getSelector(), stats.get(selector.getSelector()) + (selector.isLeft() ? -1 : 1));
         selector.getText().updateText(stats.get(selector.getSelector()));
     }
     
-    public void nextWorld() {
+    public void nextWorld() { // Get next world
         Greenfoot.setWorld(new MainWorld(stats));
     }
 }

@@ -28,19 +28,19 @@ public class Knight extends Troops
         //walkImages[0] = new GreenfootImage("knight walk 0.png");
         //walkImages[1] = new GreenfootImage("knight walk 1.png");
         //walkImages[2] = new GreenfootImage("knight walk 2.png");
-        attackImage = new GreenfootImage("knight attack.png");
+        attackImages[0] = new GreenfootImage("knight attack.png");
         for(int i = 0; i < walkImages.length; i++){
             walkImages[i] = new GreenfootImage("knight walk "+ i + ".png");
             walkImages[i].scale(walkImages[i].getWidth()/2, walkImages[i].getHeight()/2);
         }
-        attackImage.scale(attackImage.getWidth()/2, attackImage.getHeight()/2);
+        attackImages[0].scale(attackImages[0].getWidth()/2, attackImages[0].getHeight()/2);
         setImage(walkImages[0]);
     }
     
     public void attack(Actor a){
         if(actCounter % attackSpeed == 0){
             //hit
-            setImage(attackImage);
+            setImage(attackImages[0]);
             if(a instanceof Troops){
                 ((Troops)a).getHit(damage);
             }else if(a instanceof Towers){

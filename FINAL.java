@@ -12,6 +12,7 @@ public interface FINAL {
     int STAT_SIZE = 30;
     int STAT_SECTION_SIZE = WORLD_HEIGHT / 4;
     int CARD_SPACING = 8;
+    int NUM_OF_TROOPS = 5;
     int[] DEFAULT_VALUES = {
         1,
         1,
@@ -24,9 +25,8 @@ public interface FINAL {
         1,
     };
     
-    String FONT = "Joystix";
     String NEXT_WORLD_BUTTON = "Space";
-    String[] STAT_NAMES = {
+    String[] STAT_NAMES = { // Stat names
         "Start Elixir",
         "Max Elixir",
         "Elixir Time",
