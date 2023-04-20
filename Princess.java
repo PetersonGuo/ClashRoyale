@@ -13,7 +13,8 @@ public class Princess extends Towers
         hp = 100;
         range = 60;
         shootingCooldown = 45;
-        image = (ally) ? new GreenfootImage("princess tower 1.png") : new GreenfootImage("princess tower 2.png") ;
+        image = (ally) ? new GreenfootImage("basic tower 1.png") : new GreenfootImage("basic tower 2.png") ;
+        image.scale(55,55);
         setImage(image);
     }
     

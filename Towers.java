@@ -26,6 +26,7 @@ public abstract class Towers extends Actor
      */
     public void act()
     {
+        if(hp <= 0) getWorld().removeObject(this);
         actsSinceShooting++;
         if (target != null) {
             if (actsSinceShooting >= shootingCooldown)shootArrowAtTarget();
@@ -55,6 +56,10 @@ public abstract class Towers extends Actor
     
     public void getHit(int dmg) {
         hp -= dmg;
+    }
+    
+    public int getHp(){
+        return hp;
     }
     
     private double getDistanceFromTower(Troops t) {

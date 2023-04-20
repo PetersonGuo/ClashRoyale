@@ -27,6 +27,14 @@ public class MainWorld extends Worlds {
         addObject(new Text("Next:", Color.WHITE, 18), 40, 70);
         addObject(new Text(0, Color.BLUE, 30), 401, 395);
         addObject(new Text(0, Color.RED, 30), 401, 237);
+        
+        addObject(new Princess(true), 106, 525);
+        addObject(new King(true), 211, 575);
+        addObject(new Princess(false), 106, 225);
+        
+        addObject(new Princess(true), 317, 525);
+        addObject(new King(false), 211, 175);
+        addObject(new Princess(false), 317, 225);
     }
     
     public void nextWorld() {
