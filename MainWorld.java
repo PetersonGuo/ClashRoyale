@@ -30,11 +30,14 @@ public class MainWorld extends Worlds {
         
         addObject(new Princess(true), 106, 525);
         addObject(new King(true), 211, 575);
-        addObject(new Princess(false), 106, 225);
-        
         addObject(new Princess(true), 317, 525);
+        
+        addObject(new Princess(false), 106, 225);
         addObject(new King(false), 211, 175);
         addObject(new Princess(false), 317, 225);
+        
+        addObject(new Bridge(), 106, 375);
+        addObject(new Bridge(), 317, 375);
     }
     
     public void nextWorld() {
