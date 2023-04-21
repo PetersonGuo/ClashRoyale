@@ -12,7 +12,7 @@ public class EndScreen extends Worlds {
     /**
      * Constructor for objects of class EndScreen.
      */
-    public EndScreen() {
+    public EndScreen(int[] crowns) {
         ArrayList<Towers> towersLeft = (ArrayList<Towers>)getObjects(Towers.class);
         for (Towers t : towersLeft) {
             if (t.isAlly()) {

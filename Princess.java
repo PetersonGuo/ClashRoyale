@@ -21,4 +21,10 @@ public class Princess extends Towers {
         image.scale(55,55);
         setImage(image);
     }
+    
+    public void getHit(int dmg) {
+        hp -= dmg;
+        //tower destroyed
+        if (hp <= 0) getWorld().removeObject(this);
+    }
 }

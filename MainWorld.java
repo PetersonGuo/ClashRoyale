@@ -96,7 +96,8 @@ public class MainWorld extends Worlds {
      * nextWorld - Go to the next world
      */
     public void nextWorld() {
-        Greenfoot.setWorld(new EndScreen());
+        // To Do: Set Timer, keep track of crowns
+        Greenfoot.setWorld(new EndScreen(new int[]{0,0}));
     }
     
     /**

@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @version (a version number or a date)
  */
 public abstract class Towers extends Actor {
-    protected boolean ally; //true if ally, false if enemy
+    protected boolean ally; // true if ally, false if enemy
     protected GreenfootImage image; //the image of the tower
     protected int hp, range, shootingCooldown, actsSinceShooting;  //range is the radius of the tower
     protected Troops target; //the troop to target
@@ -61,17 +61,12 @@ public abstract class Towers extends Actor {
     }
     
     /**
-     * Gets the distance from the tower to the troop
+     * Damage the Tower
      * 
-     * @param t the troop to get the distance from
-     * @return the distance from the tower to the troop
+     * @param dmg the damage the troop does
      */
-    public void getHit(int dmg) {
-        hp -= dmg;
-        //tower destroyed
-        if (hp <= 0) getWorld().removeObject(this);
-    }
-    
+    public abstract void getHit(int dmg);
+ 
     public int getHp() {
         return hp;
     }

@@ -21,4 +21,13 @@ public class King extends Towers {
         image.scale(60, 60);
         setImage(image);
     }
+    
+    public void getHit(int dmg) {
+        hp -= dmg;
+        //tower destroyed
+        if (hp <= 0) {
+            ((Worlds)getWorld()).nextWorld();
+            getWorld().removeObject(this);
+        }
+    }
 }
