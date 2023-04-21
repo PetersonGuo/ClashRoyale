@@ -61,7 +61,8 @@ public class SuperStatBar extends Actor
     /**
      * Main constructor - A basic constructor that sets default values. Easy to use, not very flexible.
      */
-    public SuperStatBar() {
+    public SuperStatBar()
+    {
         this(100, 100, null, 48, 6, 36);
     }
 
