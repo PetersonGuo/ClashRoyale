@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Normal here.
  * 
- * @author (your name) 
+ * @author Kelby To 
  * @version (a version number or a date)
  */
 public class Princess extends Towers

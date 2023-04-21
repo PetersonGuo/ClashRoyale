@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Towers
-comment0.text=\n\ Write\ a\ description\ of\ class\ Towers\ here.\n\ \n\ @author\ Kelby\ To\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Towers\ will\ shoot\ any\ enemy\ targets\ within\ its\ range\n\ \n\ @author\ Kelby\ To\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=ally
 comment1.target=Towers(boolean)
 comment2.params=
