@@ -11,6 +11,7 @@ public abstract class Towers extends Actor {
     protected GreenfootImage image; //the image of the tower
     protected int hp, range, shootingCooldown, actsSinceShooting;  //range is the radius of the tower
     protected Troops target; //the troop to target
+    protected SuperStatBar hpBar;
     
     /**
      * Constructor for objects of class Towers
@@ -19,6 +20,10 @@ public abstract class Towers extends Actor {
      */
     public Towers(boolean ally) {
         this.ally = ally;
+    }
+    
+    public void addedToWorld(World w){
+        w.addObject(hpBar, 0, 0);
     }
     
     /**

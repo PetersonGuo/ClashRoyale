@@ -17,13 +17,17 @@ public class King extends Towers {
         hp = 200;
         range = 150;
         shootingCooldown = 30;
+        
         image = (ally) ? new GreenfootImage("KingTower1.png") : new GreenfootImage("KingTower2.png") ;
         image.scale(60, 60);
         setImage(image);
+        
+        hpBar = new SuperStatBar(hp, hp, this, 50, 10, (ally)? 25 : -25, Color.GREEN, Color.RED, true);
     }
     
     public void getHit(int dmg) {
         hp -= dmg;
+        hpBar.update(hp);
         //tower destroyed
         if (hp <= 0) {
             ((Worlds)getWorld()).nextWorld();
