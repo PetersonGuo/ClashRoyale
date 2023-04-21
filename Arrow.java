@@ -7,21 +7,30 @@ import greenfoot.*;
  * @author Kelby To 
  * @version (a version number or a date)
  */
-
-public class Arrow extends Actor {
-    private int speed;
-    private int damage;
-    private Troops target;
-    private int targetX, targetY;
-    private GreenfootImage image;
+public class Arrow extends Actor { 
+    private int speed, damage; //speed and damage of arrow
+    private Troops target; //target of arrow
+    private int targetX, targetY; //target's x and y coordinates 
+    private GreenfootImage image; //image of arrow
     
+    /**
+     * Constructor for objects of class Arrow
+     * 
+     * @param target the target of the arrow
+     */
     public Arrow(Troops target) {
+        // initialise instance variables
         speed = 5;
         damage = 3;
         this.target = target;
         image = new GreenfootImage("arrow.png");
     }
     
+    /**
+     * Added to world method
+     * 
+     * @param w the world the arrow is added to
+     */
     public void addedToWorld(World w) {
         targetX = target.getX();
         targetY = target.getY();
@@ -33,14 +42,11 @@ public class Arrow extends Actor {
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() {
-        move(speed); //move in the set direction
-        if (intersects(target)) {
-            //hit
+        move(speed);
+        if (intersects(target)) { //hit
             target.getHit(damage);
             getWorld().removeObject(this);
-        } else if (Math.abs(getX()-targetX) < 5 || Math.abs(getY()-targetY) < 5) {
-            //miss
+        } else if (Math.abs(getX()-targetX) < 6 || Math.abs(getY()-targetY) < 6 ) // miss
             getWorld().removeObject(this);
-        }
     }
 }

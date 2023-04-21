@@ -8,10 +8,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class ElixirBar extends Actor {
-    private int elixir, elixirTimer, sectionSize, elixirTime, maxElixir;
-    private GreenfootImage img;
-    private Text elixirText;
-    public ElixirBar(int startElixir, int maxElixir, int elixirTime) {
+    private int elixir, elixirTimer, sectionSize, elixirTime, maxElixir; // elixir, elixirTimer, sectionSize, elixirTime, maxElixir
+    private GreenfootImage img; // image
+    private Text elixirText; // text
+    /**
+     * Constructor for objects of class ElixirBar
+     * 
+     * @param startElixir The starting elixir
+     * @param maxElixir The maximum elixir
+     * @param elixirTime The time it takes to gain 1 elixir
+     */
+    public ElixirBar(int startElixir, int maxElixir, int elixirTime) { // Constructor
         this.maxElixir = maxElixir;
         this.elixirTime = elixirTime;
         elixir = startElixir;
@@ -42,6 +49,9 @@ public class ElixirBar extends Actor {
         drawImg();
     }
     
+    /**
+     * drawImg - Draw the image
+     */
     private void drawImg() {
         img.clear();
         // Background Elixir Color
@@ -63,6 +73,11 @@ public class ElixirBar extends Actor {
         setImage(img);
     }
     
+    /**
+     * useElixir - Use elixir
+     * @param use - Amount of elixir to use
+     * @return - Whether or not the elixir was used
+     */
     public boolean useElixir(int use) {
         if (use > elixir)
             return false;

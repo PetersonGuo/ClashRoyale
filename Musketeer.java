@@ -6,11 +6,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Musketeer extends Troops
-{
-    protected Troops target;
+public class Musketeer extends Troops {
+    protected Troops target; //the target of the troop
     
-    
+    /**
+     * Constructor for objects of class Musketeer
+     * 
+     * @param ally whether the troop is on the player's side or not
+     */
     public Musketeer(boolean ally){
         super(ally);
         
@@ -34,30 +37,34 @@ public class Musketeer extends Troops
         attackImages[0] = new GreenfootImage("musketeer attack.png");
     }
     
-    public void act()
-    {
+    /**
+     * Act - do whatever the Musketeer wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act() {
         super.act();
-        
-        if (findTarget(Troops.class) != null){
+        if (findTarget(Troops.class) != null)
             moveTowardsTarget(findTarget(Troops.class));
-        }
-        else{
+        else
             moveTowardsTarget(findTarget(Towers.class));
-        }
     }
     
-    public void attack(Actor a){
-        if (actCounter % attackSpeed == 0){
+    /**
+     * Attack the target
+     * 
+     * @param a the target
+     */
+    public void attack(Actor a) {
+        if (actCounter % attackSpeed == 0) {
             Troops target = (Troops)findTarget(Troops.class);
-            if (target != null){
+            if (target != null)
                 moveTowardsTarget(target);
-            }   
-            else{
-                //((Towers)a).getHit(damage);
-            }
         }
     }
     
+    /**
+     * Shoot a pellet at the target
+     */
     private void shootpelletAtTarget() {
         getWorld().addObject(new Pellet(target), getX(), getY());
         actCounter = 0;

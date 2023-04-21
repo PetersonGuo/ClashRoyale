@@ -9,10 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Minion extends Troops
 {
     /**
-     * Act - do whatever the Minion wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Constructor for objects of class Minion
+     * 
+     * @param ally whether the troop is on the player's side or not
      */
-    public Minion(boolean ally){
+    public Minion(boolean ally) {
         super(ally);
         
         //speed stats
@@ -45,6 +46,10 @@ public class Minion extends Troops
         healthBar = new SuperStatBar(maxHealth, currentHealth, this, size, 10, -size / 2, filledColor, missingColor);
     }
     
+    /**
+     * Act - do whatever the Minion wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act()
     {
         actCounter++;
@@ -58,6 +63,11 @@ public class Minion extends Troops
         }
     }
     
+    /**
+     * Attack the target
+     * 
+     * @param a the target
+     */
     public void attack(Actor a){
         if(actCounter % attackSpeed == 0){
             Troops target = (Troops)findTarget(Troops.class);

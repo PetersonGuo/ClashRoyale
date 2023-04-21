@@ -6,11 +6,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Giant extends Troops
-{
+public class Giant extends Troops {
     /**
-     * Act - do whatever the Giant wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Constructor for objects of class Giant
+     * 
+     * @param ally Whether the tower is on the left or right side
      */
     public Giant(boolean ally){
         super(ally);
@@ -47,27 +47,30 @@ public class Giant extends Troops
         healthBar = new SuperStatBar(maxHealth, currentHealth, this, size, 10, -size / 2, filledColor, missingColor);
     }
     
-    public void act()
-    {
-        if(spawning){
+    /**
+     * Act - do whatever the Giant wants to do. This method is called whenever
+     */
+    public void act() {
+        if(spawning)
             spawn();
-        }
-        if (!crossedBridge){
+        if (!crossedBridge) {
             moveTowardsTarget(findTarget(Bridge.class));
-            if(isTouching(Bridge.class)){
+            if (isTouching(Bridge.class))
                 crossBridge();
-            }
-        } else {
+        } else
             moveTowardsTarget(findTarget(Towers.class));
-        }
     }
     
+    /**
+     * attack - attacks the target
+     * 
+     * @param a - the target
+     */
     public void attack(Actor a){
         if(actCounter % attackSpeed == 0){
             animate(attackImages);
             ((Towers)a).getHit(damage);
-        } else { //while not attacking
+        } else //while not attacking
             setImage(walkImages[0]);
-        }
     }
 }

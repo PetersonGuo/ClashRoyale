@@ -19,5 +19,8 @@ public abstract class Worlds extends World {
         setBackground(bg);
     }
     
+    /**
+     * nextWorld - Go to the next world
+     */
     public abstract void nextWorld();
 }

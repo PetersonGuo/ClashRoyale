@@ -6,10 +6,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Knight extends Troops
-{
-    
-    public Knight(boolean ally){
+public class Knight extends Troops {
+    /**
+     * Constructor for objects of class Knight
+     * 
+     * @param ally whether the troop is on the player's side or not
+     */
+    public Knight(boolean ally) {
         super(ally);
         
         maxSpeed = 8;
@@ -38,6 +41,11 @@ public class Knight extends Troops
         setImage(walkImages[0]);
     }
     
+    /**
+     * Attack method
+     * 
+     * @param a the actor to attack
+     */
     public void attack(Actor a){
         if(actCounter % attackSpeed == 0){
             //hit
@@ -56,19 +64,16 @@ public class Knight extends Troops
      * Act - do whatever the Knight wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act()
-    {
+    public void act() {
         actCounter++;
-        if(spawning){
+        if(spawning)
             spawn();
-        }
         Actor troop = findTarget(Troops.class);
-        if(troop != null){
+        if (troop != null)
             moveTowardsTarget(troop);
-        }else if(!crossedBridge){
+        else if(!crossedBridge)
             moveTowardsTarget(findTarget(Bridge.class));
-        }else{
+        else
             moveTowardsTarget(findTarget(Towers.class));
-        }
     }
 }

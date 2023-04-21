@@ -77,6 +77,9 @@ public class EndScreen extends Worlds {
         }
     }
     
+    /**
+     * nextWorld - Go to the next world
+     */
     public void nextWorld() {
         Greenfoot.setWorld(new ChooseScreen());
     }

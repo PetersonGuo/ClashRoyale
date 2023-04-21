@@ -6,12 +6,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Archers extends Troops
-{
-    protected Troops target; 
-    int imageNumber;
+public class Archers extends Troops {
+    protected Troops target; // The target of the archer
+    private int imageNumber; // The number of images in the animation
     
-    public Archers(boolean ally){
+    /**
+     * Constructor for objects of class Archers
+     * 
+     * @param ally true if ally, false if enemy
+     */
+    public Archers(boolean ally) {
         super(ally);
         
         //stats
@@ -26,7 +30,7 @@ public class Archers extends Troops
         
         setImage("new archer.png");
         
-        walkImages = new GreenfootImage[3];
+        walkImages = new GreenfootImage[3]; // The images for the walking animation
         
         walkImages[0] = new GreenfootImage("walking archer 0.png");
         walkImages[1] = new GreenfootImage("walking archer 1.png");
@@ -34,41 +38,48 @@ public class Archers extends Troops
         attackImages[0] = new GreenfootImage("archer attack.png");
     }
     
-    public void act()
-    {
+    /**
+     * Act - do whatever the Archers wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act() {
         super.act();
         
-        if (findTarget(Troops.class) != null){
+        if (findTarget(Troops.class) != null) // If there is a target
             moveTowardsTarget(findTarget(Troops.class));
-        }
-        else{
+        else // If there is no target
             moveTowardsTarget(findTarget(Towers.class));
-        }
     }
     
-    public void attack(Actor a){
-        if (actCounter % attackSpeed == 0){
+    /**
+     * Attack the target
+     * 
+     * @param a the target
+     */
+    public void attack(Actor a) { // Attack the target
+        if (actCounter % attackSpeed == 0) { // If the attack counter is reached
             Troops target = (Troops)findTarget(Troops.class);
             shootArrowAtTarget();
-            if (target != null){
+            if (target != null) // If there is a target
                 moveTowardsTarget(target);
-            }   
-            else{
-                //((Towers)a).getHit(damage);
-            }
         }
     }
     
-    public GreenfootImage[] animation(){
+    /**
+     * The animation for the archer
+     * @return the animation images
+     */
+    public GreenfootImage[] animation() { // The animation for the archer
         GreenfootImage[] images = new GreenfootImage[imageNumber];
-        for(int i = 0; i < images.length; i++)
-        {
+        for(int i = 0; i < images.length; i++) // For each image
             images[i] = new GreenfootImage("walking archer " + i + ".png");
-        }
         return images;
     }
     
-    private void shootArrowAtTarget() {
+    /**
+     * Shoot an arrow at the target
+     */
+    private void shootArrowAtTarget() { 
         getWorld().addObject(new Arrow(target), getX(), getY());
         actCounter = 0;
     }
