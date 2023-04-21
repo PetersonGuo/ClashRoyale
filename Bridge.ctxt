@@ -3,4 +3,8 @@ comment0.target=Bridge
 comment0.text=\n\ Write\ a\ description\ of\ class\ Bridge\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=Bridge()
+<<<<<<< HEAD
+=======
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Bridge\n
+>>>>>>> origin/background
 numComments=2

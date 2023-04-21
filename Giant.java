@@ -30,6 +30,8 @@ public class Giant extends Troops {
         attackSound = new GreenfootSound("GiantAttack.mp3");
         
         //miscellaneous stats
+        size = 40;
+        
         elixirCost = 5;
         air = false;
         

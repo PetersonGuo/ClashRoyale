@@ -24,20 +24,25 @@ public class MainWorld extends Worlds {
         allyElixir = new ElixirBar(stats.get("Start Elixir"), stats.get("Max Elixir"), stats.get("Elixir Time"));
         addObject(allyElixir, 250, 730);
         addObject(enemyElixir, 250, 20);
-        addObject(new Text("Next:", Color.WHITE, 18), 40, 680);
-        addObject(new Text("Next:", Color.WHITE, 18), 40, 70);
-        addObject(new Text(0, Color.BLUE, 30), 401, 395);
-        addObject(new Text(0, Color.RED, 30), 401, 237);
-        addObject(new Princess(true), 100, 520);
-        addObject(new King(true), FINAL.WORLD_WIDTH / 2, 575);
-        addObject(new Princess(true), 320, 520);
+        
+        addObject(new Text("Next:", Color.BLACK, 18), 40, 680);
+        addObject(new Text("Next:", Color.BLACK, 18), 40, 70);
+        
+        addObject(new Text(0, Color.BLUE, 30), 409, 453);
+        addObject(new Text(0, Color.RED, 30), 409, 308);
+        
+        //towers
+        addObject(new Princess(true), 93, 512);
+        addObject(new King(true), 213, 586);
+        addObject(new Princess(true), 333, 512);
 
-        addObject(new Princess(false), 100, 225);
-        addObject(new King(false), 210, 175);
-        addObject(new Princess(false), 320, 225);
+        addObject(new Princess(false), 93, 248);
+        addObject(new King(false), 213, 177);
+        addObject(new Princess(false), 333, 248);
 
-        addObject(new Bridge(), 100, (520 + 225) / 2);
-        addObject(new Bridge(), 320, (520 + 225) / 2);
+        //bridge
+        addObject(new Bridge(), 93, 381);
+        addObject(new Bridge(), 333, 381);
         
         // Randomize card order
         List<Integer> enemy = new ArrayList<>() {{for (int i = 0; i < FINAL.NUM_OF_TROOPS; i++) add(i);}},
