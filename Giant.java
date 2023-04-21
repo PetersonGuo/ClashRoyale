@@ -6,8 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Giant extends Troops
-{
+public class Giant extends Troops {
     /**
      * Constructor for objects of class Giant
      * 

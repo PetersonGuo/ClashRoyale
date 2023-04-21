@@ -40,10 +40,8 @@ public class MainWorld extends Worlds {
         addObject(new Bridge(), 320, (520 + 225) / 2);
         
         // Randomize card order
-        Integer[] nums = new Integer[FINAL.NUM_OF_TROOPS];
-        for (int i = 0; i < FINAL.NUM_OF_TROOPS; i++) nums[i] = i;
-        List<Integer> enemy = Arrays.asList(nums);
-        List<Integer> ally = Arrays.asList(nums);
+        List<Integer> enemy = new ArrayList<>() {{for (int i = 0; i < FINAL.NUM_OF_TROOPS; i++) add(i);}},
+        ally = new ArrayList<>() {{for (int i = 0; i < FINAL.NUM_OF_TROOPS; i++) add(i);}};
         Collections.shuffle(enemy);
         Collections.shuffle(ally);
         
