@@ -75,7 +75,7 @@ public class SuperStatBar extends Actor
      * @param owner     The Actor to follow around. If you do not want to associate this with an Actor, provide
      *                  null instead.
      */
-    public SuperStatBar (int maxVal, Actor owner){
+    public SuperStatBar (int maxVal, Actor owner) {
         this(maxVal, maxVal, owner, 48, 4, 36);
     }
 
@@ -90,7 +90,7 @@ public class SuperStatBar extends Actor
      *  @param height   the height of the stat bar
      *  @param offset   the y-offset for positioning this bar in relation to it's owner
      */
-    public SuperStatBar (int maxVal, int currVal, Actor owner, int width, int height, int offset){
+    public SuperStatBar (int maxVal, int currVal, Actor owner, int width, int height, int offset) {
         this (maxVal, currVal, owner, width, height, offset, Color.GREEN, Color.RED);
     }
 
@@ -106,7 +106,7 @@ public class SuperStatBar extends Actor
      *  @param filledColor  the color to be used to represent the current value
      *  @param missingColor the color to be used to represent the missing value
      */
-    public SuperStatBar (int maxVal,  int currVal, Actor owner, int width, int height, int offset, Color filledColor, Color missingColor){
+    public SuperStatBar (int maxVal,  int currVal, Actor owner, int width, int height, int offset, Color filledColor, Color missingColor) {
         this (maxVal, currVal, owner, width, height, offset, filledColor, missingColor, true);
     }
 
@@ -123,7 +123,7 @@ public class SuperStatBar extends Actor
      *  @param missingColor the color to be used to represent the missing value
      *  @param  hideAtMax   set to true to have this statBar hide itself when currVal == maxVal
      */
-    public SuperStatBar (int maxVal,  int currVal, Actor owner, int width, int height, int offset, Color filledColor, Color missingColor, boolean hideAtMax){
+    public SuperStatBar (int maxVal,  int currVal, Actor owner, int width, int height, int offset, Color filledColor, Color missingColor, boolean hideAtMax) {
         this (maxVal, currVal, owner, width, height, offset, filledColor, missingColor, hideAtMax, null, 0);
     }
 
@@ -142,7 +142,7 @@ public class SuperStatBar extends Actor
      *  @param borderColor  the Color of the border
      *  @param borderThickness  the thickness of the border. This value should be at least 1.
      */
-    public SuperStatBar (int maxVal,  int currVal, Actor owner, int width, int height, int offset, Color filledColor, Color missingColor, boolean hideAtMax, Color borderColor, int borderThickness){
+    public SuperStatBar (int maxVal,  int currVal, Actor owner, int width, int height, int offset, Color filledColor, Color missingColor, boolean hideAtMax, Color borderColor, int borderThickness) {
         this (new int[]{maxVal}, new int[]{currVal}, owner, width, height, offset, new Color[] {filledColor}, new Color[] {missingColor}, hideAtMax, borderColor, borderThickness);
 
     }
@@ -164,7 +164,7 @@ public class SuperStatBar extends Actor
      *  @param borderColor  the Color of the border
      *  @param borderThickness  the thickness of the border. This value should be at least 1.
      */
-    public SuperStatBar (int maxVals[],  int currVals[], Actor owner, int width, int height, int offset, Color filledColor[], Color missingColor[], boolean hideAtMax, Color borderColor, int borderThickness){
+    public SuperStatBar (int maxVals[],  int currVals[], Actor owner, int width, int height, int offset, Color filledColor[], Color missingColor[], boolean hideAtMax, Color borderColor, int borderThickness) {
         this.barCount = maxVals.length;
         this.barHeight = (height - (2* borderThickness))/barCount;
 
@@ -183,7 +183,7 @@ public class SuperStatBar extends Actor
         bar = new GreenfootImage (width, height);
         blank = new GreenfootImage (1, 1);
 
-        if (borderColor == null){
+        if (borderColor == null) {
             borderThickness = 0;
             hasBorder = false;
         } else {
@@ -196,7 +196,7 @@ public class SuperStatBar extends Actor
 
     }
 
-    public void addedToWorld (World w){
+    public void addedToWorld (World w) {
         moveMe();
     }
     
@@ -215,8 +215,8 @@ public class SuperStatBar extends Actor
      * when the Actor it is following is moving, rather than acting each act().
      * 
      */
-    public void moveMe (){
-        if (target != null && getWorld() != null){
+    public void moveMe () {
+        if (target != null && getWorld() != null) {
             if (target.getWorld() != null)
             {
                 setLocation (target.getX(), target.getY() + offset);
@@ -236,7 +236,7 @@ public class SuperStatBar extends Actor
      * 
      * @param newCurrVal    the new current value for this bar.
      */
-    public void update (int newCurrVal){
+    public void update (int newCurrVal) {
         update (new int[]{newCurrVal});
     }
 
@@ -252,13 +252,13 @@ public class SuperStatBar extends Actor
     {
         boolean updateRequired = !(Arrays.equals(currVals, newCurrVals));
 
-        if (updateRequired){
+        if (updateRequired) {
             currVals = newCurrVals;
 
-            if (hideAtMax){ // if the hide when full feature is on, figure it if this bar should hide
+            if (hideAtMax) { // if the hide when full feature is on, figure it if this bar should hide
                 boolean full = true; // set full to true, until I find one that isn't
-                for (int i = 0; i < barCount; i++){ // look through all of my bars for one that isn't full
-                    if (currVals[i] != maxVals[i]){ // check if the current value is not the same as the max (not full)
+                for (int i = 0; i < barCount; i++) { // look through all of my bars for one that isn't full
+                    if (currVals[i] != maxVals[i]) { // check if the current value is not the same as the max (not full)
                         full = false; // if I find one that's not full
                         break;        // no point looking at the rest so break out of the for loop
                     }
@@ -286,7 +286,7 @@ public class SuperStatBar extends Actor
      * 
      * @param maxVal    the new maximum value for this bar
      */
-    public void setMaxVal (int maxVal){
+    public void setMaxVal (int maxVal) {
         setMaxVal (new int[]{maxVal});
     }
 
@@ -296,9 +296,9 @@ public class SuperStatBar extends Actor
      * @param maxVals   An array containing maximum values for every bar in this StatBar. Should have the same 
      *                  length as the StatBar has bars.
      */
-    public void setMaxVal (int maxVals[]){
-        for (int i = 0; i < barCount; i++){
-            if (maxVals[i] <= 0){
+    public void setMaxVal (int maxVals[]) {
+        for (int i = 0; i < barCount; i++) {
+            if (maxVals[i] <= 0) {
                 return; // invalid
             }
         }
@@ -311,18 +311,18 @@ public class SuperStatBar extends Actor
      *      This method is private because we don't want another method to 
      *      waste time calling this if no changes have been made to the 
      */
-    private void redraw(){
+    private void redraw() {
 
-        if (hasBorder){
+        if (hasBorder) {
             bar.setColor (borderColor);
-            for (int i = 0; i < borderThickness; i++){
+            for (int i = 0; i < borderThickness; i++) {
                 bar.drawRect (i, i, width - 1 - (i * 2), height - 1 - (i * 2));
             }
         }
 
         int extraHeight = 0;
-        for (int i = 0; i < barCount; i++){
-            if (i % 2 == 0 && height % 2 == 1){
+        for (int i = 0; i < barCount; i++) {
+            if (i % 2 == 0 && height % 2 == 1) {
                 extraHeight = 1;
             }
             currPercentVal = (double) currVals[i] / maxVals[i];

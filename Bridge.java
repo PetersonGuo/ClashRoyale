@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Bridge extends Actor
 {
-    public Bridge(){
+    public Bridge() {
         GreenfootImage image = new GreenfootImage(20,40);
         image.setColor(new Color(255,0,0,100));
         image.fill();

@@ -11,8 +11,8 @@ public interface FINAL {
     int ARROW_OFFSET = 10; // Offset of the arrows
     int STAT_SIZE = 30; // Size of the stats
     int STAT_SECTION_SIZE = WORLD_HEIGHT / 4;   // Size of the stat section
-    int CARD_SPACING = 8; // Spacing between cards
-    int NUM_OF_TROOPS = 5; // Number of troops
+    int CARD_SPACING = 4; // Spacing between cards
+    int NUM_OF_TROOPS = 8; // Number of troops
     int[] DEFAULT_VALUES = { // Default values for the stats
         1,
         1,

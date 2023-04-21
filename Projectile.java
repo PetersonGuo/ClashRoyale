@@ -19,7 +19,7 @@ public class Projectile extends Actor {
      * 
      * @param target the target of the projectile
      */
-    public Projectile(Troops target){
+    public Projectile(Troops target) {
         this.target = target;
     }
     
@@ -28,7 +28,7 @@ public class Projectile extends Actor {
      * 
      * @param w the world the projectile is added to
      */
-    public void addedToWorld(World w){
+    public void addedToWorld(World w) {
         targetX = target.getX();
         targetY = target.getY();
         turnTowards(targetX, targetY);
@@ -46,12 +46,12 @@ public class Projectile extends Actor {
     /**
      * Hit method
      */
-    protected void hit(){
+    protected void hit() {
         if (intersects(target)) {
             //hit
             target.getHit(damage);
             getWorld().removeObject(this);
-        } else if(Math.abs(getX()-targetX) < 6 || Math.abs(getY()-targetY) < 6 ) //miss
+        } else if (Math.abs(getX()-targetX) < 6 || Math.abs(getY()-targetY) < 6 ) //miss
             getWorld().removeObject(this);
     }
 }

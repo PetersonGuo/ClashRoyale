@@ -6,10 +6,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Knight extends Troops
-{
-    
-    public Knight(boolean ally){
+public class Knight extends Troops {
+    public Knight(boolean ally) {
         super(ally);
         
         //speed stats
@@ -32,11 +30,12 @@ public class Knight extends Troops
         air = false;
         
         walkImages = new GreenfootImage[3];
-        for(int i = 0; i < walkImages.length; i++){
+        for(int i = 0; i < walkImages.length; i++) {
             walkImages[i] = new GreenfootImage("KnightWalk"+ i + ".png");
             walkImages[i].scale(size, size);
         }
         
+        attackImages = new GreenfootImage[3];
         attackImages[0] = new GreenfootImage("KnightAtk.png");
         attackImages[0].scale(size, size);
         
@@ -49,30 +48,26 @@ public class Knight extends Troops
      * Act - do whatever the Knight wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act()
-    {
+    public void act() {
         super.act();
-        if(spawning){
+        if (spawning)
             spawn();
-        } else if(alive) {
+        else if (alive) {
             Actor troop = findTarget(Troops.class);
-            if(troop != null){ //If there is a target
+            if (troop != null) //If there is a target
                 moveTowardsTarget(troop);
-            }else if(!crossedBridge){ //If have not crossed bridge
+            else if (!crossedBridge) { //If have not crossed bridge
                 moveTowardsTarget(findTarget(Bridge.class));
-                if(isTouching(Bridge.class)){
+                if (isTouching(Bridge.class))
                     crossBridge();
-                }
-            }else{ //If there is no target
+            } else // If there is no target
                 moveTowardsTarget(findTarget(Towers.class));
-            } 
             die();
-        } else {
+        } else
             getWorld().removeObject(this);
-        }
     }
     
-    public void addedToWorld(World w){
+    public void addedToWorld(World w) {
         w.addObject(healthBar, 0, 0);
     }
     
@@ -81,14 +76,14 @@ public class Knight extends Troops
      * 
      * @param a the actor to attack
      */
-    public void attack(Actor a){
-        if(actCounter % attackSpeed <= attackSpeed / 5){ // If the attack counter is reached
+    public void attack(Actor a) {
+        if (actCounter % attackSpeed <= attackSpeed / 5) { // If the attack counter is reached
             animate(attackImages);
-            if(a instanceof Troops){ //If target is a troop
-                if(((Troops)a).isAir() != isAir()){ //Check if air
+            if (a instanceof Troops) { //If target is a troop
+                if (((Troops)a).isAir() != isAir()) { //Check if air
                     ((Troops)a).getHit(damage);
                 }
-            }else if(a instanceof Towers){ //If target is a tower
+            }else if (a instanceof Towers) { //If target is a tower
                 ((Towers)a).getHit(damage);
             }
         } else { //while not attacking

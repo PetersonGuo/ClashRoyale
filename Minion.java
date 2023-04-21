@@ -12,7 +12,7 @@ public class Minion extends Troops
      * Act - do whatever the Minion wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Minion(boolean ally){
+    public Minion(boolean ally) {
         super(ally);
         
         //speed stats
@@ -35,7 +35,7 @@ public class Minion extends Troops
         air = true;
         
         walkImages = new GreenfootImage[4];
-        for(int i = 0; i < walkImages.length; i++){
+        for(int i = 0; i < walkImages.length; i++) {
             walkImages[i] = new GreenfootImage("Minion"+ i + ".png");
             walkImages[i].scale(size, size);
         }
@@ -57,11 +57,11 @@ public class Minion extends Troops
     public void act()
     {
         super.act();
-        if(spawning){
+        if (spawning) {
             spawn();
-        } else if(alive) {
+        } else if (alive) {
             Actor troop = findTarget(Troops.class);
-            if(troop != null){ // If there is a target
+            if (troop != null) { // If there is a target
                 moveTowardsTarget(troop);
             } else { // If there is no target
                 moveTowardsTarget(findTarget(Towers.class));
@@ -72,7 +72,7 @@ public class Minion extends Troops
         }
     }
     
-    public void addedToWorld(World w){
+    public void addedToWorld(World w) {
         w.addObject(healthBar, 0, 0);
     }
     
@@ -82,12 +82,12 @@ public class Minion extends Troops
      * 
      * @param a the target
      */
-    public void attack(Actor a){
-        if(actCounter % attackSpeed <= attackSpeed / 5){
+    public void attack(Actor a) {
+        if (actCounter % attackSpeed <= attackSpeed / 5) {
             animate(attackImages);
-            if(a instanceof Troops){ //If target is a troop
+            if (a instanceof Troops) { //If target is a troop
                 ((Troops)a).getHit(damage);
-            }else if(a instanceof Towers){ //If target is a tower
+            }else if (a instanceof Towers) { //If target is a tower
                 ((Towers)a).getHit(damage);
             } 
         } else { //while not attacking

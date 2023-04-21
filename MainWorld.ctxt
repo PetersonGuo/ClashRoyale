@@ -1,16 +1,16 @@
 #BlueJ class context
 comment0.target=MainWorld
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ MainWorld\ here.\r\n\ \r\n\ Sources\:\r\n\ Chevron\ https\://www.pngimages.pics/images/quotes/english/general/transparent-background-arrow-head-png-52650-242281.png\r\n\ \r\n\ @author\ Peterson\ Guo\ \r\n\ @version\ 1.0\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ MainWorld\ here.\n\ \n\ Sources\:\n\ Chevron\ https\://www.pngimages.pics/images/quotes/english/general/transparent-background-arrow-head-png-52650-242281.png\n\ \n\ @author\ Peterson\ Guo\ \n\ @version\ 1.0\n
 comment1.params=stats
 comment1.target=MainWorld(java.util.Map)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ MainWorld.\r\n\ \r\n\ @param\ stats\ The\ stats\ of\ the\ game\r\n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ MainWorld.\n\ \n\ @param\ stats\ The\ stats\ of\ the\ game\n
 comment2.params=enemy
 comment2.target=Card\ nextCard(boolean)
-comment2.text=\r\n\ Get\ the\ next\ card\r\n\ \r\n\ @param\ enemy\ Is\ the\ card\ for\ the\ enemy\r\n\ @return\ The\ next\ card\r\n
+comment2.text=\n\ Get\ the\ next\ card\n\ \n\ @param\ enemy\ Is\ the\ card\ for\ the\ enemy\n\ @return\ The\ next\ card\n
 comment3.params=
 comment3.target=void\ nextWorld()
-comment3.text=\r\n\ nextWorld\ -\ Go\ to\ the\ next\ world\r\n
+comment3.text=\n\ nextWorld\ -\ Go\ to\ the\ next\ world\n
 comment4.params=enemy
 comment4.target=ElixirBar\ getElixir(boolean)
-comment4.text=\r\n\ Get\ the\ elixir\ bar\r\n\ \r\n\ @param\ enemy\ Is\ the\ elixir\ bar\ for\ the\ enemy\r\n\ @return\ The\ elixir\ bar\r\n
+comment4.text=\n\ Get\ the\ elixir\ bar\n\ \n\ @param\ enemy\ Is\ the\ elixir\ bar\ for\ the\ enemy\n\ @return\ The\ elixir\ bar\n
 numComments=5

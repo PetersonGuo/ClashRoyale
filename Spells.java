@@ -46,13 +46,13 @@ public class Spells extends Actor {
      * Get the troop closest to the tower to target
      * @return the troop closest to the tower
      */
-    public Troops troopTarget(){
+    public Troops troopTarget() {
         ArrayList<Troops> troopsToHit = (ArrayList<Troops>) getWorld().getObjects(Troops.class);
         Troops closest = null;
         closest = troopsToHit.get(0);
         // find the troop cloest to the tower to target
-        for(Troops t : troopsToHit){
-            if(getDistanceFromTower(t) > getDistanceFromTower(closest)){
+        for(Troops t : troopsToHit) {
+            if (getDistanceFromTower(t) > getDistanceFromTower(closest)) {
                 closest = t;
             }
         }
@@ -63,7 +63,7 @@ public class Spells extends Actor {
      * Get the tower with the lowest hp to target
      * @return the tower with the lowest hp
      */
-    public Towers towerTarget(){
+    public Towers towerTarget() {
         ArrayList<Towers> towersToHit = (ArrayList<Towers>) getWorld().getObjects(Towers.class);
         Towers lowest = null;
         lowest = towersToHit.get(0);
@@ -76,15 +76,15 @@ public class Spells extends Actor {
      * @param t the troop to check the distance from
      * @return the distance from the tower to the troop
      */
-    private double getDistanceFromTower(Troops t){
+    private double getDistanceFromTower(Troops t) {
         return Math.sqrt(Math.pow(t.getX() - getX(), 2) + Math.pow(t.getY() - getY(), 2));
     }
     
     /**
      * Damage method
      */
-    public void damage(){
-        for(Troops enemy : getObjectsInRange(areaOfEffect, Troops.class)){
+    public void damage() {
+        for(Troops enemy : getObjectsInRange(areaOfEffect, Troops.class)) {
             enemy.getHit(damage * 2);
         }
     }

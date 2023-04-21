@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MiniPekka extends Troops
 {
     
-    public MiniPekka(boolean ally){
+    public MiniPekka(boolean ally) {
         super(ally);
         
         //speed stats
@@ -32,7 +32,7 @@ public class MiniPekka extends Troops
         air = false;
         
         walkImages = new GreenfootImage[3];
-        for(int i = 0; i < walkImages.length; i++){
+        for(int i = 0; i < walkImages.length; i++) {
             walkImages[i] = new GreenfootImage("PekkaWalk"+ i + ".png");
             walkImages[i].scale(size, size);
         }
@@ -53,15 +53,15 @@ public class MiniPekka extends Troops
     public void act()
     {
         super.act();
-        if(spawning){
+        if (spawning) {
             spawn();
-        } else if(alive) {
+        } else if (alive) {
             Actor troop = findTarget(Troops.class);
-            if(troop != null){ //If there is a target
+            if (troop != null) { //If there is a target
                 moveTowardsTarget(troop);
-            }else if(!crossedBridge){ //If have not crossed bridge
+            }else if (!crossedBridge) { //If have not crossed bridge
                 moveTowardsTarget(findTarget(Bridge.class));
-                if(isTouching(Bridge.class)){
+                if (isTouching(Bridge.class)) {
                     crossBridge();
                 }
             }else{ //If there is no target
@@ -73,7 +73,7 @@ public class MiniPekka extends Troops
         }
     }
     
-    public void addedToWorld(World w){
+    public void addedToWorld(World w) {
         w.addObject(healthBar, 0, 0);
     }
     
@@ -82,14 +82,14 @@ public class MiniPekka extends Troops
      * 
      * @param a the actor to attack
      */
-    public void attack(Actor a){
-        if(actCounter % attackSpeed <= attackSpeed / 5){ // If the attack counter is reached
+    public void attack(Actor a) {
+        if (actCounter % attackSpeed <= attackSpeed / 5) { // If the attack counter is reached
             animate(attackImages);
-            if(a instanceof Troops){ //If target is a troop
-                if(((Troops)a).isAir() != isAir()){ //Check if air
+            if (a instanceof Troops) { //If target is a troop
+                if (((Troops)a).isAir() != isAir()) { //Check if air
                     ((Troops)a).getHit(damage);
                 }
-            }else if(a instanceof Towers){ //If target is a tower
+            }else if (a instanceof Towers) { //If target is a tower
                 ((Towers)a).getHit(damage);
             }
         } else { //while not attacking

@@ -40,8 +40,8 @@ function loadScripts(doc, tag) {
     $.get(pathtoroot + "module-search-index.zip")
             .done(function() {
                 JSZipUtils.getBinaryContent(pathtoroot + "module-search-index.zip", function(e, data) {
-                    JSZip.loadAsync(data).then(function(zip){
-                        zip.file("module-search-index.json").async("text").then(function(content){
+                    JSZip.loadAsync(data).then(function(zip) {
+                        zip.file("module-search-index.json").async("text").then(function(content) {
                             moduleSearchIndex = JSON.parse(content);
                         });
                     });
@@ -50,8 +50,8 @@ function loadScripts(doc, tag) {
     $.get(pathtoroot + "package-search-index.zip")
             .done(function() {
                 JSZipUtils.getBinaryContent(pathtoroot + "package-search-index.zip", function(e, data) {
-                    JSZip.loadAsync(data).then(function(zip){
-                        zip.file("package-search-index.json").async("text").then(function(content){
+                    JSZip.loadAsync(data).then(function(zip) {
+                        zip.file("package-search-index.json").async("text").then(function(content) {
                             packageSearchIndex = JSON.parse(content);
                         });
                     });
@@ -60,8 +60,8 @@ function loadScripts(doc, tag) {
     $.get(pathtoroot + "type-search-index.zip")
             .done(function() {
                 JSZipUtils.getBinaryContent(pathtoroot + "type-search-index.zip", function(e, data) {
-                    JSZip.loadAsync(data).then(function(zip){
-                        zip.file("type-search-index.json").async("text").then(function(content){
+                    JSZip.loadAsync(data).then(function(zip) {
+                        zip.file("type-search-index.json").async("text").then(function(content) {
                             typeSearchIndex = JSON.parse(content);
                         });
                     });
@@ -70,8 +70,8 @@ function loadScripts(doc, tag) {
     $.get(pathtoroot + "member-search-index.zip")
             .done(function() {
                 JSZipUtils.getBinaryContent(pathtoroot + "member-search-index.zip", function(e, data) {
-                    JSZip.loadAsync(data).then(function(zip){
-                        zip.file("member-search-index.json").async("text").then(function(content){
+                    JSZip.loadAsync(data).then(function(zip) {
+                        zip.file("member-search-index.json").async("text").then(function(content) {
                             memberSearchIndex = JSON.parse(content);
                         });
                     });
@@ -80,8 +80,8 @@ function loadScripts(doc, tag) {
     $.get(pathtoroot + "tag-search-index.zip")
             .done(function() {
                 JSZipUtils.getBinaryContent(pathtoroot + "tag-search-index.zip", function(e, data) {
-                    JSZip.loadAsync(data).then(function(zip){
-                        zip.file("tag-search-index.json").async("text").then(function(content){
+                    JSZip.loadAsync(data).then(function(zip) {
+                        zip.file("tag-search-index.json").async("text").then(function(content) {
                             tagSearchIndex = JSON.parse(content);
                         });
                     });

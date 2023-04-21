@@ -1,4 +1,4 @@
 #BlueJ class context
 comment0.target=Vars
-comment0.text=\r\n\ Holds\ all\ variables\ which\ can\ be\ modified\ by\ the\ world\ instances\r\n\ \r\n\ \r\n\ @author\ Peterson\ Guo\r\n\ @version\ 1.0\r\n
+comment0.text=\n\ Holds\ all\ variables\ which\ can\ be\ modified\ by\ the\ world\ instances\n\ \n\ \n\ @author\ Peterson\ Guo\n\ @version\ 1.0\n
 numComments=1

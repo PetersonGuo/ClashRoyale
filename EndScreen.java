@@ -14,55 +14,55 @@ public class EndScreen extends Worlds {
      */
     public EndScreen() {
         ArrayList<Towers> towersLeft = (ArrayList<Towers>)getObjects(Towers.class);
-        for (Towers t : towersLeft){
+        for (Towers t : towersLeft) {
             if (t.isAlly()) {
                 allyTowers++;
                 towerHp += t.getHp();
-            } else if(!t.isAlly()) {
+            } else if (!t.isAlly()) {
                 EnemyTowers++;
                 towerHp2 += t.getHp();
             }
         }
         
-        if (allyTowers == EnemyTowers){
-            if (towerHp > towerHp2 && allyTowers == 3){
+        if (allyTowers == EnemyTowers) {
+            if (towerHp > towerHp2 && allyTowers == 3) {
                 //blue side wins by having more hp
                 GreenfootImage end = new GreenfootImage("crBlue1Crown.png");
-            }else if(towerHp2 > towerHp && allyTowers == 3){
+            }else if (towerHp2 > towerHp && allyTowers == 3) {
                 //red side wins by having more hp
                 GreenfootImage end = new GreenfootImage("crRed1Crown.png");
-            }else if(towerHp > towerHp2 && allyTowers == 2){
+            }else if (towerHp > towerHp2 && allyTowers == 2) {
                 //blue side wins by having more hp
                 GreenfootImage end = new GreenfootImage("crBlue2Crown.png");
-            }else if(towerHp2 > towerHp && allyTowers == 2){
+            }else if (towerHp2 > towerHp && allyTowers == 2) {
                 //red side wins by having more hp
                 GreenfootImage end = new GreenfootImage("crRed2Crown.png");
-            }else if(towerHp > towerHp2 && allyTowers == 1){
+            }else if (towerHp > towerHp2 && allyTowers == 1) {
                 //blue side wins by having more hp
                 GreenfootImage end = new GreenfootImage("crBlue3Crown.png");
-            }else if(towerHp2 > towerHp && allyTowers == 1){
+            }else if (towerHp2 > towerHp && allyTowers == 1) {
                 //red side wins by having more hp
                 GreenfootImage end = new GreenfootImage("crRed3Crown.png");
             }else{
                 //tie
                 GreenfootImage end = new GreenfootImage("crDraw.png");
             }
-        }else if(allyTowers > EnemyTowers && EnemyTowers == 2){
+        }else if (allyTowers > EnemyTowers && EnemyTowers == 2) {
             //blue side wins by 1 crown
             GreenfootImage end = new GreenfootImage("crBlue1Crown.png");
-        }else if(allyTowers > EnemyTowers && EnemyTowers == 1){
+        }else if (allyTowers > EnemyTowers && EnemyTowers == 1) {
             //blue side wins by 2 crown
             GreenfootImage end = new GreenfootImage("crBlue2Crown.png");
-        }else if(allyTowers > EnemyTowers && EnemyTowers == 0){
+        }else if (allyTowers > EnemyTowers && EnemyTowers == 0) {
             //blue side wins by 3 crown
             GreenfootImage end = new GreenfootImage("crBlue3Crown.png");
-        }else if(EnemyTowers > allyTowers && allyTowers == 2){
+        }else if (EnemyTowers > allyTowers && allyTowers == 2) {
             //red side wins by 1 crown
             GreenfootImage end = new GreenfootImage("crRed1Crown.png");
-        }else if(EnemyTowers > allyTowers && allyTowers == 1){
+        }else if (EnemyTowers > allyTowers && allyTowers == 1) {
             //red side wins by 2 crown
             GreenfootImage end = new GreenfootImage("crRed2Crown.png");
-        }else if(EnemyTowers > allyTowers && allyTowers == 0){
+        }else if (EnemyTowers > allyTowers && allyTowers == 0) {
             //red side wins by 3 crown
             GreenfootImage end = new GreenfootImage("crRed3Crown.png");
         }
@@ -72,7 +72,7 @@ public class EndScreen extends Worlds {
     }
     
     public void act() {
-        if (Greenfoot.isKeyDown("enter")){
+        if (Greenfoot.isKeyDown("enter")) {
             nextWorld();
         }
     }

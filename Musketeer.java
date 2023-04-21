@@ -14,7 +14,7 @@ public class Musketeer extends Troops
      * 
      * @param ally whether the troop is on the player's side or not
      */
-    public Musketeer(boolean ally){
+    public Musketeer(boolean ally) {
         super(ally);
         
         //speed stats
@@ -37,7 +37,7 @@ public class Musketeer extends Troops
         air = false;
         
         walkImages = new GreenfootImage[3];
-        for(int i = 0; i < walkImages.length; i++){
+        for(int i = 0; i < walkImages.length; i++) {
             walkImages[i] = new GreenfootImage("Musketeer"+ i + ".png");
             walkImages[i].scale(size, size);
         }
@@ -54,16 +54,16 @@ public class Musketeer extends Troops
     public void act()
     {
         super.act();
-        if(spawning){
+        if (spawning) {
             spawn();
-        } else if(alive) {
+        } else if (alive) {
             Actor troop = findTarget(Troops.class);
-            if (troop != null){ //If there is a target
+            if (troop != null) { //If there is a target
                 moveTowardsTarget(troop);
             }
-            else if(!crossedBridge){ //If have not crossed bridge
+            else if (!crossedBridge) { //If have not crossed bridge
                 moveTowardsTarget(findTarget(Bridge.class));
-                if(isTouching(Bridge.class)){
+                if (isTouching(Bridge.class)) {
                     crossBridge();
                 }
             } 
@@ -76,7 +76,7 @@ public class Musketeer extends Troops
         }
     } 
     
-    public void addedToWorld(World w){
+    public void addedToWorld(World w) {
         w.addObject(healthBar, 0, 0);
     }
     
@@ -85,13 +85,13 @@ public class Musketeer extends Troops
      * 
      * @param a the target
      */
-    public void attack(Actor a){
-        if (actCounter % attackSpeed == 0){ // If the attack counter is reached
+    public void attack(Actor a) {
+        if (actCounter % attackSpeed == 0) { // If the attack counter is reached
             animate(attackImages);
-            if(a instanceof Troops){ //If target is a troop
+            if (a instanceof Troops) { //If target is a troop
                 shootPelletAtTarget();
                 ((Troops)a).getHit(damage);
-            }else if(a instanceof Towers){ //If target is a tower
+            }else if (a instanceof Towers) { //If target is a tower
                 shootPelletAtTarget();
                 ((Towers)a).getHit(damage);
             }

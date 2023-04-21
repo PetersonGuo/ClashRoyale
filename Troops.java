@@ -33,15 +33,15 @@ public abstract class Troops extends Actor
      * 
      * @param ally whether the troop is on the player's side or not
      */
-    public Troops(boolean ally){
+    public Troops(boolean ally) {
         this.ally = ally;
     }
     
-    public void act(){
+    public void act() {
         actCounter++;
     }
     
-    public void addedToWorld(World w){
+    public void addedToWorld(World w) {
         spawnSound = new GreenfootSound("spawn.mp3");
         spawnSound.play();
     }
@@ -55,16 +55,15 @@ public abstract class Troops extends Actor
     protected <T> Actor findTarget(Class<T> c) { //runs every act to search for new targets
         Actor target = null;
         List<T> actors = null;
-        if(c == Troops.class){ //finding troops
+        if (c == Troops.class) // finding troops
             actors = getObjectsInRange(detectionRange, c);
-        } else if (c == Bridge.class){ //finding bridges
+        else if (c == Bridge.class)  // finding bridges
             actors = getWorld().getObjects(c);        
-        } else if (c == Towers.class){ //find towers
-            actors = getWorld().getObjects(c);
-            for(T tower : actors){ //removes any towers that are allies
-                if(((Towers)tower).isAlly() == isAlly()){
-                    actors.remove(tower);
-                }
+        else if (c == Towers.class) { // find towers
+            actors = new ArrayList<>();
+            for (T tower : getWorld().getObjects(c)) { // Adds any towers that are allies
+                if (((Towers)tower).isAlly() == ally)
+                    actors.add(tower);
             }
         }
         target = nearestTarget(actors); 
@@ -75,28 +74,28 @@ public abstract class Troops extends Actor
      * Move towards the target
      * @param a the target
      */
-    protected void moveTowardsTarget(Actor a){
-        int targetX = a.getX(), targetY = a.getY(); //targetX and targetY are the x and y location of the target
+    protected void moveTowardsTarget(Actor a) {
+        int targetX = a.getX(), targetY = a.getY(); // targetX and targetY are the x and y location of the target
         
         //rotate towards the target
         distX = targetX - getX();
         distY = targetY - getY();
         
-        if(distX != 0){
-            if(distX >= 0 && distY >= 0){ //first quadrant
+        if (distX != 0) {
+            if (distX >= 0 && distY >= 0) { //first quadrant
                 direction = Math.atan(Math.abs(distY/distX)) * 180 / Math.PI;
-            } else if(distX <= 0 && distY >= 0){ //second quadrant
+            } else if (distX <= 0 && distY >= 0) { //second quadrant
                 direction = 180 - Math.atan(Math.abs(distY/distX)) * 180 / Math.PI;
-            } else if(distX <= 0 && distY <= 0){ //third quadrant
+            } else if (distX <= 0 && distY <= 0) { //third quadrant
                 direction = 180 + Math.atan(Math.abs(distY/distX)) * 180 / Math.PI;
-            } else if(distX >= 0 && distY <= 0){ //fourth quadrant
+            } else if (distX >= 0 && distY <= 0) { //fourth quadrant
                 direction = 360 - Math.atan(Math.abs(distY/distX)) * 180 / Math.PI;
             }
         }
         
         setRotation((int)direction);
-            
-        if(distFromTarget(a) <= attackRange && a.getClass() != Bridge.class){ //within attack range, attack
+        
+        if (distFromTarget(a) <= attackRange && a.getClass() != Bridge.class) { //within attack range, attack
             attack(a);
             attackSound.play();
         } else { //move towards the target
@@ -109,12 +108,12 @@ public abstract class Troops extends Actor
      * Return the nearest target
      * @param a the target
      */
-    protected <T> Actor nearestTarget(List<T> actors){
+    protected <T> Actor nearestTarget(List<T> actors) {
         Actor target = null;
-        if(actors.size() > 0) { //if there is a target found within the range
+        if (actors.size() > 0) { //if there is a target found within the range
             target = (Actor)actors.get(0);
-            for(T actor : actors){ //finds the closest troop as a target
-                if(distFromTarget((Actor)actor) < distFromTarget(target)){
+            for(T actor : actors) { // finds the closest troop as a target
+                if (distFromTarget((Actor)actor) < distFromTarget(target)) {
                     target = (Actor)actor;
                 }
             }
@@ -125,18 +124,18 @@ public abstract class Troops extends Actor
     /**
      * Move across the bridge
      */
-    protected void crossBridge(){ //once the troop touches the bridge
+    protected void crossBridge() { //once the troop touches the bridge
         Bridge b = (Bridge)getOneIntersectingObject(Bridge.class);
-        if(ally){
+        if (ally) {
             setRotation(-90);
             move((int)speed);
-            if(getY() < b.getY()){ //pass the bridge from the ally side
+            if (getY() < b.getY()) { //pass the bridge from the ally side
                 crossedBridge = true;
             }
         } else {
             setRotation(90);
             move((int)speed);
-            if(getY() > b.getY()){ //pass the bridge from the enemy side
+            if (getY() > b.getY()) { //pass the bridge from the enemy side
                 crossedBridge = true;
             }
         }
@@ -145,11 +144,11 @@ public abstract class Troops extends Actor
     /**
      * Once the troop has spawned
      */
-    protected void spawn(){ //when the troop has spawned
+    protected void spawn() { //when the troop has spawned
         alive = true;
-        if(actCounter <= 60){ //if the troop hasn't existed for 1 second
+        if (actCounter <= 60) { //if the troop hasn't existed for 1 second
             speed = 0;
-            if(ally){
+            if (ally) {
                 direction = -90;
             } else {
                 direction = 90;
@@ -166,12 +165,12 @@ public abstract class Troops extends Actor
      * @param a the target
      * @return the distance from the target
      */
-    protected double distFromTarget(Actor a){
+    protected double distFromTarget(Actor a) {
         return Math.sqrt(Math.pow(a.getX() - getX(), 2) + Math.pow(a.getY() - getY(), 2));
     }
     
-    protected void die(){ //when this troop dies
-        if(currentHealth <= 0){
+    protected void die() { //when this troop dies
+        if (currentHealth <= 0) {
             dieSound = new GreenfootSound("death.mp3");
             dieSound.play();
             alive = false;
@@ -182,13 +181,13 @@ public abstract class Troops extends Actor
      * Animate the troop
      * @param images the images to animate
      */
-    protected void animate(GreenfootImage[] images){
-        if(actCounter % animationSpeed == 0){
+    protected void animate(GreenfootImage[] images) {
+        if (actCounter % animationSpeed == 0) {
             //change the image to the next frame
-            if(images.length != 1){
+            if (images.length != 1) {
                 currentImage++;
             }
-            if(currentImage >= images.length){
+            if (currentImage >= images.length) {
                 currentImage = 0;
             }
             setImage(images[currentImage]); //set the image to the new frame
@@ -200,7 +199,7 @@ public abstract class Troops extends Actor
      * Take damage
      * @param damage the damage aken deal
      */
-    public void getHit(int damage){
+    public void getHit(int damage) {
         currentHealth -= damage;
         healthBar.update(currentHealth);
     }
@@ -209,7 +208,7 @@ public abstract class Troops extends Actor
      * Check if the troop is an ally
      * @return true if the troop is an ally, false if not
      */
-    public boolean isAlly(){
+    public boolean isAlly() {
         return ally;
     }
     
@@ -217,7 +216,7 @@ public abstract class Troops extends Actor
      * Check if the troop is an ally
      * @return true if the troop is an ally, false if not
      */
-    public boolean isAir(){
+    public boolean isAir() {
         return air;
     }
     
@@ -225,7 +224,7 @@ public abstract class Troops extends Actor
      * Check if the troop is alive
      * @return true if the troop is alive, false if not
      */
-    public boolean isAlive(){
+    public boolean isAlive() {
         return alive;
     }
     

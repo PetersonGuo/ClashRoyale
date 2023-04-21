@@ -52,14 +52,14 @@ public class MainWorld extends Worlds {
         
         for (int i = 0; i < 4; i++) {
             int next = enemyCards.poll();
-            Card c = new Card(1, 70, 90, true, true, next);
+            Card c = new Card(1, 75, 90, true, true, next);
             addObject(c, (FINAL.CARD_SPACING + c.getWidth()) * i + c.getWidth() / 2 + FINAL.CARD_SPACING + 90, 90);
             enemyCards.add(next);
         }
         
         for (int i = 0; i < 4; i++) {
             int next = allyCards.poll();
-            Card c = new Card(1, 70, 90, true,  false, next);
+            Card c = new Card(1, 75, 90, true,  false, next);
             addObject(c, (FINAL.CARD_SPACING + c.getWidth()) * i + c.getWidth() / 2 + FINAL.CARD_SPACING + 90, 665);
             allyCards.add(next);
         }
@@ -80,14 +80,14 @@ public class MainWorld extends Worlds {
             c = enemyNext;
             removeObject(enemyNext);
             int next = enemyCards.poll();
-            enemyNext = new Card(40, 53, enemy, next);
+            enemyNext = new Card(42, 53, enemy, next);
             enemyCards.add(next);
             addObject(enemyNext, 40, 35);
         } else {
             c = allyNext;
             removeObject(allyNext);
             int next = allyCards.poll();
-            allyNext = new Card(40, 53, enemy, next);
+            allyNext = new Card(42, 53, enemy, next);
             allyCards.add(next);
             addObject(allyNext, 40, 720);
         }

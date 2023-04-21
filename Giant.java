@@ -13,7 +13,7 @@ public class Giant extends Troops
      * 
      * @param ally Whether the tower is on the left or right side
      */
-    public Giant(boolean ally){
+    public Giant(boolean ally) {
         super(ally);
         
         //speed stats
@@ -35,13 +35,13 @@ public class Giant extends Troops
         air = false;
         
         walkImages = new GreenfootImage[3];
-        for(int i = 0; i < walkImages.length; i++){
+        for(int i = 0; i < walkImages.length; i++) {
             walkImages[i] = new GreenfootImage("GiantWalk"+ i + ".png");
             walkImages[i].scale(size, size);
         }
         
         attackImages = new GreenfootImage[3];
-        for(int i = 0; i < attackImages.length; i++){
+        for(int i = 0; i < attackImages.length; i++) {
             attackImages[i] = new GreenfootImage("GiantAtk"+ i + ".png");
             attackImages[i].scale(size, size);
         }
@@ -57,12 +57,12 @@ public class Giant extends Troops
     public void act()
     {
         super.act();
-        if(spawning){
+        if (spawning) {
             spawn();
-        } else if(alive) {
-            if (!crossedBridge){ //If have not crossed bridge
+        } else if (alive) {
+            if (!crossedBridge) { //If have not crossed bridge
                 moveTowardsTarget(findTarget(Bridge.class));
-                if(isTouching(Bridge.class)){
+                if (isTouching(Bridge.class)) {
                     crossBridge();
                 }
             } else { //If crossed bridge
@@ -74,7 +74,7 @@ public class Giant extends Troops
         }
     }
     
-    public void addedToWorld(World w){
+    public void addedToWorld(World w) {
         w.addObject(healthBar, 0, 0);
     }
     
@@ -83,8 +83,8 @@ public class Giant extends Troops
      * 
      * @param a - the target
      */
-    public void attack(Actor a){ // Attack the target
-        if(actCounter % attackSpeed <= attackSpeed / 5){ // If the attack counter is reached
+    public void attack(Actor a) { // Attack the target
+        if (actCounter % attackSpeed <= attackSpeed / 5) { // If the attack counter is reached
             animate(attackImages);
             ((Towers)a).getHit(damage);
         } else { //while not attacking

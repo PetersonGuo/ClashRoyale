@@ -69,10 +69,10 @@ public abstract class Towers extends Actor {
     public void getHit(int dmg) {
         hp -= dmg;
         //tower destroyed
-        if(hp <= 0) getWorld().removeObject(this);
+        if (hp <= 0) getWorld().removeObject(this);
     }
     
-    public int getHp(){
+    public int getHp() {
         return hp;
     }
     

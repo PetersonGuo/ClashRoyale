@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=King
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ King\ here.\r\n\ \r\n\ @author\ Kelby\ To\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ King\ here.\n\ \n\ @author\ Kelby\ To\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=ally
 comment1.target=King(boolean)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ King\r\n\ \r\n\ @param\ ally\ Whether\ the\ tower\ is\ on\ the\ left\ or\ right\ side\r\n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ King\n\ \n\ @param\ ally\ Whether\ the\ tower\ is\ on\ the\ left\ or\ right\ side\n
 numComments=2

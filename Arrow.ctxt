@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.target=Arrow
-comment0.text=\r\n\ An\ arrow\ that\ is\ launched\ from\ a\ Troop\ or\ a\ Tower.\r\n\ The\ arrow\ will\ do\ damage\ to\ the\ target\ when\ it\ hits\ it.\r\n\ \r\n\ @author\ Kelby\ To\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ An\ arrow\ that\ is\ launched\ from\ a\ Troop\ or\ a\ Tower.\n\ The\ arrow\ will\ do\ damage\ to\ the\ target\ when\ it\ hits\ it.\n\ \n\ @author\ Kelby\ To\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=target
 comment1.target=Arrow(Troops)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Arrow\r\n\ \r\n\ @param\ target\ the\ target\ of\ the\ arrow\r\n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Arrow\n\ \n\ @param\ target\ the\ target\ of\ the\ arrow\n
 comment2.params=w
 comment2.target=void\ addedToWorld(greenfoot.World)
-comment2.text=\r\n\ Added\ to\ world\ method\r\n\ \r\n\ @param\ w\ the\ world\ the\ arrow\ is\ added\ to\r\n
+comment2.text=\n\ Added\ to\ world\ method\n\ \n\ @param\ w\ the\ world\ the\ arrow\ is\ added\ to\n
 comment3.params=
 comment3.target=void\ act()
-comment3.text=\r\n\ Act\ -\ do\ whatever\ the\ Arrow\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.text=\n\ Act\ -\ do\ whatever\ the\ Arrow\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 numComments=4
