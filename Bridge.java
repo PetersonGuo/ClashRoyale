@@ -6,14 +6,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Bridge extends Actor {
-    /**
-     * Constructor for objects of class Bridge
-     */
-    public Bridge() {
+public class Bridge extends Actor
+{
+    public Bridge(){
         GreenfootImage image = new GreenfootImage(20,40);
         image.setColor(new Color(255,0,0,100));
         image.fill();
         setImage(image);
+    }
+    
+    /**
+     * Act - do whatever the Bridge wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act()
+    {
+        // Add your action code here.
     }
 }

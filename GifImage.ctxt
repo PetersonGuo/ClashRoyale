@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=GifImage
+comment0.text=\r\n\ This\ class\ can\ be\ used\ to\ read\ animated\ gif\ image\ files\ and\ extract\ the\ individual\r\n\ images\ of\ the\ animation\ sequence.\r\n\ \r\n\ @author\ Michael\ Berry\r\n\ @author\ Neil\ Brown\r\n\ \r\n\ Copyright\ (c)\ 2011,2013,2014,2018,2021\r\n
+comment1.params=file
+comment1.target=GifImage(java.lang.String)
+comment1.text=\r\n\ Set\ the\ image\ of\ the\ actor.\ If\ the\ image\ is\ a\ normal\ picture,\ it\ will\ be\ displayed\ as\ normal.\r\n\ If\ it's\ an\ animated\ GIF\ file\ then\ it\ will\ be\ displayed\ as\ an\ animated\ actor.\r\n
+comment2.params=copyFrom
+comment2.target=GifImage(GifImage)
+comment2.text=\r\n\ Copy\ the\ given\ GifImage.\ \ This\ is\ faster,\ and\ uses\ less\ memory,\ than\ loading\ the\ same\r\n\ GIF\ multiple\ times.\ \ The\ current\ play\ state\ (position\ in\ the\ GIF,\ paused\ state)\ is\ copied\r\n\ from\ the\ given\ GifImage,\ but\ after\ that\ they\ can\ be\ independently\ played/paused.\r\n\ \r\n\ The\ images\ making\ up\ the\ GIF\ are\ shared\ between\ the\ two\ images,\ so\ any\ modifications\ to\r\n\ the\ images\ will\ be\ shared\ in\ both\ GIFs.\ \ You\ can\ call\ this\ constructor\ on\ the\ same\ source\r\n\ GIF\ multiple\ times.\r\n\ @param\ copyFrom\ The\ GifImage\ to\ copy\ from.\r\n
+comment3.params=
+comment3.target=java.util.List\ getImages()
+comment3.text=\r\n\ Get\ all\ the\ images\ used\ in\ the\ animation\r\n\ @return\ a\ list\ of\ GreenfootImages,\ corresponding\ to\ each\ frame.\r\n
+comment4.params=
+comment4.target=void\ pause()
+comment4.text=\r\n\ Pause\ the\ animation.\r\n
+comment5.params=
+comment5.target=void\ resume()
+comment5.text=\r\n\ Resume\ the\ animation.\r\n
+comment6.params=
+comment6.target=boolean\ isRunning()
+comment6.text=\r\n\ Determines\ whether\ the\ animation\ is\ running\r\n\ @return\ true\ if\ the\ animation\ is\ running,\ false\ otherwise\r\n
+comment7.params=
+comment7.target=greenfoot.GreenfootImage\ getCurrentImage()
+comment8.params=file
+comment8.target=void\ loadImages(java.lang.String)
+comment8.text=\r\n\ Load\ the\ images\r\n
+numComments=9

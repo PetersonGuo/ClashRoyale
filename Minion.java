@@ -9,74 +9,77 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Minion extends Troops
 {
     /**
-     * Constructor for objects of class Minion
-     * 
-     * @param ally whether the troop is on the player's side or not
-     */
-    public Minion(boolean ally) {
-        super(ally);
-        
-        //speed stats
-        maxSpeed = 10;
-        attackSpeed = 60; //the higher the number the slower the attacks
-        animationSpeed = 10;
-        
-        //health stats
-        maxHealth = 8;
-        currentHealth = maxHealth;
-        
-        //attack stats
-        damage = 3;
-        attackRange = 15;
-        
-        //miscellaneous stats
-        walkImages = new GreenfootImage[4];
-        walkImages[0] = new GreenfootImage("Minion0.png");
-        walkImages[1] = new GreenfootImage("Minion1.png");
-        walkImages[2] = new GreenfootImage("Minion2.png");
-        walkImages[3] = new GreenfootImage("Minion3.png");
-        
-        attackImages = new GreenfootImage[1];
-        attackImages[0] = new GreenfootImage("MinionAtk.png");
-        
-        size = walkImages[0].getWidth();
-        elixirCost = 3;
-        air = true;
-        
-        healthBar = new SuperStatBar(maxHealth, currentHealth, this, size, 10, -size / 2, filledColor, missingColor);
-    }
-    
-    /**
      * Act - do whatever the Minion wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    public Minion(boolean ally){
+        super(ally);
+        
+        //speed stats
+        maxSpeed = 2;
+        attackSpeed = 100; //the higher the number the slower the attacks
+        animationSpeed = 10;
+        
+        //health stats
+        currentHealth = maxHealth = 150;
+        
+        //attack stats
+        damage = 1;
+        size = 25;
+        attackRange = 15 + size; 
+        detectionRange = 180;
+        attackSound = new GreenfootSound("MinionAttack.mp3");
+        
+        //miscellaneous stats
+        elixirCost = 3;
+        air = true;
+        
+        walkImages = new GreenfootImage[4];
+        for(int i = 0; i < walkImages.length; i++){
+            walkImages[i] = new GreenfootImage("minion "+ i + ".png");
+            walkImages[i].scale(size, size);
+        }
+        
+        attackImages = new GreenfootImage[1];
+        attackImages[0] = new GreenfootImage("minion.png");
+        attackImages[0].scale(size, size);
+        
+        
+        setImage(walkImages[0]);
+        
+        healthBar = new SuperStatBar(maxHealth, currentHealth, this, size, 10, -size / 2, filledColor, missingColor, false);
+    }
+    
     public void act()
     {
-        actCounter++;
+        super.act();
         if(spawning){
             spawn();
-        }
-        if(findTarget(Troops.class) != null){
-            moveTowardsTarget(findTarget(Troops.class));
+        } else if(alive) {
+            Actor troop = findTarget(Troops.class);
+            if(troop != null){
+                moveTowardsTarget(troop);
+            } else {
+                moveTowardsTarget(findTarget(Towers.class));
+            }
+            die();
         } else {
-            moveTowardsTarget(findTarget(Towers.class));
+            getWorld().removeObject(this);
         }
     }
     
-    /**
-     * Attack the target
-     * 
-     * @param a the target
-     */
+    public void addedToWorld(World w){
+        w.addObject(healthBar, 0, 0);
+    }
+    
     public void attack(Actor a){
-        if(actCounter % attackSpeed == 0){
-            Troops target = (Troops)findTarget(Troops.class);
-            if(target != null){ //if enemy moves out of the way
-                moveTowardsTarget(target);
-            } else {
-                animate(attackImages);
+        if(actCounter % attackSpeed <= attackSpeed / 5){
+            animate(attackImages);
+            if(a instanceof Troops){
+                ((Troops)a).getHit(damage);
+            }else if(a instanceof Towers){
                 ((Towers)a).getHit(damage);
-            }
+            } 
         } else { //while not attacking
             setImage(walkImages[0]);
         }

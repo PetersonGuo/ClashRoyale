@@ -6,66 +6,94 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Musketeer extends Troops {
-    protected Troops target; //the target of the troop
+public class Musketeer extends Troops
+{
+    protected Troops target;
     
-    /**
-     * Constructor for objects of class Musketeer
-     * 
-     * @param ally whether the troop is on the player's side or not
-     */
+    
     public Musketeer(boolean ally){
         super(ally);
         
-        //stats
-        maxSpeed = 5;
-        attackSpeed = 900;
-        animationSpeed = 20;
-        currentHealth = maxHealth = 14;
-        damage = 8;
-        attackRange = 60;
+        //speed stats
+        maxSpeed = 1;
+        attackSpeed = 150;
+        animationSpeed = 15;
+        
+        //health stats
+        currentHealth = maxHealth = 300;
+        
+        //attack stats
+        damage = 3;
+        size = 25;
+        attackRange = 60 + size;
+        detectionRange = 400;
+        attackSound = new GreenfootSound("MusketeerAttack.mp3");
+        
+        //miscellaneous stats
         elixirCost = 4;
         air = false;
         
-        setImage("Musketeer.png");
-        
         walkImages = new GreenfootImage[3];
+        for(int i = 0; i < walkImages.length; i++){
+            walkImages[i] = new GreenfootImage("musketeer "+ i + ".png");
+            walkImages[i].scale(size, size);
+        }
         
-        walkImages[0] = new GreenfootImage("Musketeer0.png");
-        walkImages[1] = new GreenfootImage("Musketeer1.png");
-        walkImages[2] = new GreenfootImage("Musketeer2.png");
-        attackImages[0] = new GreenfootImage("MusketeerAtk.png");
+        attackImages = new GreenfootImage[1];
+        attackImages[0] = new GreenfootImage("musketeer attack.png");
+        attackImages[0].scale(size, size);
+        
+        setImage(walkImages[0]);
+        
+        healthBar = new SuperStatBar(maxHealth, currentHealth, this, size, 10, -size / 2, filledColor, missingColor, false);
     }
     
-    /**
-     * Act - do whatever the Musketeer wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() {
+    public void act()
+    {
         super.act();
-        if (findTarget(Troops.class) != null)
-            moveTowardsTarget(findTarget(Troops.class));
-        else
-            moveTowardsTarget(findTarget(Towers.class));
-    }
+        if(spawning){
+            spawn();
+        } else if(alive) {
+            Actor troop = findTarget(Troops.class);
+            if (troop != null){
+                moveTowardsTarget(troop);
+            }
+            else if(!crossedBridge){
+                moveTowardsTarget(findTarget(Bridge.class));
+                if(isTouching(Bridge.class)){
+                    crossBridge();
+                }
+            }
+            else{
+                moveTowardsTarget(findTarget(Towers.class));
+            }
+            die();
+        } else {
+            getWorld().removeObject(this);
+        }
+    } 
     
-    /**
-     * Attack the target
-     * 
-     * @param a the target
-     */
-    public void attack(Actor a) {
-        if (actCounter % attackSpeed == 0) {
+    public void attack(Actor a){
+        if (actCounter % attackSpeed == 0){
             Troops target = (Troops)findTarget(Troops.class);
-            if (target != null)
+            if (target != null){
                 moveTowardsTarget(target);
+            }else{
+                animate(attackImages);
+                if(a instanceof Troops){
+                    shootPelletAtTarget();
+                    ((Troops)a).getHit(damage);
+                }else if(a instanceof Towers){
+                    shootPelletAtTarget();
+                    ((Towers)a).getHit(damage);
+                }
+            }
+        } else { //while not attacking
+            setImage(walkImages[0]);
         }
     }
     
-    /**
-     * Shoot a pellet at the target
-     */
-    private void shootpelletAtTarget() {
+    private void shootPelletAtTarget() {
         getWorld().addObject(new Pellet(target), getX(), getY());
         actCounter = 0;
     }

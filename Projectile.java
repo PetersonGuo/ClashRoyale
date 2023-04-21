@@ -6,52 +6,39 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Kevin Luo 
  * @version (a version number or a date)
  */
-public class Projectile extends Actor {
-    protected int speed, damage; //speed and damage of the projectile
-    protected Troops target; //target of the projectile
-    protected int targetX, targetY; //target's x and y coordinates
-    protected GreenfootImage image; //image of the projectile
-    protected int direction; //direction of the projectile
-    protected int rotation; //rotation of the projectile
+public class Projectile extends Actor
+{
+    protected int speed;
+    protected int damage;
+    protected Troops target;
+    protected int targetX, targetY;
+    protected GreenfootImage image;
+    protected int direction;
+    protected int rotation;
     
-    /**
-     * Constructor for objects of class Projectile
-     * 
-     * @param target the target of the projectile
-     */
     public Projectile(Troops target){
         this.target = target;
     }
     
-    /**
-     * Added to world method
-     * 
-     * @param w the world the projectile is added to
-     */
     public void addedToWorld(World w){
         targetX = target.getX();
         targetY = target.getY();
         turnTowards(targetX, targetY);
     }
     
-    /**
-     * Act - do whatever the Projectile wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act()
     {
         // Add your action code here.
     }
     
-    /**
-     * Hit method
-     */
     protected void hit(){
-        if (intersects(target)) {
+        if(intersects(target)){
             //hit
             target.getHit(damage);
             getWorld().removeObject(this);
-        } else if(Math.abs(getX()-targetX) < 6 || Math.abs(getY()-targetY) < 6 ) //miss
+        }else if(Math.abs(getX()-targetX) < 6 || Math.abs(getY()-targetY) < 6 ){
+            //miss
             getWorld().removeObject(this);
+        }
     }
 }

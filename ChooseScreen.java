@@ -17,7 +17,7 @@ public class ChooseScreen extends Worlds {
         // Instance Variables
         private Text display;
         private Chevron left, right;
-        private int x, y, min;
+        private int x, y;
         
         // Initialize variables
         public SetContainer(Text display, int x, int y) {this(display, x, y, null, null);}
@@ -34,108 +34,87 @@ public class ChooseScreen extends Worlds {
         public int getX() {return x;}
         public int getY() {return y;}
     }
-    private final int statsPerPage = FINAL.STAT_SECTION_SIZE / (FINAL.STAT_SIZE + FINAL.ARROW_OFFSET); // Number of stats per page
-    private final List<SetContainer> statText = new ArrayList<>() {{ // Add stats to a list
+    private final int statsPerPage = FINAL.STAT_SECTION_SIZE / (FINAL.STAT_SIZE + FINAL.ARROW_OFFSET);
+    private final List<SetContainer> statText = new ArrayList<>() {{
         for (int i = 0; i < FINAL.STAT_NAMES.length; i++)
             add(new SetContainer(new Text(FINAL.STAT_NAMES[i], Color.WHITE, FINAL.STAT_SIZE), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT / 3 + (i % statsPerPage) * (FINAL.STAT_SIZE + FINAL.ARROW_OFFSET) * 2));
     }};
-    private final Set<SetContainer> staticText = new HashSet<>() {{ // Text that doesnt change
+    private final Set<SetContainer> staticText = new HashSet<>() {{
         add(new SetContainer(new Text("Choose variables for the simulation", Color.WHITE, FINAL.WORLD_WIDTH / "Choose variables for the simulation".length() * 2), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT / 5));
     }};
-    private static int pageNum, act; // Page number and act
-    private boolean lastPress; // Last key press
-    private static Map<String, Integer> stats; // Map of stats
-    private static Button cont; // Continue button
-    private static Chevron left, right; // Left and right chevrons
+    private static int pageNum, act;
+    private boolean lastPress;
+    private static Map<String, Integer> stats;
+    private static Button cont;
+    private static Chevron left, right;
     /**
      * Constructor for objects of class ChooseScreen.
      * 
      */
     public ChooseScreen() {
-        pageNum = act = 0; // Initialize variables
+        pageNum = act = 0;
         lastPress = false;
-        initializeStats(); // Initialize stats
-        updateStatPage(); // Update the page
+        initializeStats();
+        updateStatPage();
         
-        cont = new Button("Continue"); // Initialize buttons
-        addObject(cont, FINAL.WORLD_WIDTH - cont.getWidth() / 2 - 20, FINAL.WORLD_HEIGHT - cont.getHeight() / 2); // Add buttons
+        
+        cont = new Button("Continue");
+        addObject(cont, FINAL.WORLD_WIDTH - cont.getWidth() / 2 - 20, FINAL.WORLD_HEIGHT - cont.getHeight() / 2);
     }
     
-    /**
-     * Initialize stats
-     */
-    private void initializeStats() { // Add stats to map
-        stats = new HashMap<>() {{ // Initialize map
-            for (int i = 0; i < FINAL.STAT_NAMES.length; i++) // Add stats
-                put(FINAL.STAT_NAMES[i], FINAL.DEFAULT_VALUES[i]); // Add default values
+    private void initializeStats() {
+        stats = new HashMap<>() {{
+            for (int i = 0; i < FINAL.STAT_NAMES.length; i++)
+                put(FINAL.STAT_NAMES[i], FINAL.DEFAULT_VALUES[i]);
         }};
     }
-    
-    /**
-     * Act - do whatever the ChooseScreen wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    // Add Nametag
     public void act() {
         if (Greenfoot.mouseClicked(cont) || (Greenfoot.isKeyDown(FINAL.NEXT_WORLD_BUTTON) && act >= 30)) // Prevents world skipping by adding a .5s delay
-            nextWorld(); // Go to next world
-        else if (Greenfoot.mouseClicked(left) && pageNum > 0) { // If the left chevron is clicked, go to the previous page
+            nextWorld();
+        else if (Greenfoot.mouseClicked(left) && pageNum > 0) {
             pageNum--;
             updateStatPage();
-        } else if (Greenfoot.mouseClicked(right) && pageNum < statText.size() / statsPerPage) { // If the right chevron is clicked, go to the next page
+        } else if (Greenfoot.mouseClicked(right) && pageNum < statText.size() / statsPerPage) {
             pageNum++;
             updateStatPage();
-        } else if (Greenfoot.isKeyDown("Left") && !lastPress && pageNum > 0) { // If the left key is pressed, go to the previous page
+        } else if (Greenfoot.isKeyDown("Left") && !lastPress && pageNum > 0) {
             pageNum--;
             updateStatPage();
-        } else if (Greenfoot.isKeyDown("Right") && !lastPress && pageNum < statText.size() / statsPerPage) { // If the right key is pressed, go to the next page
+        } else if (Greenfoot.isKeyDown("Right") && !lastPress && pageNum < statText.size() / statsPerPage) {
             pageNum++;
             updateStatPage();
         }
         act++;
-        lastPress = Greenfoot.isKeyDown("Left") || Greenfoot.isKeyDown("Right"); // Update last key press
+        lastPress = Greenfoot.isKeyDown("Left") || Greenfoot.isKeyDown("Right");
     }
     
-    /**
-     * Returns the value of a stat
-     * 
-     * @param stat The stat to get the value of
-     * @return The value of the stat
-     */
-    private void updateStatPage() { // Update values of the page
-        removeObjects(getObjects(Text.class)); // Remove all text
-        removeObjects(getObjects(Chevron.class)); // Remove all chevrons
-        for (SetContainer setValue : staticText) // Add static text
-            addObject(setValue.getText(), setValue.getX(), setValue.getY()); 
-        for (int i = pageNum * statsPerPage; i < (pageNum + 1) * statsPerPage && i < statText.size(); i++) { // Add stats
-            SetContainer setValue = statText.get(i); // Get the stat
-            addObject(setValue.getText(), setValue.getX(), setValue.getY()); // Add the stat
-            int y = setValue.getY() + FINAL.STAT_SIZE + FINAL.ARROW_OFFSET; // Get the y value
-            Text t = new Text(stats.get(setValue.getText().getString()), Color.WHITE, FINAL.STAT_SIZE); // Get the text
-            addObject(t, FINAL.WORLD_WIDTH / 2, y); // Add the text
-            addObject(new Chevron(true, setValue.getText().getString(), FINAL.STAT_SIZE, t), FINAL.WORLD_WIDTH / 4, y); // Add the chevrons
-            addObject(new Chevron(false, setValue.getText().getString(), FINAL.STAT_SIZE, t), FINAL.WORLD_WIDTH * 3 / 4, y); // Add the chevrons
+    private void updateStatPage() {
+        removeObjects(getObjects(Text.class));
+        removeObjects(getObjects(Chevron.class));
+        for (SetContainer setValue : staticText)
+            addObject(setValue.getText(), setValue.getX(), setValue.getY());
+        for (int i = pageNum * statsPerPage; i < (pageNum + 1) * statsPerPage && i < statText.size(); i++) {
+            SetContainer setValue = statText.get(i);
+            addObject(setValue.getText(), setValue.getX(), setValue.getY());
+            int y = setValue.getY() + FINAL.STAT_SIZE + FINAL.ARROW_OFFSET;
+            Text t = new Text(stats.get(setValue.getText().getString()), Color.WHITE, FINAL.STAT_SIZE);
+            addObject(t, FINAL.WORLD_WIDTH / 2, y);
+            addObject(new Chevron(true, setValue.getText().getString(), FINAL.STAT_SIZE, t), FINAL.WORLD_WIDTH / 4, y);
+            addObject(new Chevron(false, setValue.getText().getString(), FINAL.STAT_SIZE, t), FINAL.WORLD_WIDTH * 3 / 4, y);
         }
-        left = new Chevron(true, null, FINAL.STAT_SIZE); // Add the chevrons
-        right = new Chevron(false, null, FINAL.STAT_SIZE); // Add the chevrons
-        addObject(new Text((pageNum + 1) + " / " + (statText.size() / statsPerPage + 1), Color.WHITE, FINAL.STAT_SIZE), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT * 9 / 10); // Add the page number
-        addObject(left, FINAL.WORLD_WIDTH * 2 / 5, FINAL.WORLD_HEIGHT * 9 / 10); // Add the chevrons
-        addObject(right, FINAL.WORLD_WIDTH * 3 / 5, FINAL.WORLD_HEIGHT * 9 / 10); // Add the chevrons
+        left = new Chevron(true, null, FINAL.STAT_SIZE);
+        right = new Chevron(false, null, FINAL.STAT_SIZE);
+        addObject(new Text((pageNum + 1) + " / " + (statText.size() / statsPerPage + 1), Color.WHITE, FINAL.STAT_SIZE), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT * 9 / 10);
+        addObject(left, FINAL.WORLD_WIDTH * 2 / 5, FINAL.WORLD_HEIGHT * 9 / 10);
+        addObject(right, FINAL.WORLD_WIDTH * 3 / 5, FINAL.WORLD_HEIGHT * 9 / 10);
     }
     
-    /**
-     * Returns the value of a stat
-     * 
-     * @param stat The stat to get the value of
-     * @return The value of the stat
-     */
     public void setValue(Chevron selector) {
-        if ((!selector.isLeft() || stats.get(selector.getSelector()) > 1) && (selector.isLeft() || stats.get(selector.getSelector()) < 20)) // If the value is within the range
-            stats.put(selector.getSelector(), stats.get(selector.getSelector()) + (selector.isLeft() ? -1 : 1));
-        selector.getText().updateText(stats.get(selector.getSelector())); // Update the text
+        stats.put(selector.getSelector(), stats.get(selector.getSelector()) + (selector.isLeft() ? -1 : 1));
+        selector.getText().updateText(stats.get(selector.getSelector()));
     }
     
-    /**
-     * Next world
-     */
     public void nextWorld() {
         Greenfoot.setWorld(new MainWorld(stats));
     }

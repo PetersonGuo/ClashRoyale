@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=King
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ King\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=ally
+comment1.target=King(boolean)
+numComments=2

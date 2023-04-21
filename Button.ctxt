@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=Button
+comment0.text=\r\n\ A\ Button\ to\ Control\ User\ Input\r\n\ \r\n\ @author\ Jordan\ Cohen\ \r\n\ @version\ 1.2\r\n
+comment1.params=text
+comment1.target=Button(java.lang.String)
+comment1.text=\ \r\n\ Control\ the\ main\ button\ features\r\n
+comment2.params=
+comment2.target=void\ draw()
+comment2.text=\ \r\n\ Control\ how\ the\ button\ would\ look\r\n
+comment3.params=
+comment3.target=boolean\ MouseClicked()
+comment3.text=\ \r\n\ Return\ to\ check\ for\ mouse\ clicks\r\n
+comment4.params=
+comment4.target=void\ act()
+comment4.text=\r\n\ Act\ -\ do\ whatever\ the\ Button\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment5.params=
+comment5.target=int\ getHeight()
+comment6.params=
+comment6.target=int\ getWidth()
+numComments=7

@@ -1,36 +1,19 @@
 import greenfoot.*;
 
-/**
- * An arrow that is launched from a Troop or a Tower.
- * The arrow will do damage to the target when it hits it.
- * 
- * @author Kelby To 
- * @version (a version number or a date)
- */
-public class Arrow extends Actor { 
-    private int speed, damage; //speed and damage of arrow
-    private Troops target; //target of arrow
-    private int targetX, targetY; //target's x and y coordinates 
-    private GreenfootImage image; //image of arrow
+public class Arrow extends Actor {
+    private int speed;
+    private int damage;
+    private Troops target;
+    private int targetX, targetY;
+    private GreenfootImage image;
     
-    /**
-     * Constructor for objects of class Arrow
-     * 
-     * @param target the target of the arrow
-     */
     public Arrow(Troops target) {
-        // initialise instance variables
         speed = 5;
-        damage = 3;
+        damage = 2;
         this.target = target;
-        image = new GreenfootImage("Arrow.png");
+        image = new GreenfootImage("arrow.png");
     }
     
-    /**
-     * Added to world method
-     * 
-     * @param w the world the arrow is added to
-     */
     public void addedToWorld(World w) {
         targetX = target.getX();
         targetY = target.getY();
@@ -43,10 +26,13 @@ public class Arrow extends Actor {
      */
     public void act() {
         move(speed);
-        if (intersects(target)) { //hit
+        if (intersects(target)) {
+            //hit
             target.getHit(damage);
             getWorld().removeObject(this);
-        } else if (Math.abs(getX()-targetX) < 6 || Math.abs(getY()-targetY) < 6 ) // miss
+        } else if (Math.abs(getX()-targetX) < 6 || Math.abs(getY()-targetY) < 6 ) {
+            //miss
             getWorld().removeObject(this);
+        }
     }
 }
