@@ -15,7 +15,7 @@ public class Princess extends Towers {
     public Princess(boolean ally) {
         super(ally);
         hp = 100;
-        range = 60;
+        range = 120;
         shootingCooldown = 45;
         image = (ally) ? new GreenfootImage("PrincessTower1.png") : new GreenfootImage("PrincessTower2.png") ;
         image.scale(55,55);

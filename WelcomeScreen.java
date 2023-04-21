@@ -15,8 +15,8 @@ public class WelcomeScreen extends Worlds {
     public WelcomeScreen() {
         act = 0;
         
-        addObject(new Text("CLASH ROYALE", Color.WHITE, 50), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT / 4);
-        addObject(new Text("Press '" + FINAL.NEXT_WORLD_BUTTON + "' to continue", Color.WHITE, 30), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT * 3 / 4);
+        addObject(new Text("CLASH ROYALE", Color.BLACK, 50), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT / 4);
+        addObject(new Text("Press '" + FINAL.NEXT_WORLD_BUTTON + "' to continue", Color.BLACK, 30), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT * 3 / 4);
     }
     
     /**

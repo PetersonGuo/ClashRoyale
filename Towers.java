@@ -27,9 +27,9 @@ public abstract class Towers extends Actor {
      */
     public void act() {
         actsSinceShooting++;
-        if (target != null)
+        if (target != null){
             if (actsSinceShooting >= shootingCooldown)shootArrowAtTarget();
-        else
+        }else
             target = findTarget();
     }
     
@@ -45,9 +45,10 @@ public abstract class Towers extends Actor {
         if (troopsInRange.size() > 0) {
             closest = troopsInRange.get(0);
             for(Troops t : troopsInRange) {
-                if (getDistanceFromTower(t) > getDistanceFromTower(closest))
+                if (getDistanceFromTower(t) > getDistanceFromTower(closest) && closest.isAlly() == ally)
                     closest = t;
             }
+            if(closest.isAlly() != ally) closest = null;
         }
         return closest;
     }

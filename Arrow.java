@@ -23,7 +23,9 @@ public class Arrow extends Actor {
         speed = 5;
         damage = 3;
         this.target = target;
-        image = new GreenfootImage("Arrow.png");
+        GreenfootImage img = new GreenfootImage("Arrow.png");
+        img.scale(img.getWidth()/2, img.getHeight()/2);
+        setImage(img);
     }
     
     /**
