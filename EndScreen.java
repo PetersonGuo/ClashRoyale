@@ -15,10 +15,10 @@ public class EndScreen extends Worlds {
     public EndScreen() {
         ArrayList<Towers> towersLeft = (ArrayList<Towers>)getObjects(Towers.class);
         for (Towers t : towersLeft){
-            if(Towers.checkAlly() == true){
+            if (t.isAlly()) {
                 allyTowers++;
                 towerHp += t.getHp();
-            }else if(Towers.checkAlly() == false){
+            } else if(!t.isAlly()) {
                 EnemyTowers++;
                 towerHp2 += t.getHp();
             }
