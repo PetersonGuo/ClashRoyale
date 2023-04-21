@@ -38,6 +38,7 @@ public class Card extends Actor {
         this.cost = cost;
         this.playable = playable;
         this.enemy = enemy;
+        this.type = type;
     }
     
     /**
@@ -93,29 +94,21 @@ public class Card extends Actor {
      */
     private void spawnCard() { // Spawn a character card
         int x = FINAL.WORLD_WIDTH / 2 + FINAL.WORLD_WIDTH / 2 * (Math.random() * 2 == 0 ? 1 : -1), y = enemy ? 100 : FINAL.WORLD_HEIGHT - 100; // Spawn the card at a random location on the enemy side
-        switch (type) {
-            case 0: // Spawn an arrow card
-                getWorld().addObject(new Arrows(enemy), x, y);
-                break;
-            case 1: // Spawn a fireball card
-                getWorld().addObject(new Fireball(enemy), x, y);
-                break;
-            case 2: // Spawn an archer card
-                getWorld().addObject(new Archers(enemy), x, y);
-                break;
-            case 3: // Spawn a giant card
-                getWorld().addObject(new Giant(enemy), x, y);
-                break;
-            case 4: // Spawn a knight card
-                getWorld().addObject(new Knight(enemy), x, y);
-                break;
-            case 5: // Spawn a minion card
-                getWorld().addObject(new Minion(enemy), x, y);
-                break;
-            case 6: // Spawn a musketeer card
-                getWorld().addObject(new Musketeer(enemy), x, y);
-                break;
-        }
+        if (type == 0) // Spawn an arrow card
+            getWorld().addObject(new Arrows(enemy), x, y);
+        else if (type == 1) // Spawn a fireball card
+            getWorld().addObject(new Fireball(enemy), x, y);
+        else if (type == 2) // Spawn an archer card
+            getWorld().addObject(new Archers(enemy), x, y);
+        else if (type == 3) // Spawn a giant card
+            getWorld().addObject(new Giant(enemy), x, y);
+        else if (type == 4) // Spawn a knight card
+            getWorld().addObject(new Knight(enemy), x, y);
+        else if (type == 5) // Spawn a minion card
+            getWorld().addObject(new Minion(enemy), x, y);
+        else if (type == 6) // Spawn a musketeer card
+            getWorld().addObject(new Musketeer(enemy), x, y);
+        System.out.println(type);
     }
     
     /**
