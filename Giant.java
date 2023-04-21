@@ -32,14 +32,14 @@ public class Giant extends Troops {
         size = 40;
         
         walkImages = new GreenfootImage[3];
-        walkImages[0] = new GreenfootImage("giant_0.png");
-        walkImages[1] = new GreenfootImage("giant_walk_2.png");
-        walkImages[2] = new GreenfootImage("giant_walk_3.png");
+        walkImages[0] = new GreenfootImage("Giant0.png");
+        walkImages[1] = new GreenfootImage("GiantWalk2.png");
+        walkImages[2] = new GreenfootImage("GiantWalk3.png");
         
         attackImages = new GreenfootImage[3];
-        attackImages[0] = new GreenfootImage("giant_attack.png");
-        attackImages[1] = new GreenfootImage("giant_attack_1.png");
-        attackImages[2] = new GreenfootImage("giant_attack_2.png");
+        attackImages[0] = new GreenfootImage("GiantAtk.png");
+        attackImages[1] = new GreenfootImage("GiantAtk1.png");
+        attackImages[2] = new GreenfootImage("GiantAtk2.png");
         
         elixirCost = 5;
         air = false;

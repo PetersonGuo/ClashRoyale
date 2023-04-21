@@ -16,8 +16,8 @@ public class Fireball extends Spells {
         super(ally);
         
         speed = 20;
-        image = new GreenfootImage("fireball.png");
-        image2 = new GreenfootImage("fireball2.png");
+        image = new GreenfootImage("Fireball0.png");
+        image2 = new GreenfootImage("Fireball1.png");
     }
     
     /**

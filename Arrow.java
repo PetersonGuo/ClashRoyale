@@ -23,7 +23,7 @@ public class Arrow extends Actor {
         speed = 5;
         damage = 3;
         this.target = target;
-        image = new GreenfootImage("arrow.png");
+        image = new GreenfootImage("Arrow.png");
     }
     
     /**

@@ -28,14 +28,14 @@ public class Archers extends Troops {
         elixirCost = 3;
         air = false;
         
-        setImage("new archer.png");
+        setImage("new Archer.png");
         
         walkImages = new GreenfootImage[3]; // The images for the walking animation
         
-        walkImages[0] = new GreenfootImage("walking archer 0.png");
-        walkImages[1] = new GreenfootImage("walking archer 1.png");
-        walkImages[2] = new GreenfootImage("walking archer 2.png");
-        attackImages[0] = new GreenfootImage("archer attack.png");
+        walkImages[0] = new GreenfootImage("WalkingArcher0.png");
+        walkImages[1] = new GreenfootImage("WalkingArcher1.png");
+        walkImages[2] = new GreenfootImage("WalkingArcher2.png");
+        attackImages[0] = new GreenfootImage("ArcherAtk.png");
     }
     
     /**
@@ -72,7 +72,7 @@ public class Archers extends Troops {
     public GreenfootImage[] animation() { // The animation for the archer
         GreenfootImage[] images = new GreenfootImage[imageNumber];
         for(int i = 0; i < images.length; i++) // For each image
-            images[i] = new GreenfootImage("walking archer " + i + ".png");
+            images[i] = new GreenfootImage("WalkingArcher" + i + ".png");
         return images;
     }
     

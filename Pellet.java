@@ -18,7 +18,7 @@ public class Pellet extends Projectile {
         speed = 5;
         damage = 5;
         this.target = target;
-        image = new GreenfootImage("arrow.png");
+        image = new GreenfootImage("Arrow.png");
     }
     
     /**

@@ -31,9 +31,8 @@ public class Card extends Actor {
      * @param type The type of card
      */
     public Card(int cost, int width, int height, boolean playable, boolean enemy, int type) { // Constructor for a card with a cost
-        img = new GreenfootImage(width, height);
-        img.setColor(Color.GREEN);
-        img.fillRect(0, 0, img.getWidth(), img.getHeight());
+        final String[] imgNames = {"ArrowsCard.png", "FireballCard.png", "ArchersCard.png", "GiantCard.png", "KnightCard.png", "MinionCard.png", "MusketeerCard.png"};
+        img = new GreenfootImage(imgNames[type]);
         img.scale(width, height);
         setImage(img);
         this.cost = cost;

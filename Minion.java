@@ -31,13 +31,13 @@ public class Minion extends Troops
         
         //miscellaneous stats
         walkImages = new GreenfootImage[4];
-        walkImages[0] = new GreenfootImage("minion_0.png");
-        walkImages[1] = new GreenfootImage("minion_1.png");
-        walkImages[2] = new GreenfootImage("minion_2.png");
-        walkImages[3] = new GreenfootImage("minion_3.png");
+        walkImages[0] = new GreenfootImage("Minion0.png");
+        walkImages[1] = new GreenfootImage("Minion1.png");
+        walkImages[2] = new GreenfootImage("Minion2.png");
+        walkImages[3] = new GreenfootImage("Minion3.png");
         
         attackImages = new GreenfootImage[1];
-        attackImages[0] = new GreenfootImage("minion_attack.png");
+        attackImages[0] = new GreenfootImage("MinionAtk.png");
         
         size = walkImages[0].getWidth();
         elixirCost = 3;
