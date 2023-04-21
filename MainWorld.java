@@ -10,10 +10,12 @@ import java.util.Map;
  * @version 1.0
  */
 public class MainWorld extends Worlds {
-    private Card enemyNext, allyNext;
-    private ElixirBar enemyElixir, allyElixir;
+    private Card enemyNext, allyNext; // The next cards for the enemy and ally
+    private ElixirBar enemyElixir, allyElixir; // The elixir bars
     /**
      * Constructor for objects of class MainWorld.
+     * 
+     * @param stats The stats of the game
      */
     public MainWorld(Map<String, Integer> stats) {
         for (int i = 0; i < 8; i++) {
@@ -32,6 +34,12 @@ public class MainWorld extends Worlds {
         nextCard(false);
     }
     
+    /**
+     * Get the next card
+     * 
+     * @param enemy Is the card for the enemy
+     * @return The next card
+     */
     public Card nextCard(boolean enemy) {
         Card c;
         if (enemy) {
@@ -48,10 +56,19 @@ public class MainWorld extends Worlds {
         return c;
     }
     
+    /**
+     * nextWorld - Go to the next world
+     */
     public void nextWorld() {
         Greenfoot.setWorld(new EndScreen());
     }
     
+    /**
+     * Get the elixir bar
+     * 
+     * @param enemy Is the elixir bar for the enemy
+     * @return The elixir bar
+     */
     public ElixirBar getElixir(boolean enemy) {
         return enemy ? enemyElixir : allyElixir;
     }

@@ -6,8 +6,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class King extends Towers
-{
+public class King extends Towers {
+    /**
+     * Constructor for objects of class King
+     * 
+     * @param ally Whether the tower is on the left or right side
+     */
     public King(boolean ally) {
         super(ally);
         hp = 200;
@@ -16,13 +20,4 @@ public class King extends Towers
         image = (ally) ? new GreenfootImage("king tower 1.png") : new GreenfootImage("king tower 2.png") ;
         setImage(image);
     }
-    
-    /**
-     * Act - do whatever the King wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    // public void act()
-    // {
-        // // Add your action code here.
-    // }
 }
