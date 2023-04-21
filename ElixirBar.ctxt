@@ -1,8 +1,9 @@
 #BlueJ class context
 comment0.target=ElixirBar
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ ElixirBar\ here.\r\n\ Add\ text\ animation\ later\ \:(\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ ElixirBar\ here.\r\n\ Add\ text\ animation\ later\ \:(\r\n\ \r\n\ @author\ Peterson\ Guo\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=startElixir\ maxElixir\ elixirTime
 comment1.target=ElixirBar(int,\ int,\ int)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ ElixirBar\r\n\ \r\n\ @param\ startElixir\ The\ starting\ elixir\r\n\ @param\ maxElixir\ The\ maximum\ elixir\r\n\ @param\ elixirTime\ The\ time\ it\ takes\ to\ gain\ 1\ elixir\r\n
 comment2.params=w
 comment2.target=void\ addedToWorld(greenfoot.World)
 comment3.params=
@@ -10,4 +11,8 @@ comment3.target=void\ act()
 comment3.text=\r\n\ Act\ -\ do\ whatever\ the\ ElixirBar\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment4.params=
 comment4.target=void\ drawImg()
-numComments=5
+comment4.text=\r\n\ drawImg\ -\ Draw\ the\ image\r\n
+comment5.params=use
+comment5.target=boolean\ useElixir(int)
+comment5.text=\r\n\ useElixir\ -\ Use\ elixir\r\n\ @param\ use\ -\ Amount\ of\ elixir\ to\ use\r\n\ @return\ -\ Whether\ or\ not\ the\ elixir\ was\ used\r\n
+numComments=6

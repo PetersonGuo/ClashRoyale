@@ -6,4 +6,5 @@ comment1.target=Worlds()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Worlds\r\n
 comment2.params=
 comment2.target=void\ nextWorld()
+comment2.text=\r\n\ nextWorld\ -\ Go\ to\ the\ next\ world\r\n
 numComments=3
