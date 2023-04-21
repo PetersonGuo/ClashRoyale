@@ -12,12 +12,13 @@ public abstract class Worlds extends World {
     public Worlds() {
         super(FINAL.WORLD_WIDTH, FINAL.WORLD_HEIGHT, 1);
         
-        GreenfootImage bg = new GreenfootImage("cr.jpg");
-        // bg.setColor(Color.GREEN);
-        // bg.fillRect(0,0,FINAL.WORLD_WIDTH,FINAL.WORLD_HEIGHT);
+        GreenfootImage bg = new GreenfootImage("CR.png");
         bg.scale(FINAL.WORLD_WIDTH, FINAL.WORLD_HEIGHT);
         setBackground(bg);
     }
     
+    /**
+     * nextWorld - Go to the next world
+     */
     public abstract void nextWorld();
 }

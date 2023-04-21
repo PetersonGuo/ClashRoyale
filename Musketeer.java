@@ -8,9 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Musketeer extends Troops
 {
-    protected Troops target;
-    
-    
+    protected Troops target; //the target of the troop
+    /**
+     * Constructor for objects of class Musketeer
+     * 
+     * @param ally whether the troop is on the player's side or not
+     */
     public Musketeer(boolean ally){
         super(ally);
         
@@ -35,12 +38,12 @@ public class Musketeer extends Troops
         
         walkImages = new GreenfootImage[3];
         for(int i = 0; i < walkImages.length; i++){
-            walkImages[i] = new GreenfootImage("musketeer "+ i + ".png");
+            walkImages[i] = new GreenfootImage("Musketeer"+ i + ".png");
             walkImages[i].scale(size, size);
         }
         
         attackImages = new GreenfootImage[1];
-        attackImages[0] = new GreenfootImage("musketeer attack.png");
+        attackImages[0] = new GreenfootImage("MusketeerAtk.png");
         attackImages[0].scale(size, size);
         
         setImage(walkImages[0]);
@@ -55,16 +58,16 @@ public class Musketeer extends Troops
             spawn();
         } else if(alive) {
             Actor troop = findTarget(Troops.class);
-            if (troop != null){
+            if (troop != null){ //If there is a target
                 moveTowardsTarget(troop);
             }
-            else if(!crossedBridge){
+            else if(!crossedBridge){ //If have not crossed bridge
                 moveTowardsTarget(findTarget(Bridge.class));
                 if(isTouching(Bridge.class)){
                     crossBridge();
                 }
-            }
-            else{
+            } 
+            else{ //If there is no target
                 moveTowardsTarget(findTarget(Towers.class));
             }
             die();
@@ -73,26 +76,33 @@ public class Musketeer extends Troops
         }
     } 
     
+    public void addedToWorld(World w){
+        w.addObject(healthBar, 0, 0);
+    }
+    
+    /**
+     * Attack the target
+     * 
+     * @param a the target
+     */
     public void attack(Actor a){
-        if (actCounter % attackSpeed == 0){
-            Troops target = (Troops)findTarget(Troops.class);
-            if (target != null){
-                moveTowardsTarget(target);
-            }else{
-                animate(attackImages);
-                if(a instanceof Troops){
-                    shootPelletAtTarget();
-                    ((Troops)a).getHit(damage);
-                }else if(a instanceof Towers){
-                    shootPelletAtTarget();
-                    ((Towers)a).getHit(damage);
-                }
+        if (actCounter % attackSpeed == 0){ // If the attack counter is reached
+            animate(attackImages);
+            if(a instanceof Troops){ //If target is a troop
+                shootPelletAtTarget();
+                ((Troops)a).getHit(damage);
+            }else if(a instanceof Towers){ //If target is a tower
+                shootPelletAtTarget();
+                ((Towers)a).getHit(damage);
             }
         } else { //while not attacking
             setImage(walkImages[0]);
         }
     }
     
+    /**
+     * Shoot a pellet at the target
+     */
     private void shootPelletAtTarget() {
         getWorld().addObject(new Pellet(target), getX(), getY());
         actCounter = 0;

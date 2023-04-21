@@ -9,8 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Giant extends Troops
 {
     /**
-     * Act - do whatever the Giant wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Constructor for objects of class Giant
+     * 
+     * @param ally Whether the tower is on the left or right side
      */
     public Giant(boolean ally){
         super(ally);
@@ -35,13 +36,13 @@ public class Giant extends Troops
         
         walkImages = new GreenfootImage[3];
         for(int i = 0; i < walkImages.length; i++){
-            walkImages[i] = new GreenfootImage("giant walk "+ i + ".png");
+            walkImages[i] = new GreenfootImage("GiantWalk"+ i + ".png");
             walkImages[i].scale(size, size);
         }
         
         attackImages = new GreenfootImage[3];
         for(int i = 0; i < attackImages.length; i++){
-            attackImages[i] = new GreenfootImage("giant attack "+ i + ".png");
+            attackImages[i] = new GreenfootImage("GiantAtk"+ i + ".png");
             attackImages[i].scale(size, size);
         }
         
@@ -50,18 +51,21 @@ public class Giant extends Troops
         healthBar = new SuperStatBar(maxHealth, currentHealth, this, size, 10, -size / 2, filledColor, missingColor, false);
     }
     
+    /**
+     * Act - do whatever the Giant wants to do. This method is called whenever
+     */
     public void act()
     {
         super.act();
         if(spawning){
             spawn();
         } else if(alive) {
-            if (!crossedBridge){
+            if (!crossedBridge){ //If have not crossed bridge
                 moveTowardsTarget(findTarget(Bridge.class));
                 if(isTouching(Bridge.class)){
                     crossBridge();
                 }
-            } else {
+            } else { //If crossed bridge
                 moveTowardsTarget(findTarget(Towers.class));
             }
             die();
@@ -70,8 +74,17 @@ public class Giant extends Troops
         }
     }
     
-    public void attack(Actor a){
-        if(actCounter % attackSpeed == 0){
+    public void addedToWorld(World w){
+        w.addObject(healthBar, 0, 0);
+    }
+    
+    /**
+     * attack - attacks the target
+     * 
+     * @param a - the target
+     */
+    public void attack(Actor a){ // Attack the target
+        if(actCounter % attackSpeed <= attackSpeed / 5){ // If the attack counter is reached
             animate(attackImages);
             ((Towers)a).getHit(damage);
         } else { //while not attacking

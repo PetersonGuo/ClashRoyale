@@ -8,32 +8,31 @@ import java.util.*;
  */
 public abstract class Troops extends Actor
 {
-    //movement variables
-    protected double speed, maxSpeed, attackSpeed, animationSpeed, direction;
-    protected int distX, distY;
-    protected boolean crossedBridge = false;
+    protected double speed, maxSpeed, attackSpeed, animationSpeed, direction; //speed is in pixels per act
+    protected int distX, distY; //distance between the troop and the target
+    protected boolean crossedBridge = true; //true if the troop has crossed the bridge, false if not
     
-    //attack variables
-    protected int maxHealth, currentHealth, damage, attackRange, detectionRange;
+    protected int maxHealth, currentHealth, damage, attackRange, detectionRange; //attack range is in pixels
 
-    //spawning variables
-    protected int elixirCost;
-    protected boolean air, ally, spawning = true, alive = true;
+    protected int elixirCost; //cost of the troop in elixir
+    protected boolean air, ally, spawning = true, alive = true; //air is true if the troop can fly over the bridge, ally is true if the troop is on the player's side
     
-    //health bar variables
-    protected int size;
-    protected Color filledColor = new Color (0, 255, 0); //green
+    protected int size; //size of the health bar
+    protected Color filledColor = new Color (0, 255, 0);  //green
     protected Color missingColor = new Color (255, 0, 0); //red
-    protected SuperStatBar healthBar;
+    protected SuperStatBar healthBar; //health bar
     
-    protected boolean turned = false;
-    protected int actCounter = 0, currentImage = 0;
-    protected GreenfootImage[] walkImages;
-    protected GreenfootImage[] attackImages;
+    protected int actCounter = 0, currentImage = 0; //actCounter is used to determine when to change the image, currentImage is the current image being displayed
+    protected GreenfootImage[] walkImages; //images for walking
+    protected GreenfootImage[] attackImages; //images for attacking
     
-    //sounds
-    protected GreenfootSound spawnSound, dieSound, attackSound;
+    protected GreenfootSound spawnSound, dieSound, attackSound; //sounds for spawning, dying, and attacking
     
+    /**
+     * Constructor for objects of class Troops
+     * 
+     * @param ally whether the troop is on the player's side or not
+     */
     public Troops(boolean ally){
         this.ally = ally;
     }
@@ -47,6 +46,12 @@ public abstract class Troops extends Actor
         spawnSound.play();
     }
     
+    /**
+     * Find the troop
+     * @param <T> the class of the troop
+     * @param c the class of the troop
+     * @return the troop
+     */
     protected <T> Actor findTarget(Class<T> c) { //runs every act to search for new targets
         Actor target = null;
         List<T> actors = null;
@@ -66,10 +71,12 @@ public abstract class Troops extends Actor
         return target;
     }
     
+    /**
+     * Move towards the target
+     * @param a the target
+     */
     protected void moveTowardsTarget(Actor a){
-        //x and y location of the target
-        int targetX = a.getX();
-        int targetY = a.getY();
+        int targetX = a.getX(), targetY = a.getY(); //targetX and targetY are the x and y location of the target
         
         //rotate towards the target
         distX = targetX - getX();
@@ -98,6 +105,10 @@ public abstract class Troops extends Actor
         }
     }
     
+    /**
+     * Return the nearest target
+     * @param a the target
+     */
     protected <T> Actor nearestTarget(List<T> actors){
         Actor target = null;
         if(actors.size() > 0) { //if there is a target found within the range
@@ -111,6 +122,9 @@ public abstract class Troops extends Actor
         return target;
     }
     
+    /**
+     * Move across the bridge
+     */
     protected void crossBridge(){ //once the troop touches the bridge
         Bridge b = (Bridge)getOneIntersectingObject(Bridge.class);
         if(ally){
@@ -128,6 +142,9 @@ public abstract class Troops extends Actor
         }
     }
     
+    /**
+     * Once the troop has spawned
+     */
     protected void spawn(){ //when the troop has spawned
         alive = true;
         if(actCounter <= 60){ //if the troop hasn't existed for 1 second
@@ -138,12 +155,17 @@ public abstract class Troops extends Actor
                 direction = 90;
             }
             setRotation((int)direction);
-        } else {
+        } else { //allows the troop to move
             spawning = false;
             speed = maxSpeed;
         }
     }
     
+    /**
+     * Get the distance from the target
+     * @param a the target
+     * @return the distance from the target
+     */
     protected double distFromTarget(Actor a){
         return Math.sqrt(Math.pow(a.getX() - getX(), 2) + Math.pow(a.getY() - getY(), 2));
     }
@@ -156,6 +178,10 @@ public abstract class Troops extends Actor
         }
     }
     
+    /**
+     * Animate the troop
+     * @param images the images to animate
+     */
     protected void animate(GreenfootImage[] images){
         if(actCounter % animationSpeed == 0){
             //change the image to the next frame
@@ -170,26 +196,42 @@ public abstract class Troops extends Actor
         }
     }
     
-    protected void resize(GreenfootImage image, int size){
-        image.scale(size, size);
-    }
-    
+    /**
+     * Take damage
+     * @param damage the damage aken deal
+     */
     public void getHit(int damage){
         currentHealth -= damage;
         healthBar.update(currentHealth);
     }
     
+    /**
+     * Check if the troop is an ally
+     * @return true if the troop is an ally, false if not
+     */
     public boolean isAlly(){
         return ally;
     }
     
+    /**
+     * Check if the troop is an ally
+     * @return true if the troop is an ally, false if not
+     */
     public boolean isAir(){
         return air;
     }
     
+    /**
+     * Check if the troop is alive
+     * @return true if the troop is alive, false if not
+     */
     public boolean isAlive(){
         return alive;
     }
     
+    /**
+     * Attack the target
+     * @param a the target
+     */
     protected abstract void attack(Actor a);
 }

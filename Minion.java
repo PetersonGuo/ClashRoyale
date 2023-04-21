@@ -36,12 +36,12 @@ public class Minion extends Troops
         
         walkImages = new GreenfootImage[4];
         for(int i = 0; i < walkImages.length; i++){
-            walkImages[i] = new GreenfootImage("minion "+ i + ".png");
+            walkImages[i] = new GreenfootImage("Minion"+ i + ".png");
             walkImages[i].scale(size, size);
         }
         
         attackImages = new GreenfootImage[1];
-        attackImages[0] = new GreenfootImage("minion.png");
+        attackImages[0] = new GreenfootImage("MinionAtk.png");
         attackImages[0].scale(size, size);
         
         
@@ -50,6 +50,10 @@ public class Minion extends Troops
         healthBar = new SuperStatBar(maxHealth, currentHealth, this, size, 10, -size / 2, filledColor, missingColor, false);
     }
     
+    /**
+     * Act - do whatever the Minion wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act()
     {
         super.act();
@@ -57,9 +61,9 @@ public class Minion extends Troops
             spawn();
         } else if(alive) {
             Actor troop = findTarget(Troops.class);
-            if(troop != null){
+            if(troop != null){ // If there is a target
                 moveTowardsTarget(troop);
-            } else {
+            } else { // If there is no target
                 moveTowardsTarget(findTarget(Towers.class));
             }
             die();
@@ -72,12 +76,18 @@ public class Minion extends Troops
         w.addObject(healthBar, 0, 0);
     }
     
+    
+    /**
+     * Attack the target
+     * 
+     * @param a the target
+     */
     public void attack(Actor a){
         if(actCounter % attackSpeed <= attackSpeed / 5){
             animate(attackImages);
-            if(a instanceof Troops){
+            if(a instanceof Troops){ //If target is a troop
                 ((Troops)a).getHit(damage);
-            }else if(a instanceof Towers){
+            }else if(a instanceof Towers){ //If target is a tower
                 ((Towers)a).getHit(damage);
             } 
         } else { //while not attacking

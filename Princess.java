@@ -3,26 +3,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Normal here.
  * 
- * @author (your name) 
+ * @author Kelby To 
  * @version (a version number or a date)
  */
-public class Princess extends Towers
-{
+public class Princess extends Towers {
+    /**
+     * Constructor for objects of class Princess
+     * 
+     * @param ally Whether the tower is on the left or right side
+     */
     public Princess(boolean ally) {
         super(ally);
         hp = 100;
         range = 60;
         shootingCooldown = 45;
-        image = (ally) ? new GreenfootImage("princess tower 1.png") : new GreenfootImage("princess tower 2.png") ;
+        image = (ally) ? new GreenfootImage("PrincessTower1.png") : new GreenfootImage("PrincessTower2.png") ;
+        image.scale(55,55);
         setImage(image);
     }
-    
-    /**
-     * Act - do whatever the Normal wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    // public void act()
-    // {
-        // // Add your action code here.
-    // }
 }

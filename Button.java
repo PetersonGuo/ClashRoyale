@@ -7,17 +7,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version 1.2
  */
 public class Button extends Actor {
-    private Font buttonFont = new Font("Courier New",  true,  false,  24);
-    public static final double FONT_RATIO = 0.58;
-    private String myText;
-    private int drawX;
-    private int drawY;
-    private GreenfootImage image;
-    private GreenfootImage touchingImage;
-    private boolean touching;
+    private Font buttonFont = new Font("Courier New",  true,  false,  24); // Font for the button
+    public static final double FONT_RATIO = 0.58; // Ratio of font size to image height
+    private String myText; // Text to display on the button
+    private int drawX, drawY; // X and Y coordinates for drawing the text
+    private GreenfootImage image, touchingImage; // Images for the button
+    private boolean touching; // Is the mouse over the button?
     
     /** 
-     * Control the main button features
+     * Constructor for objects of class Button
+     * 
+     * @param text The text to display on the button
      */
     public Button (String text) {
         image = new GreenfootImage (240, 40);
@@ -75,19 +75,23 @@ public class Button extends Actor {
      * Act - do whatever the Button wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
-        if (Greenfoot.mouseMoved(this)) {
+    public void act() {
+        if (Greenfoot.mouseMoved(this))
             setImage(touchingImage);
-        } else if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this)) {
+        else if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this))
            setImage(image);
-        }
     }
     
+    /**
+     * Return the height of the button
+     */
     public int getHeight() {
         return getImage().getHeight();
     }
     
+    /**
+     * Return the width of the button
+     */
     public int getWidth() {
         return getImage().getWidth();
     }
