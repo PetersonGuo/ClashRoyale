@@ -1,5 +1,13 @@
 import greenfoot.*;
 
+/**
+ * An arrow that is launched from a Troop or a Tower.
+ * The arrow will do damage to the target when it hits it.
+ * 
+ * @author Kelby To 
+ * @version (a version number or a date)
+ */
+
 public class Arrow extends Actor {
     private int speed;
     private int damage;
@@ -9,7 +17,7 @@ public class Arrow extends Actor {
     
     public Arrow(Troops target) {
         speed = 5;
-        damage = 2;
+        damage = 3;
         this.target = target;
         image = new GreenfootImage("arrow.png");
     }
@@ -25,12 +33,12 @@ public class Arrow extends Actor {
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() {
-        move(speed);
+        move(speed); //move in the set direction
         if (intersects(target)) {
             //hit
             target.getHit(damage);
             getWorld().removeObject(this);
-        } else if (Math.abs(getX()-targetX) < 6 || Math.abs(getY()-targetY) < 6 ) {
+        } else if (Math.abs(getX()-targetX) < 5 || Math.abs(getY()-targetY) < 5) {
             //miss
             getWorld().removeObject(this);
         }

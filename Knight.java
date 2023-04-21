@@ -25,9 +25,10 @@ public class Knight extends Troops
         air = true;
         
         walkImages = new GreenfootImage[3];
-        //walkImages[0] = new GreenfootImage("knight walk 0.png");
-        //walkImages[1] = new GreenfootImage("knight walk 1.png");
-        //walkImages[2] = new GreenfootImage("knight walk 2.png");
+        walkImages[0] = new GreenfootImage("knight walk 0.png");
+        walkImages[1] = new GreenfootImage("knight walk 1.png");
+        walkImages[2] = new GreenfootImage("knight walk 2.png");
+        attackImages = new GreenfootImage[1];
         attackImages[0] = new GreenfootImage("knight attack.png");
         for(int i = 0; i < walkImages.length; i++){
             walkImages[i] = new GreenfootImage("knight walk "+ i + ".png");

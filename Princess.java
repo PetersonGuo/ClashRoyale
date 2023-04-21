@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Normal here.
  * 
- * @author (your name) 
+ * @author Kelby To 
  * @version (a version number or a date)
  */
 public class Princess extends Towers
@@ -14,6 +14,7 @@ public class Princess extends Towers
         range = 60;
         shootingCooldown = 45;
         image = (ally) ? new GreenfootImage("princess tower 1.png") : new GreenfootImage("princess tower 2.png") ;
+        image.scale(55,55);
         setImage(image);
     }
     

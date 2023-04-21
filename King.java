@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class King here.
  * 
- * @author (your name) 
+ * @author Kelby To 
  * @version (a version number or a date)
  */
 public class King extends Towers
@@ -14,6 +14,7 @@ public class King extends Towers
         range = 80;
         shootingCooldown = 30;
         image = (ally) ? new GreenfootImage("king tower 1.png") : new GreenfootImage("king tower 2.png") ;
+        image.scale(60, 60);
         setImage(image);
     }
     
