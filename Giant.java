@@ -54,24 +54,20 @@ public class Giant extends Troops
     /**
      * Act - do whatever the Giant wants to do. This method is called whenever
      */
-    public void act()
-    {
+    public void act() {
         super.act();
-        if (spawning) {
+        if (spawning)
             spawn();
-        } else if (alive) {
+        else if (alive) {
             if (!crossedBridge) { //If have not crossed bridge
                 moveTowardsTarget(findTarget(Bridge.class));
-                if (isTouching(Bridge.class)) {
+                if (isTouching(Bridge.class))
                     crossBridge();
-                }
-            } else { //If crossed bridge
+            } else //If crossed bridge
                 moveTowardsTarget(findTarget(Towers.class));
-            }
             die();
-        } else {
+        } else
             getWorld().removeObject(this);
-        }
     }
     
     public void addedToWorld(World w) {

@@ -93,7 +93,7 @@ public class Card extends Actor {
      * Spawn a card
      */
     private void spawnCard() { // Spawn a character card
-        int x = FINAL.WORLD_WIDTH / 2 + FINAL.WORLD_WIDTH / 2 * ((Math.random() * 2) == 0 ? 1 : -1), y = enemy ? 100 : FINAL.WORLD_HEIGHT - 100; // Spawn the card at a random location on the enemy side
+        int x = FINAL.WORLD_WIDTH / 2 + FINAL.WORLD_WIDTH / 3 * ((int)(Math.random() * 2) == 0 ? 1 : -1), y = enemy ? 100 : FINAL.WORLD_HEIGHT - 150; // Spawn the card at a random location on the enemy side
         if (type == 0) // Spawn an arrow card
             getWorld().addObject(new Arrows(enemy), x, y);
         else if (type == 1) // Spawn a fireball card
