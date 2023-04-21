@@ -34,7 +34,7 @@ public class Giant extends Troops {
         walkImages = new GreenfootImage[3];
         walkImages[0] = new GreenfootImage("Giant0.png");
         walkImages[1] = new GreenfootImage("GiantWalk2.png");
-        walkImages[2] = new GreenfootImage("GiantWalk3.png");
+        walkImages[2] = new GreenfootImage("GiantWalk1.png");
         
         attackImages = new GreenfootImage[3];
         attackImages[0] = new GreenfootImage("GiantAtk.png");

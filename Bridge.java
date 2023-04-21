@@ -11,8 +11,8 @@ public class Bridge extends Actor {
      * Constructor for objects of class Bridge
      */
     public Bridge() {
-        GreenfootImage image = new GreenfootImage(20,40);
-        image.setColor(new Color(255,0,0,100));
+        GreenfootImage image = new GreenfootImage(48,50);
+        image.setColor(new Color(100,0,0,100));
         image.fill();
         setImage(image);
     }
