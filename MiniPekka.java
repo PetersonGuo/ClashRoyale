@@ -24,7 +24,6 @@ public class MiniPekka extends Troops
         damage = 4;
         size = 30;
         attackRange = 15 + size;
-        detectionRange = 180;
         attackSound = new GreenfootSound("MiniPekkaAttack.mp3");
 
         //miscellaneous stats
@@ -57,7 +56,7 @@ public class MiniPekka extends Troops
             spawn();
         } else if (alive) {
             Actor troop = findTarget(Troops.class);
-            if (troop != null && !((Troops)troop).isAir()) { //If there is a target that is not air
+            if (troop != null && !((Troops)troop).isAir() && !attackingTower) { //If there is a target that is not air
                 moveTowardsTarget(troop);
             }else if (!crossedBridge) { //If have not crossed bridge
                 moveTowardsTarget(findTarget(Bridge.class));

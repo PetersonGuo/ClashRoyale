@@ -1,15 +1,15 @@
 #BlueJ class context
 comment0.target=Giant
-comment0.text=\n\ Write\ a\ description\ of\ class\ Giant\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Giant\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=ally
 comment1.target=Giant(boolean)
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Giant\n\ \n\ @param\ ally\ Whether\ the\ tower\ is\ on\ the\ left\ or\ right\ side\n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Giant\r\n\ \r\n\ @param\ ally\ Whether\ the\ tower\ is\ on\ the\ left\ or\ right\ side\r\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\n\ Act\ -\ do\ whatever\ the\ Giant\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Giant\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n
 comment3.params=w
 comment3.target=void\ addedToWorld(greenfoot.World)
 comment4.params=a
 comment4.target=void\ attack(greenfoot.Actor)
-comment4.text=\n\ attack\ -\ attacks\ the\ target\n\ \n\ @param\ a\ -\ the\ target\n
+comment4.text=\r\n\ attack\ -\ attacks\ the\ target\r\n\ \r\n\ @param\ a\ -\ the\ target\r\n
 numComments=5

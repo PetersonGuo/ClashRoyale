@@ -27,7 +27,6 @@ public class Minion extends Troops
         damage = 1;
         size = 25;
         attackRange = 15 + size; 
-        detectionRange = 180;
         attackSound = new GreenfootSound("MinionAttack.mp3");
         
         //miscellaneous stats
@@ -61,7 +60,7 @@ public class Minion extends Troops
             spawn();
         } else if (alive) {
             Actor troop = findTarget(Troops.class);
-            if (troop != null) { // If there is a target
+            if (troop != null && !attackingTower) { // If there is a target
                 moveTowardsTarget(troop);
             } else { // If there is no target
                 moveTowardsTarget(findTarget(Towers.class));
