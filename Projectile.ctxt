@@ -1,16 +1,16 @@
 #BlueJ class context
 comment0.target=Projectile
-comment0.text=\n\ Write\ a\ description\ of\ class\ Projectile\ here.\n\ \n\ @author\ Kevin\ Luo\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Projectile\ here.\r\n\ \r\n\ @author\ Kevin\ Luo\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=target
-comment1.target=Projectile(Troops)
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Projectile\n\ \n\ @param\ target\ the\ target\ of\ the\ projectile\n
+comment1.target=Projectile(greenfoot.Actor)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Projectile\r\n\ \r\n\ @param\ target\ the\ target\ of\ the\ projectile\r\n
 comment2.params=w
 comment2.target=void\ addedToWorld(greenfoot.World)
-comment2.text=\n\ Added\ to\ world\ method\n\ \n\ @param\ w\ the\ world\ the\ projectile\ is\ added\ to\n
+comment2.text=\r\n\ Added\ to\ world\ method\r\n\ \r\n\ @param\ w\ the\ world\ the\ projectile\ is\ added\ to\r\n
 comment3.params=
 comment3.target=void\ act()
-comment3.text=\n\ Act\ -\ do\ whatever\ the\ Projectile\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment3.text=\r\n\ Act\ -\ do\ whatever\ the\ Projectile\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment4.params=
 comment4.target=void\ hit()
-comment4.text=\n\ Hit\ method\n
+comment4.text=\r\n\ Hit\ method\r\n
 numComments=5

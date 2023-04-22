@@ -13,12 +13,12 @@ public class MiniPekka extends Troops
         super(ally);
         
         //speed stats
-        maxSpeed = 1.5;
-        attackSpeed = 250; //the higher the number the slower the attacks
+        maxSpeed = 1;
+        attackSpeed = 80; //the higher the number the slower the attacks
         animationSpeed = 25;
         
         //health stats
-        currentHealth = maxHealth = 450;
+        currentHealth = maxHealth = 70;
         
         //attack stats
         damage = 4;
@@ -83,18 +83,20 @@ public class MiniPekka extends Troops
      * @param a the actor to attack
      */
     public void attack(Actor a) {
-        if (actCounter % attackSpeed <= attackSpeed / 5) { // If the attack counter is reached
-            animate(attackImages);
+        animate(attackImages);
+        if (actCounter % attackSpeed <= 5) { // If the attack counter is reached
             if (a instanceof Troops) { //If target is a troop
-                if (((Troops)a).isAir() != isAir()) { //Check if air
+                System.out.println("yes");
+                if (((Troops)a).isAir() != true) { //Check if air
                     ((Troops)a).getHit(damage);
+                    System.out.println("yup");
                 }
             }else if (a instanceof Towers) { //If target is a tower
                 ((Towers)a).getHit(damage);
             }
-        } else { //while not attacking
+        } else if (actCounter % attackSpeed <= 10){
             setImage(walkImages[0]);
-        }        
+        }   
     }
 }
 

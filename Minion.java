@@ -17,11 +17,11 @@ public class Minion extends Troops
         
         //speed stats
         maxSpeed = 2;
-        attackSpeed = 100; //the higher the number the slower the attacks
+        attackSpeed = 50; //the higher the number the slower the attacks
         animationSpeed = 10;
         
         //health stats
-        currentHealth = maxHealth = 150;
+        currentHealth = maxHealth = 20;
         
         //attack stats
         damage = 1;
@@ -41,7 +41,7 @@ public class Minion extends Troops
         }
         
         attackImages = new GreenfootImage[1];
-        attackImages[0] = new GreenfootImage("MinionAtk.png");
+        attackImages[0] = new GreenfootImage("Minion.png");
         attackImages[0].scale(size, size);
         
         
@@ -83,14 +83,14 @@ public class Minion extends Troops
      * @param a the target
      */
     public void attack(Actor a) {
-        if (actCounter % attackSpeed <= attackSpeed / 5) {
-            animate(attackImages);
+        animate(attackImages);
+        if (actCounter % attackSpeed <= 5) {
             if (a instanceof Troops) { //If target is a troop
                 ((Troops)a).getHit(damage);
             }else if (a instanceof Towers) { //If target is a tower
                 ((Towers)a).getHit(damage);
             } 
-        } else { //while not attacking
+        } else if (actCounter % attackSpeed <= 10){
             setImage(walkImages[0]);
         }
     }
