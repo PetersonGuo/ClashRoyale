@@ -20,6 +20,7 @@ public class Princess extends Towers {
         image = (ally) ? new GreenfootImage("PrincessTower1.png") : new GreenfootImage("PrincessTower2.png") ;
         image.scale(55,55);
         setImage(image);
+        destroyedSound = new GreenfootSound("TowerDestroyed.mp3");
         
         hpBar = new SuperStatBar(hp, hp, this, 45, 10, (ally)? 25 : -25, Color.GREEN, Color.RED, false);        
     }
@@ -28,6 +29,9 @@ public class Princess extends Towers {
         hp -= dmg;
         hpBar.update(hp);
         //tower destroyed
-        if (hp <= 0) getWorld().removeObject(this);
+        if (hp <= 0) {
+            destroyedSound.play();
+            getWorld().removeObject(this);
+        }
     }
 }

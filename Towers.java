@@ -12,6 +12,7 @@ public abstract class Towers extends Actor {
     protected int hp, range, shootingCooldown, actsSinceShooting;  //range is the radius of the tower
     protected Troops target; //the troop to target
     protected SuperStatBar hpBar;
+    protected GreenfootSound destroyedSound;
     
     /**
      * Constructor for objects of class Towers
@@ -32,7 +33,7 @@ public abstract class Towers extends Actor {
      */
     public void act() {
         actsSinceShooting++;
-        if (target != null){
+        if (target != null && target.isAlive()){
             if (actsSinceShooting >= shootingCooldown)shootArrowAtTarget();
         }else
             target = findTarget();

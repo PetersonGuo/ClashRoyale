@@ -102,10 +102,10 @@ public class MainWorld extends Worlds {
      */
     public void act()
     {
-        timer++;
-        if(timer == 7200){
-            nextWorld();
-        }
+        // timer++;
+        // if(timer == 7200){
+            // nextWorld();
+        // }
     }
     
     /**
