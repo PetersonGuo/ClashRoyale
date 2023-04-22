@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Projectile extends Actor {
     protected int speed, damage; //speed and damage of the projectile
-    protected Troops target; //target of the projectile
+    protected Actor target; //target of the projectile
     protected int targetX, targetY; //target's x and y coordinates
     protected GreenfootImage image; //image of the projectile
     protected int direction; //direction of the projectile
@@ -19,7 +19,7 @@ public class Projectile extends Actor {
      * 
      * @param target the target of the projectile
      */
-    public Projectile(Troops target) {
+    public Projectile(Actor target) {
         this.target = target;
     }
     
@@ -49,7 +49,11 @@ public class Projectile extends Actor {
     protected void hit() {
         if (intersects(target)) {
             //hit
-            target.getHit(damage);
+            if(target instanceof Troops){ //if the target is a troop
+                ((Troops)target).getHit(damage);
+            } else if (target instanceof Towers){ //if the target is a tower
+                ((Towers)target).getHit(damage);
+            }
             getWorld().removeObject(this);
         } else if (Math.abs(getX()-targetX) < 6 || Math.abs(getY()-targetY) < 6 ) //miss
             getWorld().removeObject(this);

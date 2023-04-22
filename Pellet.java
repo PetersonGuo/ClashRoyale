@@ -12,7 +12,7 @@ public class Pellet extends Projectile {
      * 
      * @param target
      */
-    public Pellet(Troops target) {
+    public Pellet(Actor target) {
         super(target);
         
         speed = 5;
