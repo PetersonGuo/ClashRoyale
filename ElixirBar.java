@@ -82,6 +82,7 @@ public class ElixirBar extends Actor {
         if (use > elixir)
             return false;
         elixir -= use;
+        drawImg();
         return true;
     }
 }

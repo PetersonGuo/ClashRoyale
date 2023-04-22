@@ -62,17 +62,13 @@ public class MainWorld extends Worlds {
         allyCards = new LinkedList<>(ally);
         
         for (int i = 0; i < 4; i++) {
-            int next = enemyCards.poll();
-            Card c = new Card(1, 75, 90, true, true, next);
+            Card c = new Card(1, 75, 90, true, true, enemyCards.poll());
             addObject(c, (FINAL.CARD_SPACING + c.getWidth()) * i + c.getWidth() / 2 + FINAL.CARD_SPACING + 90, 90);
-            enemyCards.add(next);
         }
         
         for (int i = 0; i < 4; i++) {
-            int next = allyCards.poll();
-            Card c = new Card(1, 75, 90, true,  false, next);
+            Card c = new Card(1, 75, 90, true,  false, allyCards.poll());
             addObject(c, (FINAL.CARD_SPACING + c.getWidth()) * i + c.getWidth() / 2 + FINAL.CARD_SPACING + 90, 665);
-            allyCards.add(next);
         }
         
         nextCard(true);
@@ -90,19 +86,22 @@ public class MainWorld extends Worlds {
         if (enemy) {
             c = enemyNext;
             removeObject(enemyNext);
-            int next = enemyCards.poll();
-            enemyNext = new Card(42, 53, enemy, next);
-            enemyCards.add(next);
+            enemyNext = new Card(42, 53, enemy, enemyCards.poll());
             addObject(enemyNext, 40, 35);
         } else {
             c = allyNext;
             removeObject(allyNext);
-            int next = allyCards.poll();
-            allyNext = new Card(42, 53, enemy, next);
-            allyCards.add(next);
+            allyNext = new Card(42, 53, enemy, allyCards.poll());
             addObject(allyNext, 40, 720);
         }
         return c;
+    }
+    
+    public void addCardToQueue(int type, boolean ally) {
+        if (ally)
+            allyCards.add(type);
+        else
+            enemyCards.add(type);
     }
     
     public void updateScore(int allyScore, int enemyScore){

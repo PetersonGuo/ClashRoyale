@@ -13,9 +13,10 @@ public interface FINAL {
     int STAT_SIZE = 30; // Size of the stats
     int STAT_SECTION_SIZE = WORLD_HEIGHT / 4;   // Size of the stat section
     int CARD_SPACING = 4; // Spacing between cards
-    int NUM_OF_TROOPS = 8; // Number of troops
+    
     int[] DEFAULT_VALUES = { // Default values for the stats
         1,
+        10,
         1,
         1,
         1,
@@ -23,7 +24,18 @@ public interface FINAL {
         1,
         1,
         1,
-        1,
+    };
+    
+    int NUM_OF_TROOPS = 8; // Number of troops
+    int[] ELIXIR_COST = { // Elixir cost of troops, size must match NUM_OF_TROOPS
+        3,
+        4,
+        3,
+        5,
+        3,
+        3,
+        4,
+        4
     };
     
     String NEXT_WORLD_BUTTON = "Space"; // Next world button

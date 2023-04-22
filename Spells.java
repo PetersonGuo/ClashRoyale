@@ -42,7 +42,10 @@ public class Spells extends Actor {
         for (King k : w.getObjects(King.class))
             if (k.isAlly() == ally)
                 tower = k;
-        List<Troops> targets = w.getObjects(Troops.class);
+        List<Troops> targets = new ArrayList<>();
+        for (Troops t : w.getObjects(Troops.class))
+            if (t.isAlly() != ally)
+                targets.add(t);
         Collections.sort(targets, new Comp(tower));
         if (targets.size() > 0) { // if there are troops, turn towards troops first
             targetX = targets.get(0).getX();
