@@ -110,4 +110,8 @@ public abstract class Towers extends Actor {
     public boolean isAlive(){
         return alive;
     }
+    
+    public static int[] getCrowns() {
+        return new int[]{numAllyTowers, numEnemyTowers};
+    }
 }

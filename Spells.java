@@ -20,6 +20,7 @@ public class Spells extends Actor {
      */
     public Spells(boolean ally) { 
         this.ally = ally;
+        areaOfEffect = 50;
     }
     
     class Comp implements Comparator<Troops> {
@@ -39,12 +40,10 @@ public class Spells extends Actor {
      * @param w the world the spell is added to
      */
     public void addedToWorld (World w) {
-        for (King k : w.getObjects(King.class))
-            if (k.isAlly() == ally)
-                tower = k;
+        tower = ((MainWorld)getWorld()).getKingTower(ally);
         List<Troops> targets = new ArrayList<>();
         for (Troops t : w.getObjects(Troops.class))
-            if (t.isAlly() != ally)
+            if (!(t.isAlly() ^ ally))
                 targets.add(t);
         Collections.sort(targets, new Comp(tower));
         if (targets.size() > 0) { // if there are troops, turn towards troops first
@@ -65,8 +64,12 @@ public class Spells extends Actor {
      * @return the tower with the lowest hp
      */
     public Towers towerTarget() {
-        Towers lowest = getWorld().getObjects(Towers.class).get(0);
-        for (Towers t: getWorld().getObjects(Towers.class)) //check for the lowest hp tower to target
+        List<Towers> towers = new ArrayList<>();
+        for (Towers t : getWorld().getObjects(Towers.class))
+            if (!(t.isAlly() ^ ally))
+                towers.add(t);
+        Towers lowest = towers.get(0);
+        for (Towers t: towers)  //check for the lowest hp tower to target
             lowest = lowest.getHp() > t.getHp() ? t : lowest;
         return lowest;
     }
@@ -84,8 +87,12 @@ public class Spells extends Actor {
      * Damage method
      */
     public void damage() {
-        for(Troops enemy : getObjectsInRange(areaOfEffect, Troops.class))
-            if (enemy.isAlly() != ally)
+        System.out.println(ally + " " + getObjectsInRange(areaOfEffect, Towers.class));
+        for (Troops enemy : getObjectsInRange(areaOfEffect, Troops.class))
+            if (enemy.isAlly() ^ ally)
+                enemy.getHit(damage * 2);
+        for (Towers enemy : getObjectsInRange(areaOfEffect, Towers.class))
+            if (!(ally ^ enemy.isAlly()))
                 enemy.getHit(damage * 2);
     }
     

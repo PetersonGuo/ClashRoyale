@@ -16,6 +16,7 @@ public class MainWorld extends Worlds {
     private Queue<Integer> enemyCards, allyCards; // Card orders
     private Timer timer;
     private Text allyScoreText, enemyScoreText;
+    private King enemyKingTower, allyKingTower;
     /**
      * Constructor for objects of class MainWorld.
      * 
@@ -36,12 +37,14 @@ public class MainWorld extends Worlds {
         addObject(enemyScoreText, 409, 308);
         
         //towers
+        allyKingTower = new King(true);
         addObject(new Princess(true), 93, 512);
-        addObject(new King(true), 213, 586);
+        addObject(allyKingTower, 213, 586);
         addObject(new Princess(true), 333, 512);
 
+        enemyKingTower = new King(false);
         addObject(new Princess(false), 93, 248);
-        addObject(new King(false), 213, 177);
+        addObject(enemyKingTower, 213, 177);
         addObject(new Princess(false), 333, 248);
 
         //bridge
@@ -114,7 +117,7 @@ public class MainWorld extends Worlds {
      */
     public void nextWorld() {
         // To Do: Set Timer, keep track of crowns
-        Greenfoot.setWorld(new EndScreen(new int[]{0,0}));
+        Greenfoot.setWorld(new EndScreen(Towers.getCrowns()));
     }
     
     /**
@@ -125,5 +128,9 @@ public class MainWorld extends Worlds {
      */
     public ElixirBar getElixir(boolean enemy) {
         return enemy ? enemyElixir : allyElixir;
+    }
+    
+    public King getKingTower(boolean enemy) {
+        return enemy ? enemyKingTower : allyKingTower;
     }
 }

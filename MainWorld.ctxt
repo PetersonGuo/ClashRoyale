@@ -17,4 +17,6 @@ comment5.text=\n\ nextWorld\ -\ Go\ to\ the\ next\ world\n
 comment6.params=enemy
 comment6.target=ElixirBar\ getElixir(boolean)
 comment6.text=\n\ Get\ the\ elixir\ bar\n\ \n\ @param\ enemy\ Is\ the\ elixir\ bar\ for\ the\ enemy\n\ @return\ The\ elixir\ bar\n
-numComments=7
+comment7.params=enemy
+comment7.target=King\ getKingTower(boolean)
+numComments=8
