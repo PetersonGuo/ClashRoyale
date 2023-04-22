@@ -21,7 +21,7 @@ public class Arrow extends Actor {
     public Arrow(Actor target) {
         // initialise instance variables
         speed = 5;
-        damage = 3;
+        damage = 5;
         this.target = target;
         GreenfootImage img = new GreenfootImage("Arrow.png");
         img.scale(img.getWidth()/2, img.getHeight()/2);

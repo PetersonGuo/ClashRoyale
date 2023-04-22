@@ -15,16 +15,17 @@ public class Dead extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public Dead(int size){
-        image = getImage();
+        image = new GreenfootImage("dead.png");
         this.size = size;
-        transparency = 100;
+        transparency = 200;
         image.setTransparency(transparency);
-        image.scale(size, size);
+        image.scale(size / 2, size / 2);
+        setImage(image);
     }
     
     public void act()
     {
-        transparency--;
+        transparency-=5;
         image.setTransparency(transparency);
         if(transparency <= 0){
             getWorld().removeObject(this);
