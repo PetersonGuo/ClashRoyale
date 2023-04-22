@@ -16,6 +16,8 @@ public class Arrows extends Spells {
         super(ally);
         
         speed = 15;
+        areaOfEffect = 50;
+        damage = 5;
         image = new GreenfootImage("ArrowSpell0.png");
         image = new GreenfootImage("ArrowSpell1.png");
     }

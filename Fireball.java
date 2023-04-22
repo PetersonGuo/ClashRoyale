@@ -16,6 +16,8 @@ public class Fireball extends Spells {
         super(ally);
         
         speed = 20;
+        damage = 8;
+        areaOfEffect = 30;
         image = new GreenfootImage("Fireball0.png");
         image2 = new GreenfootImage("Fireball1.png");
     }

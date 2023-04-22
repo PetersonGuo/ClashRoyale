@@ -7,7 +7,7 @@ import java.util.*;
  * @version (a version number or a date)
  */
 public class Spells extends Actor {
-    protected int speed, damage, elixer, areaOfEffect, targetX, targetY; //areaOfEffect is the radius of the spell
+    protected int speed, damage, elixir, areaOfEffect, targetX, targetY; //areaOfEffect is the radius of the spell
     protected boolean ally; //true if ally, false if enemy
     private King tower;
     private Actor target;
@@ -20,7 +20,6 @@ public class Spells extends Actor {
      */
     public Spells(boolean ally) { 
         this.ally = ally;
-        areaOfEffect = 50;
     }
     
     class Comp implements Comparator<Troops> {
@@ -87,15 +86,11 @@ public class Spells extends Actor {
      * Damage method
      */
     public void damage() {
-        System.out.println(ally + " " + getObjectsInRange(areaOfEffect, Towers.class));
         for (Troops enemy : getObjectsInRange(areaOfEffect, Troops.class))
             if (enemy.isAlly() ^ ally)
                 enemy.getHit(damage * 2);
-        for (Towers enemy : getObjectsInRange(areaOfEffect, Towers.class)) {
-            System.out.println(enemy.isAlly() + " " + ally);
-            if (ally ^ enemy.isAlly())
-                enemy.getHit(damage * 2);
-        }
+        for (Towers enemy : getObjectsInRange(areaOfEffect, Towers.class))
+            enemy.getHit(damage * 2);
     }
     
     /**
