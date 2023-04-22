@@ -25,11 +25,18 @@ public class King extends Towers {
         hpBar = new SuperStatBar(hp, hp, this, 50, 10, (ally)? 25 : -25, Color.GREEN, Color.RED, true);
     }
     
+    public void act(){
+        if(hp < 200 || (numAllyTowers < 3 && ally) || (numEnemyTowers < 3 && !ally)){
+            super.act();
+        }
+    }    
+    
     public void getHit(int dmg) {
         hp -= dmg;
         hpBar.update(hp);
         //tower destroyed
         if (hp <= 0) {
+            alive = false;
             if(ally)
                 numAllyTowers--;
             else
