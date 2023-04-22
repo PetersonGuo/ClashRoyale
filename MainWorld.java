@@ -98,6 +98,17 @@ public class MainWorld extends Worlds {
     }
     
     /**
+     * act method - increase timer and change worlds at the 2 minute mark
+     */
+    public void act()
+    {
+        timer++;
+        if(timer == 7200){
+            nextWorld();
+        }
+    }
+    
+    /**
      * nextWorld - Go to the next world
      */
     public void nextWorld() {
