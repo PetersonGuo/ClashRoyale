@@ -43,7 +43,7 @@ public class EndScreen extends Worlds {
     }
     
     public void act() {
-        if (Greenfoot.isKeyDown("enter")) {
+        if (Greenfoot.isKeyDown(FINAL.NEXT_WORLD_BUTTON)) {
             nextWorld();
         }
     }
