@@ -30,6 +30,7 @@ public class Chevron extends Actor {
         this.left = left;
         this.selector = selector;
         this.text = text;
+        setImage(new GreenfootImage("Chevron.png"));
         getImage().scale(getImage().getWidth() * size / getImage().getHeight(), size);
         if (left)
             getImage().rotate(-90);

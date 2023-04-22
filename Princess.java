@@ -15,15 +15,18 @@ public class Princess extends Towers {
     public Princess(boolean ally) {
         super(ally);
         hp = 100;
-        range = 60;
+        range = 120;
         shootingCooldown = 45;
         image = (ally) ? new GreenfootImage("PrincessTower1.png") : new GreenfootImage("PrincessTower2.png") ;
         image.scale(55,55);
         setImage(image);
+        
+        hpBar = new SuperStatBar(hp, hp, this, 45, 10, (ally)? 25 : -25, Color.GREEN, Color.RED, false);        
     }
     
     public void getHit(int dmg) {
         hp -= dmg;
+        hpBar.update(hp);
         //tower destroyed
         if (hp <= 0) getWorld().removeObject(this);
     }

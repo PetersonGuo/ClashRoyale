@@ -37,10 +37,10 @@ public class ChooseScreen extends Worlds {
     private final int statsPerPage = FINAL.STAT_SECTION_SIZE / (FINAL.STAT_SIZE + FINAL.ARROW_OFFSET); // Number of stats per page
     private final List<SetContainer> statText = new ArrayList<>() {{ // Add stats to a list
         for (int i = 0; i < FINAL.STAT_NAMES.length; i++)
-            add(new SetContainer(new Text(FINAL.STAT_NAMES[i], Color.WHITE, FINAL.STAT_SIZE), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT / 3 + (i % statsPerPage) * (FINAL.STAT_SIZE + FINAL.ARROW_OFFSET) * 2));
+            add(new SetContainer(new Text(FINAL.STAT_NAMES[i], Color.BLACK, FINAL.STAT_SIZE), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT / 3 + (i % statsPerPage) * (FINAL.STAT_SIZE + FINAL.ARROW_OFFSET) * 2));
     }};
     private final Set<SetContainer> staticText = new HashSet<>() {{ // Text that doesnt change
-        add(new SetContainer(new Text("Choose variables for the simulation", Color.WHITE, FINAL.WORLD_WIDTH / "Choose variables for the simulation".length() * 2), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT / 5));
+        add(new SetContainer(new Text("Choose variables for the simulation", Color.BLACK, FINAL.WORLD_WIDTH / "Choose variables for the simulation".length() * 2), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT / 5));
     }};
     private static int pageNum, act; // Page number and act
     private boolean lastPress; // Last key press
@@ -109,14 +109,14 @@ public class ChooseScreen extends Worlds {
             SetContainer setValue = statText.get(i); // Get the stat
             addObject(setValue.getText(), setValue.getX(), setValue.getY()); // Add the stat
             int y = setValue.getY() + FINAL.STAT_SIZE + FINAL.ARROW_OFFSET; // Get the y value
-            Text t = new Text(stats.get(setValue.getText().getString()), Color.WHITE, FINAL.STAT_SIZE); // Get the text
+            Text t = new Text(stats.get(setValue.getText().getString()), Color.BLACK, FINAL.STAT_SIZE); // Get the text
             addObject(t, FINAL.WORLD_WIDTH / 2, y); // Add the text
             addObject(new Chevron(true, setValue.getText().getString(), FINAL.STAT_SIZE, t), FINAL.WORLD_WIDTH / 4, y); // Add the chevrons
             addObject(new Chevron(false, setValue.getText().getString(), FINAL.STAT_SIZE, t), FINAL.WORLD_WIDTH * 3 / 4, y); // Add the chevrons
         }
         left = new Chevron(true, null, FINAL.STAT_SIZE); // Add the chevrons
         right = new Chevron(false, null, FINAL.STAT_SIZE); // Add the chevrons
-        addObject(new Text((pageNum + 1) + " / " + (statText.size() / statsPerPage + 1), Color.WHITE, FINAL.STAT_SIZE), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT * 9 / 10); // Add the page number
+        addObject(new Text((pageNum + 1) + " / " + (statText.size() / statsPerPage + 1), Color.BLACK, FINAL.STAT_SIZE), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT * 9 / 10); // Add the page number
         addObject(left, FINAL.WORLD_WIDTH * 2 / 5, FINAL.WORLD_HEIGHT * 9 / 10); // Add the chevrons
         addObject(right, FINAL.WORLD_WIDTH * 3 / 5, FINAL.WORLD_HEIGHT * 9 / 10); // Add the chevrons
     }

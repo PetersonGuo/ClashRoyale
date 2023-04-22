@@ -11,6 +11,7 @@ public abstract class Towers extends Actor {
     protected GreenfootImage image; //the image of the tower
     protected int hp, range, shootingCooldown, actsSinceShooting;  //range is the radius of the tower
     protected Troops target; //the troop to target
+    protected SuperStatBar hpBar;
     
     /**
      * Constructor for objects of class Towers
@@ -21,15 +22,19 @@ public abstract class Towers extends Actor {
         this.ally = ally;
     }
     
+    public void addedToWorld(World w){
+        w.addObject(hpBar, 0, 0);
+    }
+    
     /**
      * Act - do whatever the Towers wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() {
         actsSinceShooting++;
-        if (target != null)
+        if (target != null){
             if (actsSinceShooting >= shootingCooldown)shootArrowAtTarget();
-        else
+        }else
             target = findTarget();
     }
     
@@ -45,9 +50,10 @@ public abstract class Towers extends Actor {
         if (troopsInRange.size() > 0) {
             closest = troopsInRange.get(0);
             for(Troops t : troopsInRange) {
-                if (getDistanceFromTower(t) > getDistanceFromTower(closest))
+                if (getDistanceFromTower(t) > getDistanceFromTower(closest) && closest.isAlly() == ally)
                     closest = t;
             }
+            if(closest.isAlly() != ally) closest = null;
         }
         return closest;
     }

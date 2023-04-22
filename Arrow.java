@@ -23,7 +23,9 @@ public class Arrow extends Actor {
         speed = 5;
         damage = 3;
         this.target = target;
-        image = new GreenfootImage("Arrow.png");
+        GreenfootImage img = new GreenfootImage("Arrow.png");
+        img.scale(img.getWidth()/2, img.getHeight()/2);
+        setImage(img);
     }
     
     /**
@@ -44,11 +46,10 @@ public class Arrow extends Actor {
     public void act() {
         move(speed);
         if (intersects(target)) { //hit
-            if(target instanceof Troops){ //if the target is a troop
+            if(target instanceof Troops)
                 ((Troops)target).getHit(damage);
-            } else if (target instanceof Towers){ //if the target is a tower
+            else if(target instanceof Towers)
                 ((Towers)target).getHit(damage);
-            }
             getWorld().removeObject(this);
         } else if (Math.abs(getX()-targetX) < 6 || Math.abs(getY()-targetY) < 6 ) // miss
             getWorld().removeObject(this);
