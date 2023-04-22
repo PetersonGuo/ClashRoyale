@@ -57,7 +57,7 @@ public class MiniPekka extends Troops
             spawn();
         } else if (alive) {
             Actor troop = findTarget(Troops.class);
-            if (troop != null) { //If there is a target
+            if (troop != null && !((Troops)troop).isAir()) { //If there is a target that is not air
                 moveTowardsTarget(troop);
             }else if (!crossedBridge) { //If have not crossed bridge
                 moveTowardsTarget(findTarget(Bridge.class));
@@ -86,10 +86,7 @@ public class MiniPekka extends Troops
         animate(attackImages);
         if (actCounter % attackSpeed == 0) { // If the attack counter is reached
             if (a instanceof Troops) { //If target is a troop
-                if (((Troops)a).isAir() != true) { //Check if air
-                    ((Troops)a).getHit(damage);
-                    System.out.println("yup");
-                }
+                ((Troops)a).getHit(damage);
             }else if (a instanceof Towers) { //If target is a tower
                 ((Towers)a).getHit(damage);
             }
