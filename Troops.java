@@ -12,10 +12,10 @@ public abstract class Troops extends Actor
     protected int distX, distY; //distance between the troop and the target
     protected boolean crossedBridge = false; //true if the troop has crossed the bridge, false if not
     
-    protected int maxHealth, currentHealth, damage, attackRange, detectionRange; //attack range is in pixels
+    protected int maxHealth, currentHealth, damage, attackRange, detectionRange = 100; //attack range is in pixels
 
     protected int elixirCost; //cost of the troop in elixir
-    protected boolean air, ally, spawning = true, alive = true, attackingTower = false; //air is true if the troop can fly over the bridge, ally is true if the troop is on the player's side, attacking is true if the troop is attacking a tower
+    protected boolean air, ally, spawning = true, alive = true; //air is true if the troop can fly over the bridge, ally is true if the troop is on the player's side
     
     protected int size; //size of the health bar
     protected Color filledColor = new Color (0, 255, 0);  //green
@@ -44,7 +44,6 @@ public abstract class Troops extends Actor
     public void addedToWorld(World w) {
         spawnSound = new GreenfootSound("spawn.mp3");
         spawnSound.play();
-        detectionRange = getWorld().getWidth() / 3;
     }
     
     /**
@@ -61,7 +60,7 @@ public abstract class Troops extends Actor
             Iterator<T> iter = actors.iterator();
             while (iter.hasNext()) { //checks if is ally
                 T actor = iter.next();
-                if (((Troops)actor).isAlly() == isAlly()) {
+                if (((Troops) actor).isAlly() == isAlly()) {
                     iter.remove();
                 }
             }
@@ -104,15 +103,11 @@ public abstract class Troops extends Actor
         setRotation((int)direction);
         
         if (distFromTarget(a) <= attackRange && a.getClass() != Bridge.class) { //within attack range, attack
-            if(a instanceof Towers){
-                attackingTower = true;
-            }
             attack(a);
             if(actCounter % attackSpeed == 0){
                 attackSound.play();
             }
         } else { //move towards the target
-            attackingTower = false;
             animate(walkImages);
             move((int)speed);
         }

@@ -19,14 +19,14 @@ public class Musketeer extends Troops
         
         //speed stats
         maxSpeed = 1;
-        attackSpeed = 75;
+        attackSpeed = 85;  //the higher the number the slower the attacks
         animationSpeed = 15;
         
         //health stats
-        currentHealth = maxHealth = 50;
+        currentHealth = maxHealth = 25;
         
         //attack stats
-        damage = 3;
+        damage = 9;
         size = 25;
         attackRange = 60 + size;
         attackSound = new GreenfootSound("MusketeerAttack.mp3");
@@ -57,7 +57,7 @@ public class Musketeer extends Troops
             spawn();
         } else if (alive) {
             Actor troop = findTarget(Troops.class);
-            if (troop != null && !attackingTower) { //If there is a target
+            if (troop != null) { //If there is a target
                 moveTowardsTarget(troop);
             }
             else if (!crossedBridge) { //If have not crossed bridge

@@ -14,14 +14,14 @@ public class MiniPekka extends Troops
         
         //speed stats
         maxSpeed = 1;
-        attackSpeed = 80; //the higher the number the slower the attacks
+        attackSpeed = 100; //the higher the number the slower the attacks
         animationSpeed = 25;
         
         //health stats
-        currentHealth = maxHealth = 70;
+        currentHealth = maxHealth = 40;
         
         //attack stats
-        damage = 4;
+        damage = 14;
         size = 30;
         attackRange = 15 + size;
         attackSound = new GreenfootSound("MiniPekkaAttack.mp3");
@@ -56,7 +56,7 @@ public class MiniPekka extends Troops
             spawn();
         } else if (alive) {
             Actor troop = findTarget(Troops.class);
-            if (troop != null && !((Troops)troop).isAir() && !attackingTower) { //If there is a target that is not air
+            if (troop != null && !((Troops)troop).isAir()) { //If there is a target that is not air
                 moveTowardsTarget(troop);
             }else if (!crossedBridge) { //If have not crossed bridge
                 moveTowardsTarget(findTarget(Bridge.class));
