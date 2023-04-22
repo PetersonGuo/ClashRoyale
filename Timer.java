@@ -7,9 +7,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class Timer extends Actor {
-    private int timer = 60 * 180; //about 60 fps * 3 mins
+    private int timer; //about 120 seconds
  
     public Timer() {
+        timer = FINAL.GAME_TIME;
         updateImage();
     }
      

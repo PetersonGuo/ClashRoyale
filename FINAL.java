@@ -8,6 +8,7 @@ import greenfoot.*;
 public interface FINAL {
     int WORLD_HEIGHT = 750; // Height of the world
     int WORLD_WIDTH = 423; // Width of the world
+    int GAME_TIME = 7200;
     int ARROW_OFFSET = 10; // Offset of the arrows
     int STAT_SIZE = 30; // Size of the stats
     int STAT_SECTION_SIZE = WORLD_HEIGHT / 4;   // Size of the stat section

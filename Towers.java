@@ -14,6 +14,9 @@ public abstract class Towers extends Actor {
     protected SuperStatBar hpBar;
     protected GreenfootSound destroyedSound;
     
+    protected static int numAllyTowers = 0;
+    protected static int numEnemyTowers = 0;
+    
     /**
      * Constructor for objects of class Towers
      * 
@@ -21,6 +24,10 @@ public abstract class Towers extends Actor {
      */
     public Towers(boolean ally) {
         this.ally = ally;
+        if(ally)
+            numAllyTowers++;
+        else
+            numEnemyTowers++;
     }
     
     public void addedToWorld(World w){

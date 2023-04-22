@@ -14,6 +14,8 @@ public class MainWorld extends Worlds {
     private Card enemyNext, allyNext; // The next cards for the enemy and ally
     private ElixirBar enemyElixir, allyElixir; // The elixir bars
     private Queue<Integer> enemyCards, allyCards; // Card orders
+    private Timer timer;
+    private Text allyScoreText, enemyScoreText;
     /**
      * Constructor for objects of class MainWorld.
      * 
@@ -28,8 +30,10 @@ public class MainWorld extends Worlds {
         addObject(new Text("Next:", Color.BLACK, 18), 40, 680);
         addObject(new Text("Next:", Color.BLACK, 18), 40, 70);
         
-        addObject(new Text(0, Color.BLUE, 30), 409, 453);
-        addObject(new Text(0, Color.RED, 30), 409, 308);
+        allyScoreText = new Text(0, Color.BLUE, 30);
+        enemyScoreText = new Text(0, Color.RED, 30);
+        addObject(allyScoreText, 409, 453);
+        addObject(enemyScoreText, 409, 308);
         
         //towers
         addObject(new Princess(true), 93, 512);
@@ -44,8 +48,9 @@ public class MainWorld extends Worlds {
         addObject(new Bridge(), 93, 381);
         addObject(new Bridge(), 333, 381);
         
-        // timer
-        addObject(new Timer(), FINAL.WORLD_WIDTH * 14 / 15, FINAL.WORLD_HEIGHT / 2);
+        //timer
+        timer = new Timer();
+        addObject(timer, 40, 105);
         
         // Randomize card order
         List<Integer> enemy = new ArrayList<>() {{for (int i = 0; i < FINAL.NUM_OF_TROOPS; i++) add(i);}},
@@ -98,6 +103,11 @@ public class MainWorld extends Worlds {
             addObject(allyNext, 40, 720);
         }
         return c;
+    }
+    
+    public void updateScore(int allyScore, int enemyScore){
+        allyScoreText.updateText(allyScore);
+        enemyScoreText.updateText(enemyScore);
     }
     
     /**
