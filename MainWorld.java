@@ -22,9 +22,9 @@ public class MainWorld extends Worlds {
      * 
      * @param stats The stats of the game
      */
-    public MainWorld(Map<String, Integer> stats) {
-        enemyElixir = new ElixirBar(stats.get("Start Elixir"), stats.get("Max Elixir"), stats.get("Elixir Time"));
-        allyElixir = new ElixirBar(stats.get("Start Elixir"), stats.get("Max Elixir"), stats.get("Elixir Time"));
+    public MainWorld(Map<String, Double> stats) {
+        enemyElixir = new ElixirBar(stats.get("Start Elixir").intValue(), stats.get("Max Elixir").intValue(), stats.get("Elixir Time").intValue());
+        allyElixir = new ElixirBar(stats.get("Start Elixir").intValue(), stats.get("Max Elixir").intValue(), stats.get("Elixir Time").intValue());
         addObject(allyElixir, 250, 730);
         addObject(enemyElixir, 250, 20);
         

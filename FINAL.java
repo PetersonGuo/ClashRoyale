@@ -14,16 +14,16 @@ public interface FINAL {
     int STAT_SECTION_SIZE = WORLD_HEIGHT / 4;   // Size of the stat section
     int CARD_SPACING = 4; // Spacing between cards
     
-    int[] DEFAULT_VALUES = { // Default values for the stats
-        1,
-        10,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
+    double[][] DEFAULT_VALUES = { // Default values for the stats
+        {1, 0, 20, 1}, // First Value: Default value, Second: Min Value, Third: Max Value, Fourth: Increment
+        {10, 0, 20, 1},
+        {1, 0, 20, 1},
+        {1, 0, 20, 1},
+        {1, 0, 20, 1},
+        {1, 0, 20, 1},
+        {1, 0, 20, 1},
+        {1, 0, 20, 1},
+        {1, 0, 20, 1}
     };
     
     int NUM_OF_TROOPS = 8; // Number of troops

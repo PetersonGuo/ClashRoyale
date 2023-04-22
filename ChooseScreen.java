@@ -34,6 +34,16 @@ public class ChooseScreen extends Worlds {
         public int getX() {return x;}
         public int getY() {return y;}
     }
+    
+    class Tuple {
+        double value, min, max, inc;
+        Tuple(double value, double min, double max, double inc) {
+            this.value = value;
+            this.min = min;
+            this.max = max;
+            this.inc = inc;
+        }
+    }
     private final int statsPerPage = FINAL.STAT_SECTION_SIZE / (FINAL.STAT_SIZE + FINAL.ARROW_OFFSET); // Number of stats per page
     private final List<SetContainer> statText = new ArrayList<>() {{ // Add stats to a list
         for (int i = 0; i < FINAL.STAT_NAMES.length; i++)
@@ -44,7 +54,7 @@ public class ChooseScreen extends Worlds {
     }};
     private static int pageNum, act; // Page number and act
     private boolean lastPress; // Last key press
-    private static Map<String, Integer> stats; // Map of stats
+    private static Map<String, Tuple> stats; // Map of stats
     private static Button cont; // Continue button
     private static Chevron left, right; // Left and right chevrons
     /**
@@ -67,7 +77,7 @@ public class ChooseScreen extends Worlds {
     private void initializeStats() { // Add stats to map
         stats = new HashMap<>() {{ // Initialize map
             for (int i = 0; i < FINAL.STAT_NAMES.length; i++) // Add stats
-                put(FINAL.STAT_NAMES[i], FINAL.DEFAULT_VALUES[i]); // Add default values
+                put(FINAL.STAT_NAMES[i], new Tuple(FINAL.DEFAULT_VALUES[i][0], FINAL.DEFAULT_VALUES[i][1], FINAL.DEFAULT_VALUES[i][2], FINAL.DEFAULT_VALUES[i][3])); // Add default values
         }};
     }
     
@@ -109,7 +119,7 @@ public class ChooseScreen extends Worlds {
             SetContainer setValue = statText.get(i); // Get the stat
             addObject(setValue.getText(), setValue.getX(), setValue.getY()); // Add the stat
             int y = setValue.getY() + FINAL.STAT_SIZE + FINAL.ARROW_OFFSET; // Get the y value
-            Text t = new Text(stats.get(setValue.getText().getString()), Color.BLACK, FINAL.STAT_SIZE); // Get the text
+            Text t = new Text(stats.get(setValue.getText().getString()).value, Color.BLACK, FINAL.STAT_SIZE); // Get the text
             addObject(t, FINAL.WORLD_WIDTH / 2, y); // Add the text
             addObject(new Chevron(true, setValue.getText().getString(), FINAL.STAT_SIZE, t), FINAL.WORLD_WIDTH / 4, y); // Add the chevrons
             addObject(new Chevron(false, setValue.getText().getString(), FINAL.STAT_SIZE, t), FINAL.WORLD_WIDTH * 3 / 4, y); // Add the chevrons
@@ -128,15 +138,18 @@ public class ChooseScreen extends Worlds {
      * @return The value of the stat
      */
     public void setValue(Chevron selector) {
-        if ((!selector.isLeft() || stats.get(selector.getSelector()) > 1) && (selector.isLeft() || stats.get(selector.getSelector()) < 20)) // If the value is within the range
-            stats.put(selector.getSelector(), stats.get(selector.getSelector()) + (selector.isLeft() ? -1 : 1));
-        selector.getText().updateText(stats.get(selector.getSelector())); // Update the text
+        if ((!selector.isLeft() || stats.get(selector.getSelector()).value > stats.get(selector.getSelector()).min) && (selector.isLeft() || stats.get(selector.getSelector()).value < stats.get(selector.getSelector()).max)) // If the value is within the range
+            stats.get(selector.getSelector()).value += (selector.isLeft() ? -stats.get(selector.getSelector()).inc : stats.get(selector.getSelector()).inc);
+        selector.getText().updateText(stats.get(selector.getSelector()).value); // Update the text
     }
     
     /**
      * Next world
      */
     public void nextWorld() {
+        Map<String, Double> stats = new HashMap<>();
+        for (Map.Entry<String, Tuple> m : this.stats.entrySet()) 
+            stats.put(m.getKey(), m.getValue().value);
         Greenfoot.setWorld(new MainWorld(stats));
     }
 }

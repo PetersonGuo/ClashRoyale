@@ -18,6 +18,7 @@ public class Text extends Actor {
      * @param size The size of the text
      */
     public Text(int value, Color color, int size) {this(Integer.toString(value), color, new Color(0, 0, 0, 0), size);}
+    public Text(double value, Color color, int size) {this(Double.toString(value), color, new Color(0, 0, 0, 0), size);}
     /**
      * Create a text object
      * @param str The string to display
@@ -61,6 +62,7 @@ public class Text extends Actor {
     
     // Used for updating score
     public void updateText(int str) {updateText(Integer.toString(str));}
+    public void updateText(double str) {updateText(Double.toString(str));}
     public void updateText(String str) {
         this.str = str;
         text = new GreenfootImage(str, size, color, background);
