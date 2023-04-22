@@ -29,7 +29,6 @@ public class Musketeer extends Troops
         damage = 3;
         size = 25;
         attackRange = 60 + size;
-        detectionRange = 400;
         attackSound = new GreenfootSound("MusketeerAttack.mp3");
         
         //miscellaneous stats
@@ -58,7 +57,7 @@ public class Musketeer extends Troops
             spawn();
         } else if (alive) {
             Actor troop = findTarget(Troops.class);
-            if (troop != null) { //If there is a target
+            if (troop != null && !attackingTower) { //If there is a target
                 moveTowardsTarget(troop);
             }
             else if (!crossedBridge) { //If have not crossed bridge

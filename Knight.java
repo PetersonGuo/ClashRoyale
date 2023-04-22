@@ -22,7 +22,6 @@ public class Knight extends Troops {
         damage = 2;
         size = 25;
         attackRange = 15 + size;
-        detectionRange = 180;
         attackSound = new GreenfootSound("KnightAttack.mp3");
 
         //miscellaneous stats
@@ -54,7 +53,7 @@ public class Knight extends Troops {
             spawn();
         else if (alive) {
             Actor troop = findTarget(Troops.class);
-            if (troop != null  && !((Troops)troop).isAir()) //If there is a target that is not air
+            if (troop != null  && !((Troops)troop).isAir() && !attackingTower) //If there is a target that is not air
                 moveTowardsTarget(troop);
             else if (!crossedBridge) { //If have not crossed bridge
                 moveTowardsTarget(findTarget(Bridge.class));

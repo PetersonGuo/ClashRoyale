@@ -30,7 +30,6 @@ public class Archer extends Troops {
         damage = 1;
         size = 25;
         attackRange = 40 + size;
-        detectionRange = 350;
         attackSound = new GreenfootSound("ArcherAttack.mp3");
         
         //miscellaneous stats
@@ -63,7 +62,7 @@ public class Archer extends Troops {
             spawn();
         } else if (alive) {
             Actor troop = findTarget(Troops.class);
-            if (troop != null) { // If there is a target
+            if (troop != null  && !attackingTower) { // If there is a target
                 moveTowardsTarget(troop);
             } else if (!crossedBridge) { //If have not crossed bridge
                 moveTowardsTarget(findTarget(Bridge.class));
