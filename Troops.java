@@ -183,6 +183,7 @@ public abstract class Troops extends Actor
             dieSound = new GreenfootSound("death.mp3");
             dieSound.play();
             alive = false;
+            getWorld().addObject(new Dead(size), getX(), getY());
         }
     }
     

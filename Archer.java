@@ -92,10 +92,10 @@ public class Archer extends Troops {
         animate(attackImages);
         if (actCounter % attackSpeed == 0) { // If the attack counter is reached
             target = a;
-            if (a instanceof Troops) { //If target is a troop
+            if (a instanceof Troops && ((Troops)a).isAlive()) { //If target is a troop
                 shootArrowAtTarget();
                 ((Troops)a).getHit(damage);
-            }else if (a instanceof Towers) { //If target is a tower
+            }else if (a instanceof Towers && ((Towers)a).isAlive()) { //If target is a tower
                 shootArrowAtTarget();
                 ((Towers)a).getHit(damage);
             } 
