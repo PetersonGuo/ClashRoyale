@@ -14,6 +14,7 @@ public class MainWorld extends Worlds {
     private Card enemyNext, allyNext; // The next cards for the enemy and ally
     private ElixirBar enemyElixir, allyElixir; // The elixir bars
     private Queue<Integer> enemyCards, allyCards; // Card orders
+    private Timer timer;
     /**
      * Constructor for objects of class MainWorld.
      * 
@@ -45,7 +46,8 @@ public class MainWorld extends Worlds {
         addObject(new Bridge(), 333, 381);
         
         //timer
-        addObject(new Timer(), FINAL.WORLD_WIDTH / 10, FINAL.WORLD_HEIGHT / 10);
+        timer = new Timer();
+        addObject(timer, 40, 105);
         
         // Randomize card order
         List<Integer> enemy = new ArrayList<>() {{for (int i = 0; i < FINAL.NUM_OF_TROOPS; i++) add(i);}},
@@ -102,21 +104,9 @@ public class MainWorld extends Worlds {
     
     public void act()
     {
-        timer1++;
-        if(timer1 == 7200){
+        if(timer.timeIsUp()){
             nextWorld();
         }
-    }
-    
-    /**
-     * act method - increase timer and change worlds at the 2 minute mark
-     */
-    public void act()
-    {
-        // timer++;
-        // if(timer == 7200){
-            // nextWorld();
-        // }
     }
     
     /**

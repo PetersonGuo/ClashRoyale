@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Timer extends Actor
 {
-    private int timer = 60 * 120; //about 60 seconds
+    private int timer = 7200; //about 120 seconds
  
     public Timer()
     {
@@ -25,6 +25,10 @@ public class Timer extends Actor
      
     private void updateImage()
     {
-        setImage(new GreenfootImage("Time: " + timer/60, 20, Color.BLACK, Color.RED));
+        setImage(new GreenfootImage("Time\n" + timer/60, 20, Color.BLACK, Color.RED));
+    }
+    
+    public boolean timeIsUp(){
+        return timer == 0;
     }
 }

@@ -9,7 +9,6 @@ comment2.target=Card\ nextCard(boolean)
 comment2.text=\n\ Get\ the\ next\ card\n\ \n\ @param\ enemy\ Is\ the\ card\ for\ the\ enemy\n\ @return\ The\ next\ card\n
 comment3.params=
 comment3.target=void\ act()
-comment3.text=\n\ act\ method\ -\ increase\ timer\ and\ change\ worlds\ at\ the\ 2\ minute\ mark\n
 comment4.params=
 comment4.target=void\ nextWorld()
 comment4.text=\n\ nextWorld\ -\ Go\ to\ the\ next\ world\n
