@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.target=WelcomeScreen
-comment0.text=\n\ Write\ a\ description\ of\ class\ WelcomeScreen\ here.\n\ \n\ @author\ Peterson\ Guo\n\ @version\ 1.0\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ WelcomeScreen\ here.\r\n\ \r\n\ @author\ Peterson\ Guo\r\n\ @version\ 1.0\r\n
 comment1.params=
 comment1.target=WelcomeScreen()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ WelcomeScreen.\n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ WelcomeScreen.\r\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\n\ Act\ -\ do\ whatever\ the\ WelcomeScreen\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ WelcomeScreen\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment3.params=
 comment3.target=void\ nextWorld()
-comment3.text=\n\ nextWorld\ -\ Go\ to\ the\ next\ world\n
+comment3.text=\r\n\ nextWorld\ -\ Go\ to\ the\ next\ world\r\n
 numComments=4

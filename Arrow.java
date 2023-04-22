@@ -9,7 +9,7 @@ import greenfoot.*;
  */
 public class Arrow extends Actor { 
     private int speed, damage; //speed and damage of arrow
-    private Troops target; //target of arrow
+    private Actor target; //target of arrow
     private int targetX, targetY; //target's x and y coordinates 
     private GreenfootImage image; //image of arrow
     
@@ -18,12 +18,14 @@ public class Arrow extends Actor {
      * 
      * @param target the target of the arrow
      */
-    public Arrow(Troops target) {
+    public Arrow(Actor target) {
         // initialise instance variables
         speed = 5;
         damage = 3;
         this.target = target;
-        image = new GreenfootImage("Arrow.png");
+        GreenfootImage img = new GreenfootImage("Arrow.png");
+        img.scale(img.getWidth()/2, img.getHeight()/2);
+        setImage(img);
     }
     
     /**
@@ -44,7 +46,10 @@ public class Arrow extends Actor {
     public void act() {
         move(speed);
         if (intersects(target)) { //hit
-            target.getHit(damage);
+            if(target instanceof Troops)
+                ((Troops)target).getHit(damage);
+            else if(target instanceof Towers)
+                ((Towers)target).getHit(damage);
             getWorld().removeObject(this);
         } else if (Math.abs(getX()-targetX) < 6 || Math.abs(getY()-targetY) < 6 ) // miss
             getWorld().removeObject(this);
