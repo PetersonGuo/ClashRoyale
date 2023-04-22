@@ -20,11 +20,11 @@ public class Archer extends Troops {
         
         //speed stats
         maxSpeed = 1;
-        attackSpeed = 100; //the higher the number the slower the attacks
+        attackSpeed = 50; //the higher the number the slower the attacks
         animationSpeed = 10;
         
         //health stats
-        currentHealth = maxHealth = 175;
+        currentHealth = maxHealth = 25;
         
         //attack stats
         damage = 1;
@@ -39,7 +39,7 @@ public class Archer extends Troops {
         
         walkImages = new GreenfootImage[3];
         for(int i = 0; i < walkImages.length; i++) {
-            walkImages[i] = new GreenfootImage("WalkingArcher"+ i + ".png");
+            walkImages[i] = new GreenfootImage("Archer"+ i + ".png");
             walkImages[i].scale(size, size);
         }
         
@@ -89,8 +89,9 @@ public class Archer extends Troops {
      * @param a the target
      */
     public void attack(Actor a) { // Attack the target
-        if (actCounter % attackSpeed <= attackSpeed / 5) { // If the attack counter is reached
-            animate(attackImages);
+        animate(attackImages);
+        if (actCounter % attackSpeed <= 5) { // If the attack counter is reached
+            target = (Troops)a;
             if (a instanceof Troops) { //If target is a troop
                 shootArrowAtTarget();
                 ((Troops)a).getHit(damage);
@@ -98,7 +99,7 @@ public class Archer extends Troops {
                 shootArrowAtTarget();
                 ((Towers)a).getHit(damage);
             } 
-        } else { //while not attacking
+        } else if (actCounter % attackSpeed <= 10){
             setImage(walkImages[0]);
         }
     }

@@ -10,7 +10,7 @@ public abstract class Troops extends Actor
 {
     protected double speed, maxSpeed, attackSpeed, animationSpeed, direction; //speed is in pixels per act
     protected int distX, distY; //distance between the troop and the target
-    protected boolean crossedBridge = true; //true if the troop has crossed the bridge, false if not
+    protected boolean crossedBridge = false; //true if the troop has crossed the bridge, false if not
     
     protected int maxHealth, currentHealth, damage, attackRange, detectionRange; //attack range is in pixels
 
@@ -97,7 +97,9 @@ public abstract class Troops extends Actor
         
         if (distFromTarget(a) <= attackRange && a.getClass() != Bridge.class) { //within attack range, attack
             attack(a);
-            attackSound.play();
+            if(actCounter % attackSpeed == 0){
+                attackSound.play();
+            }
         } else { //move towards the target
             animate(walkImages);
             move((int)speed);
@@ -127,13 +129,13 @@ public abstract class Troops extends Actor
     protected void crossBridge() { //once the troop touches the bridge
         Bridge b = (Bridge)getOneIntersectingObject(Bridge.class);
         if (ally) {
-            setRotation(-90);
+            setRotation(90);
             move((int)speed);
             if (getY() < b.getY()) { //pass the bridge from the ally side
                 crossedBridge = true;
             }
         } else {
-            setRotation(90);
+            setRotation(-90);
             move((int)speed);
             if (getY() > b.getY()) { //pass the bridge from the enemy side
                 crossedBridge = true;
@@ -149,9 +151,9 @@ public abstract class Troops extends Actor
         if (actCounter <= 60) { //if the troop hasn't existed for 1 second
             speed = 0;
             if (ally) {
-                direction = -90;
-            } else {
                 direction = 90;
+            } else {
+                direction = -90;
             }
             setRotation((int)direction);
         } else { //allows the troop to move

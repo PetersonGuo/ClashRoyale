@@ -19,11 +19,11 @@ public class Musketeer extends Troops
         
         //speed stats
         maxSpeed = 1;
-        attackSpeed = 150;
+        attackSpeed = 75;
         animationSpeed = 15;
         
         //health stats
-        currentHealth = maxHealth = 300;
+        currentHealth = maxHealth = 50;
         
         //attack stats
         damage = 3;
@@ -85,9 +85,10 @@ public class Musketeer extends Troops
      * 
      * @param a the target
      */
-    public void attack(Actor a) {
-        if (actCounter % attackSpeed == 0) { // If the attack counter is reached
-            animate(attackImages);
+    public void attack(Actor a) { // Attack the target
+        animate(attackImages);
+        if (actCounter % attackSpeed <= 5) { // If the attack counter is reached
+            target = (Troops)a;
             if (a instanceof Troops) { //If target is a troop
                 shootPelletAtTarget();
                 ((Troops)a).getHit(damage);
@@ -95,7 +96,7 @@ public class Musketeer extends Troops
                 shootPelletAtTarget();
                 ((Towers)a).getHit(damage);
             }
-        } else { //while not attacking
+        } else if (actCounter % attackSpeed <= 10){
             setImage(walkImages[0]);
         }
     }

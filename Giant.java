@@ -16,15 +16,15 @@ public class Giant extends Troops {
         super(ally);
         
         //speed stats
-        maxSpeed = 0.5;
-        attackSpeed = 500; //the higher the number the slower the attacks
+        maxSpeed = 1;
+        attackSpeed = 100; //the higher the number the slower the attacks
         animationSpeed = 30;
         
         //health stats
-        currentHealth = maxHealth = 800;
+        currentHealth = maxHealth = 100;
         
         //attack stats
-        damage = 50;
+        damage = 5;
         size = 45;
         attackRange = 10 + size;
         attackSound = new GreenfootSound("GiantAttack.mp3");
@@ -81,10 +81,10 @@ public class Giant extends Troops {
      * @param a - the target
      */
     public void attack(Actor a) { // Attack the target
-        if (actCounter % attackSpeed <= attackSpeed / 5) { // If the attack counter is reached
-            animate(attackImages);
+        animate(attackImages);
+        if (actCounter % attackSpeed <= 5) { // If the attack counter is reached
             ((Towers)a).getHit(damage);
-        } else { //while not attacking
+        } else if (actCounter % attackSpeed <= 10){
             setImage(walkImages[0]);
         }
     }

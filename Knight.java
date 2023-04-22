@@ -12,11 +12,11 @@ public class Knight extends Troops {
         
         //speed stats
         maxSpeed = 1;
-        attackSpeed = 125; //the higher the number the slower the attacks
+        attackSpeed = 75; //the higher the number the slower the attacks
         animationSpeed = 12;
         
         //health stats
-        currentHealth = maxHealth = 350;
+        currentHealth = maxHealth = 60;
         
         //attack stats
         damage = 2;
@@ -35,7 +35,7 @@ public class Knight extends Troops {
             walkImages[i].scale(size, size);
         }
         
-        attackImages = new GreenfootImage[3];
+        attackImages = new GreenfootImage[1];
         attackImages[0] = new GreenfootImage("KnightAtk.png");
         attackImages[0].scale(size, size);
         
@@ -77,17 +77,17 @@ public class Knight extends Troops {
      * @param a the actor to attack
      */
     public void attack(Actor a) {
-        if (actCounter % attackSpeed <= attackSpeed / 5) { // If the attack counter is reached
-            animate(attackImages);
+        animate(attackImages);
+        if (actCounter % attackSpeed <= 5) { // If the attack counter is reached
             if (a instanceof Troops) { //If target is a troop
-                if (((Troops)a).isAir() != isAir()) { //Check if air
+                if (((Troops)a).isAir() != true) { //Check if air
                     ((Troops)a).getHit(damage);
                 }
             }else if (a instanceof Towers) { //If target is a tower
                 ((Towers)a).getHit(damage);
             }
-        } else { //while not attacking
+        } else if (actCounter % attackSpeed <= 10){
             setImage(walkImages[0]);
-        }        
+        }   
     }
 }
