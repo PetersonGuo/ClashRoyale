@@ -13,6 +13,7 @@ public abstract class Towers extends Actor {
     protected Troops target; //the troop to target
     protected SuperStatBar hpBar;
     protected GreenfootSound destroyedSound;
+    protected boolean alive;
     
     protected static int numAllyTowers = 0;
     protected static int numEnemyTowers = 0;
@@ -23,6 +24,7 @@ public abstract class Towers extends Actor {
      * @param ally true if ally, false if enemy
      */
     public Towers(boolean ally) {
+        alive = true;
         this.ally = ally;
         if(ally)
             numAllyTowers++;
@@ -103,5 +105,9 @@ public abstract class Towers extends Actor {
      */
     public boolean isAlly() {
         return ally;
+    }
+    
+    public boolean isAlive(){
+        return alive;
     }
 }
