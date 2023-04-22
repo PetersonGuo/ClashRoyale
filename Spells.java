@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.ArrayList;
+import java.util.*;
 /**
  * Write a description of class Spells here.
  * 
@@ -9,9 +9,8 @@ import java.util.ArrayList;
 public class Spells extends Actor {
     protected int speed, damage, elixer, areaOfEffect, targetX, targetY; //areaOfEffect is the radius of the spell
     protected boolean ally; //true if ally, false if enemy
-    protected Troops target; //the troop to target
-    protected Towers target2; //the tower to target
-    
+    private King tower;
+    private Actor target;
     protected GreenfootImage image, image2; //the image of the spell
     
     /**
@@ -23,22 +22,38 @@ public class Spells extends Actor {
         this.ally = ally;
     }
     
+    class Comp implements Comparator<Troops> {
+        private King tower;
+        public Comp(King t) {
+            tower = t;
+        }
+        
+        public int compare(Troops a, Troops b) {
+            return (int)Math.sqrt(Math.pow(tower.getX() - b.getX(), 2) + Math.pow(tower.getY() - b.getY(), 2)) - (int)Math.sqrt(Math.pow(b.getX() - tower.getX(), 2) + Math.pow(b.getY() - tower.getY(), 2));
+        }
+    }
+    
     /**
      * Added to world method
      * 
      * @param w the world the spell is added to
      */
     public void addedToWorld (World w) {
-        ArrayList<Troops> troopsToHit = (ArrayList<Troops>) w.getObjects(Troops.class);
-        ArrayList<Towers> towersToHit = (ArrayList<Towers>) getWorld().getObjects(Towers.class);
-        if (troopsToHit.size() > 0) { //if there are troops, turn towards troops first
-            targetX = troopTarget().getX();
-            targetY = troopTarget().getY();
+        for (King k : w.getObjects(King.class))
+            if (k.isAlly() == ally)
+                tower = k;
+        List<Troops> targets = w.getObjects(Troops.class);
+        Collections.sort(targets, new Comp(tower));
+        if (targets.size() > 0) { // if there are troops, turn towards troops first
+            targetX = targets.get(0).getX();
+            targetY = targets.get(0).getY();
             turnTowards(targetX, targetY);
+            target = targets.get(0);
         } else { //if no troops, turn and target towers
             targetX = towerTarget().getX();
             targetY = towerTarget().getY();
             turnTowards(targetX, targetY);
+            target = towerTarget();
         }
     }
     
@@ -47,15 +62,11 @@ public class Spells extends Actor {
      * @return the troop closest to the tower
      */
     public Troops troopTarget() {
-        ArrayList<Troops> troopsToHit = (ArrayList<Troops>) getWorld().getObjects(Troops.class);
         Troops closest = null;
-        closest = troopsToHit.get(0);
         // find the troop cloest to the tower to target
-        for(Troops t : troopsToHit) {
-            if (getDistanceFromTower(t) > getDistanceFromTower(closest)) {
+        for(Troops t : getWorld().getObjects(Troops.class))
+            if (getDistanceFromTower(t) > getDistanceFromTower(closest))
                 closest = t;
-            }
-        }
         return closest;
     }
     
@@ -64,10 +75,9 @@ public class Spells extends Actor {
      * @return the tower with the lowest hp
      */
     public Towers towerTarget() {
-        ArrayList<Towers> towersToHit = (ArrayList<Towers>) getWorld().getObjects(Towers.class);
-        Towers lowest = null;
-        lowest = towersToHit.get(0);
-        //check for the lowest hp tower to target
+        Towers lowest = getWorld().getObjects(Towers.class).get(0);
+        for (Towers t: getWorld().getObjects(Towers.class)) //check for the lowest hp tower to target
+            lowest = lowest.getHp() > t.getHp() ? t : lowest;
         return lowest;
     }
     
@@ -84,16 +94,16 @@ public class Spells extends Actor {
      * Damage method
      */
     public void damage() {
-        for(Troops enemy : getObjectsInRange(areaOfEffect, Troops.class)) {
-            enemy.getHit(damage * 2);
-        }
+        for(Troops enemy : getObjectsInRange(areaOfEffect, Troops.class))
+            if (enemy.isAlly() != ally)
+                enemy.getHit(damage * 2);
     }
     
     /**
      * Hit method
      */
     protected void hit() {
-        if (intersects(target)) { //hit
+        if (intersects(target)) { // hit
             damage();
             getWorld().removeObject(this);
         }

@@ -44,8 +44,8 @@ public class MainWorld extends Worlds {
         addObject(new Bridge(), 93, 381);
         addObject(new Bridge(), 333, 381);
         
-        //timer
-        addObject(new Timer(), FINAL.WORLD_WIDTH / 10, FINAL.WORLD_HEIGHT / 10);
+        // timer
+        addObject(new Timer(), FINAL.WORLD_WIDTH * 14 / 15, FINAL.WORLD_HEIGHT / 2);
         
         // Randomize card order
         List<Integer> enemy = new ArrayList<>() {{for (int i = 0; i < FINAL.NUM_OF_TROOPS; i++) add(i);}},
@@ -98,25 +98,6 @@ public class MainWorld extends Worlds {
             addObject(allyNext, 40, 720);
         }
         return c;
-    }
-    
-    public void act()
-    {
-        timer1++;
-        if(timer1 == 7200){
-            nextWorld();
-        }
-    }
-    
-    /**
-     * act method - increase timer and change worlds at the 2 minute mark
-     */
-    public void act()
-    {
-        // timer++;
-        // if(timer == 7200){
-            // nextWorld();
-        // }
     }
     
     /**
