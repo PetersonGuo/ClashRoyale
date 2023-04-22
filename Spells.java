@@ -43,7 +43,7 @@ public class Spells extends Actor {
         tower = ((MainWorld)getWorld()).getKingTower(ally);
         List<Troops> targets = new ArrayList<>();
         for (Troops t : w.getObjects(Troops.class))
-            if (!(t.isAlly() ^ ally))
+            if (t.isAlly() ^ ally)
                 targets.add(t);
         Collections.sort(targets, new Comp(tower));
         if (targets.size() > 0) { // if there are troops, turn towards troops first
@@ -66,7 +66,7 @@ public class Spells extends Actor {
     public Towers towerTarget() {
         List<Towers> towers = new ArrayList<>();
         for (Towers t : getWorld().getObjects(Towers.class))
-            if (!(t.isAlly() ^ ally))
+            if (t.isAlly() ^ ally)
                 towers.add(t);
         Towers lowest = towers.get(0);
         for (Towers t: towers)  //check for the lowest hp tower to target
@@ -91,9 +91,11 @@ public class Spells extends Actor {
         for (Troops enemy : getObjectsInRange(areaOfEffect, Troops.class))
             if (enemy.isAlly() ^ ally)
                 enemy.getHit(damage * 2);
-        for (Towers enemy : getObjectsInRange(areaOfEffect, Towers.class))
-            if (!(ally ^ enemy.isAlly()))
+        for (Towers enemy : getObjectsInRange(areaOfEffect, Towers.class)) {
+            System.out.println(enemy.isAlly() + " " + ally);
+            if (ally ^ enemy.isAlly())
                 enemy.getHit(damage * 2);
+        }
     }
     
     /**

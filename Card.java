@@ -96,9 +96,9 @@ public class Card extends Actor {
         int x = FINAL.WORLD_WIDTH / 2 + FINAL.WORLD_WIDTH / 3 * ((int)(Math.random() * 2) == 0 ? 1 : -1), y = enemy ? 150 : FINAL.WORLD_HEIGHT - 150; // Spawn the card at a random location on the enemy side
         King tower = ((MainWorld) getWorld()).getKingTower(enemy);
         if (type == 0) // Spawn an arrow card
-            getWorld().addObject(new Arrows(enemy), tower.getX(), tower.getY());
+            getWorld().addObject(new Arrows(!enemy), tower.getX(), tower.getY());
         else if (type == 1) // Spawn a fireball card
-            getWorld().addObject(new Fireball(enemy), tower.getX(), tower.getY());
+            getWorld().addObject(new Fireball(!enemy), tower.getX(), tower.getY());
         else if (type == 2) // Spawn an archer card
             getWorld().addObject(new Archer(enemy), x, y);
         else if (type == 3) // Spawn a giant card
