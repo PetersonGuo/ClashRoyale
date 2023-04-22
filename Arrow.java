@@ -34,9 +34,13 @@ public class Arrow extends Actor {
      * @param w the world the arrow is added to
      */
     public void addedToWorld(World w) {
-        targetX = target.getX();
-        targetY = target.getY();
-        turnTowards(targetX, targetY);
+        try{
+            targetX = target.getX();
+            targetY = target.getY();
+            turnTowards(targetX, targetY);
+        }catch(Exception e){
+            getWorld().removeObject(this);
+        }
     }
     
     /**

@@ -87,7 +87,7 @@ public class Musketeer extends Troops
      */
     public void attack(Actor a) { // Attack the target
         animate(attackImages);
-        if (actCounter % attackSpeed <= 5) { // If the attack counter is reached
+        if (actCounter % attackSpeed == 0) { // If the attack counter is reached
             target = a;
             if (a instanceof Troops) { //If target is a troop
                 shootPelletAtTarget();
