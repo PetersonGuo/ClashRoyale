@@ -84,7 +84,7 @@ public class Minion extends Troops
      */
     public void attack(Actor a) {
         animate(attackImages);
-        if (actCounter % attackSpeed <= 5) {
+        if (actCounter % attackSpeed == 0) {
             if (a instanceof Troops) { //If target is a troop
                 ((Troops)a).getHit(damage);
             }else if (a instanceof Towers) { //If target is a tower

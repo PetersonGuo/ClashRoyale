@@ -55,9 +55,16 @@ public abstract class Troops extends Actor
     protected <T> Actor findTarget(Class<T> c) { //runs every act to search for new targets
         Actor target = null;
         List<T> actors = null;
-        if (c == Troops.class) // finding troops
+        if (c == Troops.class){ // finding troops
             actors = getObjectsInRange(detectionRange, c);
-        else if (c == Bridge.class)  // finding bridges
+            Iterator<T> iter = actors.iterator();
+            while (iter.hasNext()) { //checks if is ally
+                T actor = iter.next();
+                if (((Troops) actor).isAlly() == isAlly()) {
+                    iter.remove();
+                }
+            }
+        }else if (c == Bridge.class)  // finding bridges
             actors = getWorld().getObjects(c);        
         else if (c == Towers.class) { // find towers
             actors = new ArrayList<>();

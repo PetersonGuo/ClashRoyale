@@ -78,7 +78,7 @@ public class Knight extends Troops {
      */
     public void attack(Actor a) {
         animate(attackImages);
-        if (actCounter % attackSpeed <= 5) { // If the attack counter is reached
+        if (actCounter % attackSpeed == 0) { // If the attack counter is reached
             if (a instanceof Troops) { //If target is a troop
                 if (((Troops)a).isAir() != true) { //Check if air
                     ((Troops)a).getHit(damage);

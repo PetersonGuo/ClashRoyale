@@ -82,7 +82,7 @@ public class Giant extends Troops {
      */
     public void attack(Actor a) { // Attack the target
         animate(attackImages);
-        if (actCounter % attackSpeed <= 5) { // If the attack counter is reached
+        if (actCounter % attackSpeed == 0) { // If the attack counter is reached
             ((Towers)a).getHit(damage);
         } else if (actCounter % attackSpeed <= 10){
             setImage(walkImages[0]);
