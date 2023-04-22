@@ -36,6 +36,7 @@ public class MainWorld extends Worlds {
         addObject(allyScoreText, 409, 453);
         addObject(enemyScoreText, 409, 308);
         
+        Towers.resetTowers();
         //towers
         allyKingTower = new King(true);
         addObject(new Princess(true), 93, 512);

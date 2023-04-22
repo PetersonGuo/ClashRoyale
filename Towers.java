@@ -114,4 +114,9 @@ public abstract class Towers extends Actor {
     public static int[] getCrowns() {
         return new int[]{numAllyTowers, numEnemyTowers};
     }
+    
+    public static void resetTowers(){
+        numAllyTowers = 0;
+        numEnemyTowers = 0;
+    }
 }

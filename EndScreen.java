@@ -13,26 +13,11 @@ public class EndScreen extends Worlds {
      * Constructor for objects of class EndScreen.
      */
     public EndScreen(int[] crowns) {
-        ArrayList<Towers> towersLeft = (ArrayList<Towers>)getObjects(Towers.class);
-        for (Towers t : towersLeft) {
-            if (t.isAlly()) {
-                allyTowers++;
-                towerHp += t.getHp();
-            } else if (!t.isAlly()) {
-                EnemyTowers++;
-                towerHp2 += t.getHp();
-            }
-        }
-        
-        if (allyTowers == EnemyTowers){
-            if (towerHp > towerHp2){
-                end = new GreenfootImage("blueWin.png");
-            }else if (towerHp2 > towerHp){
-                end = new GreenfootImage("redWin.png");
-            }else{
-                end = new GreenfootImage("draw.png");
-            }
-        }else if(allyTowers > EnemyTowers){
+        int allyCrowns = crowns[0];
+        int enemyCrowns = crowns[1];
+        if (allyCrowns == enemyCrowns){
+            end = new GreenfootImage("draw.png");
+        }else if(allyCrowns > enemyCrowns){
             end = new GreenfootImage("blueWin.png");
         }else{
             end = new GreenfootImage("redWin.png");
