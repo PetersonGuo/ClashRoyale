@@ -30,6 +30,10 @@ public class King extends Towers {
         hpBar.update(hp);
         //tower destroyed
         if (hp <= 0) {
+            if(ally)
+                numAllyTowers--;
+            else
+                numEnemyTowers--;
             ((Worlds)getWorld()).nextWorld();
             getWorld().removeObject(this);
         }

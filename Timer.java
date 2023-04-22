@@ -8,10 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Timer extends Actor
 {
-    private int timer = 7200; //about 120 seconds
+    private int timer; //about 120 seconds
  
     public Timer()
     {
+        timer = FINAL.GAME_TIME;
         updateImage();
     }
      

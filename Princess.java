@@ -31,6 +31,10 @@ public class Princess extends Towers {
         //tower destroyed
         if (hp <= 0) {
             destroyedSound.play();
+            if(ally)
+                numAllyTowers--;
+            else
+                numEnemyTowers--;
             getWorld().removeObject(this);
         }
     }
