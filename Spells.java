@@ -61,19 +61,6 @@ public class Spells extends Actor {
     }
     
     /**
-     * Get the troop closest to the tower to target
-     * @return the troop closest to the tower
-     */
-    public Troops troopTarget() {
-        Troops closest = null;
-        // find the troop cloest to the tower to target
-        for(Troops t : getWorld().getObjects(Troops.class))
-            if (getDistanceFromTower(t) > getDistanceFromTower(closest))
-                closest = t;
-        return closest;
-    }
-    
-    /**
      * Get the tower with the lowest hp to target
      * @return the tower with the lowest hp
      */
