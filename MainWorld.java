@@ -15,6 +15,7 @@ public class MainWorld extends Worlds {
     private ElixirBar enemyElixir, allyElixir; // The elixir bars
     private Queue<Integer> enemyCards, allyCards; // Card orders
     private Timer timer;
+    private Text allyScoreText, enemyScoreText;
     /**
      * Constructor for objects of class MainWorld.
      * 
@@ -29,8 +30,10 @@ public class MainWorld extends Worlds {
         addObject(new Text("Next:", Color.BLACK, 18), 40, 680);
         addObject(new Text("Next:", Color.BLACK, 18), 40, 70);
         
-        addObject(new Text(0, Color.BLUE, 30), 409, 453);
-        addObject(new Text(0, Color.RED, 30), 409, 308);
+        allyScoreText = new Text(0, Color.BLUE, 30);
+        enemyScoreText = new Text(0, Color.RED, 30);
+        addObject(allyScoreText, 409, 453);
+        addObject(enemyScoreText, 409, 308);
         
         //towers
         addObject(new Princess(true), 93, 512);
@@ -107,6 +110,11 @@ public class MainWorld extends Worlds {
         if(timer.timeIsUp()){
             nextWorld();
         }
+    }
+    
+    public void updateScore(int allyScore, int enemyScore){
+        allyScoreText.updateText(allyScore);
+        enemyScoreText.updateText(enemyScore);
     }
     
     /**

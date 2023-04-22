@@ -34,6 +34,7 @@ public class King extends Towers {
                 numAllyTowers--;
             else
                 numEnemyTowers--;
+            ((MainWorld)getWorld()).updateScore(numAllyTowers, numEnemyTowers);
             ((Worlds)getWorld()).nextWorld();
             getWorld().removeObject(this);
         }
