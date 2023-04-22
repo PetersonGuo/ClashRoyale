@@ -73,10 +73,11 @@ public class Card extends Actor {
                 for (Card c : getWorld().getObjects(Card.class)) // Set all other cards to not clicked
                     c.setClicked(false);
                 clicked = true;
-                if ((!enemy && y - m.getY() >= img.getHeight()) || (enemy && m.getY() - y >= img.getHeight())) { // Play card
+                if (((!enemy && y - m.getY() >= img.getHeight()) || (enemy && m.getY() - y >= img.getHeight())) && ((MainWorld)getWorld()).getElixir(enemy).useElixir(FINAL.ELIXIR_COST[type])) { // Play card
                     Card c = ((MainWorld)getWorld()).nextCard(enemy);
                     spawnCard();
                     getWorld().addObject(new Card(1, getWidth(), getHeight(), true, enemy, c.getType()), x, y);
+                    ((MainWorld)getWorld()).addCardToQueue(type, !enemy);
                     getWorld().removeObject(this);
                 }
             }
