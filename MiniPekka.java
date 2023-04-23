@@ -11,6 +11,8 @@ public class MiniPekka extends Troops {
      * Constructor for objects of class MiniPekka
      * 
      * @param ally The team the troop is on
+     * @param hpMultiplyer The hpMultiplyer of the troop
+     * @param dmgMultiplyer The dmgMultiplyer of the troop
      */
     public MiniPekka(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
         super(ally, hpMultiplyer, dmgMultiplyer);

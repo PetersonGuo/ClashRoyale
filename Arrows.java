@@ -11,6 +11,7 @@ public class Arrows extends Spells {
      * Constructor for objects of class Arrows
      * 
      * @param ally Whether the tower is on the left or right side
+     * @param target The target of the tower
      */
     public Arrows(boolean ally, Actor target) {
         super(ally, target);

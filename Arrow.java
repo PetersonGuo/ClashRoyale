@@ -8,16 +8,16 @@ import greenfoot.*;
  * @version 1.0
  */
 public class Arrow extends Actor { 
-    private int speed; //speed of the arrow
     private double damage; //damage of arrow
     private Actor target; //target of arrow
-    private int targetX, targetY; //target's x and y coordinates 
+    private int targetX, targetY, speed; //target's x and y coordinates and speed of arrow 
     private GreenfootImage image; //image of arrow
     
     /**
      * Constructor for objects of class Arrow
      * 
      * @param target the target of the arrow
+     * @param dmgMultiplyer the damage multiplyer
      */
     public Arrow(Actor target, double dmgMultiplyer) {
         // initialise instance variables

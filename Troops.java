@@ -6,8 +6,7 @@ import java.util.*;
  * @author Isaac Chan 
  * @version 1.0
  */
-public abstract class Troops extends Actor
-{
+public abstract class Troops extends Actor {
     protected double speed, maxSpeed, attackSpeed, animationSpeed, direction; //speed is in pixels per act
     protected int distX, distY; //distance between the troop and the target
     protected boolean crossedBridge = false; //true if the troop has crossed the bridge, false if not
@@ -40,10 +39,18 @@ public abstract class Troops extends Actor
         this.dmgMultiplyer = dmgMultiplyer;
     }
     
+    /**
+     * Act - do whatever the Troops wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act() {
         actCounter++;
     }
     
+    /**
+     * Called when the troop is added to the world
+     * @param w the world the troop is added to
+     */
     public void addedToWorld(World w) {
         spawnSound = new GreenfootSound("spawn.mp3");
         spawnSound.play();
@@ -182,7 +189,11 @@ public abstract class Troops extends Actor
         return Math.sqrt(Math.pow(a.getX() - getX(), 2) + Math.pow(a.getY() - getY(), 2));
     }
     
-    protected void die() { //when this troop dies
+    /**
+     * Die method for the troop
+     * Removes the troop and adds a dead body
+     */
+    protected void die() {
         if (currentHealth <= 0) {
             dieSound = new GreenfootSound("death.mp3");
             dieSound.play();

@@ -28,6 +28,11 @@ public class ElixirBar extends Actor {
         sectionSize = img.getWidth() / maxElixir;
     }
     
+    /**
+     * addedToWorld - Add the text to the world
+     * 
+     * @param w The world
+     */
     public void addedToWorld(World w) {
         elixirText = new Text(elixir, Color.WHITE, 35);
         w.addObject(elixirText, (int)(getX() - img.getWidth() / 2.6), getY() + img.getHeight() / 4 * (getY() < FINAL.WORLD_HEIGHT / 2 ? 1 : -1));
@@ -86,10 +91,18 @@ public class ElixirBar extends Actor {
         return true;
     }
     
+    /**
+     * Get current elixir
+     * @return - Current elixir
+     */
     public int getElixir() {
         return elixir;
     }
     
+    /**
+     * Get Max elixir
+     * @return - Max elixir
+     */
     public int maxElixir() {
         return maxElixir;
     }

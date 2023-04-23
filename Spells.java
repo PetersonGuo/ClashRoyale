@@ -7,16 +7,17 @@ import java.util.*;
  * @version 1.0
  */
 public class Spells extends Actor {
-    protected int speed, damage, elixir, areaOfEffect, targetX, targetY; //areaOfEffect is the radius of the spell
+    protected int speed, damage, elixir, areaOfEffect, targetX, targetY; //speed, damage, elixir cost, area of effect, target's x and y coordinates
     protected boolean ally; //true if ally, false if enemy
-    private King tower;
-    private Actor target;
+    private King tower; //the tower that casted the spell
+    private Actor target; //the target of the spell
     protected GreenfootImage image, image2; //the image of the spell
     
     /**
      * Constructor for objects of class Spells
      * 
      * @param ally true if ally, false if enemy
+     * @param target the target of the spell
      */
     public Spells(boolean ally, Actor target) { 
         this.ally = ally;

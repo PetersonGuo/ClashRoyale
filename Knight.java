@@ -11,6 +11,8 @@ public class Knight extends Troops {
      * Constructor for objects of class Knight
      * 
      * @param ally Whether the tower is on the left or right side
+     * @param hpMultiplyer The health multiplyer of the troop
+     * @param dmgMultiplyer The damage multiplyer of the troop
      */
     public Knight(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
         super(ally, hpMultiplyer, dmgMultiplyer);

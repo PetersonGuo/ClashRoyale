@@ -8,9 +8,9 @@ import java.util.*;
  */
 public class Card extends Actor {
     private GreenfootImage img; // Image for the card
-    private int cost, x, xSpeed, y, ySpeed, type, width, height, time; // Cost of the card, x and y coordinates, and type of card 
-    private boolean playable, playing, mouseIsDown, selected, enemy; // Is the card playable, is the mouse down, is the card clicked, and is the card an enemy card
-    private Actor target;
+    private int cost, x, xSpeed, y, ySpeed, type, width, height, time; // Cost of the card, x and y position, x and y speed, type of card, width and height of the card, and time for the card to be selected
+    private boolean playable, playing, selected, enemy; // Whether the card is playable, whether the card is playing, whether the mouse is down, whether the card is selected, and whether the card is an enemy card
+    private Actor target; // The target of the card
     /**
      * Constructor for objects of class Card
      * 

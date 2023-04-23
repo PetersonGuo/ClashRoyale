@@ -14,6 +14,8 @@ public class Archer extends Troops {
      * Constructor for objects of class Archers
      * 
      * @param ally true if ally, false if enemy
+     * @param hpMultiplyer the hp multiplyer
+     * @param dmgMultiplyer the damage multiplyer
      */
     public Archer(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
         super(ally, hpMultiplyer, dmgMultiplyer);
@@ -55,27 +57,23 @@ public class Archer extends Troops {
      * Act - do whatever the Archers wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act()
-    {
+    public void act() {
         super.act();
-        if (spawning) {
+        if (spawning)
             spawn();
-        } else if (alive) {
+        else if (alive) {
             Actor troop = findTarget(Troops.class);
             if (troop != null) { // If there is a target
                 moveTowardsTarget(troop);
             } else if (!crossedBridge) { //If have not crossed bridge
                 moveTowardsTarget(findTarget(Bridge.class));
-                if (isTouching(Bridge.class)) {
+                if (isTouching(Bridge.class))
                     crossBridge();
-                }
-            } else { //If there is no target
+            } else //If there is no target
                 moveTowardsTarget(findTarget(Towers.class));
-            }
             die();
-        } else {
+        } else
             getWorld().removeObject(this);
-        }
     }
     
     /**

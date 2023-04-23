@@ -8,8 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Minion extends Troops {
     /**
-     * Act - do whatever the Minion wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Constructor for objects of class Minion
+     * @param ally Whether the tower is on the left or right side
+     * @param hpMultiplyer the amount to multiply the health by
+     * @param dmgMultiplyer the amount to multiply the damage by
      */
     public Minion(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
         super(ally, hpMultiplyer, dmgMultiplyer);
@@ -83,13 +85,11 @@ public class Minion extends Troops {
     public void attack(Actor a) {
         animate(attackImages);
         if (actCounter % attackSpeed == 0) {
-            if (a instanceof Troops) { //If target is a troop
+            if (a instanceof Troops) //If target is a troop
                 ((Troops)a).getHit(damage);
-            }else if (a instanceof Towers) { //If target is a tower
+            else if (a instanceof Towers) //If target is a tower
                 ((Towers)a).getHit(damage);
-            } 
-        } else if (actCounter % attackSpeed <= 10){
+        } else if (actCounter % attackSpeed <= 10)
             setImage(walkImages[0]);
-        }
     }
 }

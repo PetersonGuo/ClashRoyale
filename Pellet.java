@@ -10,7 +10,8 @@ public class Pellet extends Projectile {
     /**
      * Constructor for objects of class Bullet
      * 
-     * @param target
+     * @param target The target of the tower
+     * @param dmgMultiplyer The damage multiplyer of the tower
      */
     public Pellet(Actor target, double dmgMultiplyer) {
         super(target);
@@ -27,8 +28,7 @@ public class Pellet extends Projectile {
      * Act - do whatever the Bullet wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act()
-    {
+    public void act() {
         move(speed);
         hit();
     }

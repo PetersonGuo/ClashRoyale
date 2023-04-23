@@ -11,9 +11,9 @@ import java.util.ArrayList;
 class Sound {
     private static ArrayList<Sound> instances = new ArrayList<>(); // Tracks all instances of this class
     
-    private GreenfootSound music;
-    private ArrayList<GreenfootSound> musics;
-    private boolean multiplay;
+    private GreenfootSound music;  // Sound instance
+    private ArrayList<GreenfootSound> musics; // Sound instances
+    private boolean multiplay; // Allow multiple sounds to play at once
     /**
      * Constructor for objects of class Sound.
      * 
