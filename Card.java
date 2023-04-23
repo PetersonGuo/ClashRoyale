@@ -89,6 +89,7 @@ public class Card extends Actor {
             time--;
             setLocation(getX() + xSpeed, getY() + ySpeed);
             if (time <= 0 && ((MainWorld)getWorld()).getElixir(enemy).useElixir(FINAL.ELIXIR_COST[type])) {
+                playing = false;
                 Card c = ((MainWorld)getWorld()).nextCard(enemy);
                 spawnCard();
                 getWorld().addObject(new Card(1, getWidth(), getHeight(), true, enemy, c.getType()), x, y);
