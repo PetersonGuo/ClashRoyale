@@ -12,8 +12,8 @@ public class King extends Towers {
      * 
      * @param ally Whether the tower is on the left or right side
      */
-    public King(boolean ally) {
-        super(ally);
+    public King(boolean ally, double hpMultiplyer) {
+        super(ally, hpMultiplyer);
         hp = 200;
         range = 150;
         shootingCooldown = 30;
@@ -22,7 +22,7 @@ public class King extends Towers {
         image.scale(60, 60);
         setImage(image);
         
-        hpBar = new SuperStatBar(hp, hp, this, 50, 10, (ally)? 25 : -25, Color.GREEN, Color.RED, true);
+        hpBar = new SuperStatBar((int)hp, (int)hp, this, 50, 10, (ally)? 25 : -25, Color.GREEN, Color.RED, true);
     }
     
     public void act(){
@@ -31,9 +31,9 @@ public class King extends Towers {
         }
     }    
     
-    public void getHit(int dmg) {
+    public void getHit(double dmg) {
         hp -= dmg;
-        hpBar.update(hp);
+        hpBar.update((int)hp);
         //tower destroyed
         if (hp <= 0) {
             alive = false;

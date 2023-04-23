@@ -1,12 +1,12 @@
 #BlueJ class context
 comment0.target=EndScreen
-comment0.text=\n\ Write\ a\ description\ of\ class\ EndScreen\ here.\n\ \n\ @author\ Peterson\ Guo\n\ @version\ 1.0\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ EndScreen\ here.\r\n\ \r\n\ @author\ Peterson\ Guo\r\n\ @version\ 1.0\r\n
 comment1.params=crowns
 comment1.target=EndScreen(int[])
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ EndScreen.\n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ EndScreen.\r\n
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ nextWorld()
-comment3.text=\n\ nextWorld\ -\ Go\ to\ the\ next\ world\n
+comment3.text=\r\n\ nextWorld\ -\ Go\ to\ the\ next\ world\r\n
 numComments=4

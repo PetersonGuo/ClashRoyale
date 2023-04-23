@@ -6,12 +6,14 @@ import java.util.*;
  * @author Isaac Chan 
  * @version (a version number or a date)
  */
-public abstract class Troops extends Actor {
+public abstract class Troops extends Actor
+{
     protected double speed, maxSpeed, attackSpeed, animationSpeed, direction; //speed is in pixels per act
     protected int distX, distY; //distance between the troop and the target
     protected boolean crossedBridge = false; //true if the troop has crossed the bridge, false if not
     
-    protected int maxHealth, currentHealth, damage, attackRange, detectionRange = 100; //attack range is in pixels
+    protected double maxHealth, currentHealth, damage, hpMultiplyer, dmgMultiplyer;
+    protected int attackRange, detectionRange = 100; //attack range is in pixels
 
     protected int elixirCost; //cost of the troop in elixir
     protected boolean air, ally, spawning = true, alive = true; //air is true if the troop can fly over the bridge, ally is true if the troop is on the player's side
@@ -32,8 +34,10 @@ public abstract class Troops extends Actor {
      * 
      * @param ally whether the troop is on the player's side or not
      */
-    public Troops(boolean ally) {
+    public Troops(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
         this.ally = ally;
+        this.hpMultiplyer = hpMultiplyer;
+        this.dmgMultiplyer = dmgMultiplyer;
     }
     
     public void act() {
@@ -153,6 +157,7 @@ public abstract class Troops extends Actor {
      * Once the troop has spawned
      */
     protected void spawn() { //when the troop has spawned
+        World w = getWorld();
         alive = true;
         if (actCounter <= 60) { //if the troop hasn't existed for 1 second
             speed = 0;
@@ -208,9 +213,9 @@ public abstract class Troops extends Actor {
      * Take damage
      * @param damage the damage aken deal
      */
-    public void getHit(int damage) {
+    public void getHit(double damage) {
         currentHealth -= damage;
-        healthBar.update(currentHealth);
+        healthBar.update((int)currentHealth);
     }
     
     /**

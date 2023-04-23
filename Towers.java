@@ -9,7 +9,8 @@ import java.util.ArrayList;
 public abstract class Towers extends Actor {
     protected boolean ally; // true if ally, false if enemy
     protected GreenfootImage image; //the image of the tower
-    protected int hp, range, shootingCooldown, actsSinceShooting;  //range is the radius of the tower
+    protected int range, shootingCooldown, actsSinceShooting;  //range is the radius of the tower
+    protected double hp, damage;
     protected Troops target; //the troop to target
     protected SuperStatBar hpBar;
     protected GreenfootSound destroyedSound;
@@ -23,7 +24,7 @@ public abstract class Towers extends Actor {
      * 
      * @param ally true if ally, false if enemy
      */
-    public Towers(boolean ally) {
+    public Towers(boolean ally, double hpMultiplyer) {
         alive = true;
         this.ally = ally;
         if(ally)
@@ -72,7 +73,7 @@ public abstract class Towers extends Actor {
      * Shoots an arrow at the target
      */
     private void shootArrowAtTarget() {
-        getWorld().addObject(new Arrow(target), getX(), getY());
+        getWorld().addObject(new Arrow(target, damage), getX(), getY());
         actsSinceShooting = 0;
     }
     
@@ -81,9 +82,9 @@ public abstract class Towers extends Actor {
      * 
      * @param dmg the damage the troop does
      */
-    public abstract void getHit(int dmg);
+    public abstract void getHit(double dmg);
  
-    public int getHp() {
+    public double getHp() {
         return hp;
     }
     

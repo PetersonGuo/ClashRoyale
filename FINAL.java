@@ -15,15 +15,14 @@ public interface FINAL {
     int CARD_SPACING = 4; // Spacing between cards
     
     double[][] DEFAULT_VALUES = { // Default values for the stats
-        {5, 0, 20, 1}, // First Value: Default value, Second: Min Value, Third: Max Value, Fourth: Increment
-        {10, 0, 20, 1},
-        {1, 0, 20, 1},
-        {1, 0, 20, 1},
-        {1, 0, 20, 1},
-        {1, 0, 20, 1},
-        {1, 0, 20, 1},
-        {1, 0, 20, 1},
-        {1, 0, 20, 1}
+        {1, 0, 20, 1}, // First Value: Default value, Second: Min Value, Third: Max Value, Fourth: Increment
+        {10, 1, 20, 1},
+        {1, 0, 4, 0.25},
+        {120, 30, 300, 10},
+        {1, 0.25, 4, 0.25},
+        {1, 0.25, 4, 0.25},
+        {1, 0.25, 4, 0.25},
+        {1, 0.25, 4, 0.25},
     };
     
     int NUM_OF_TROOPS = 8; // Number of troops
@@ -42,13 +41,12 @@ public interface FINAL {
     String[] STAT_NAMES = { // Stat names
         "Start Elixir",
         "Max Elixir",
-        "Elixir Time",
-        "Difficulty3",
-        "Difficulty4",
-        "Difficulty5",
-        "Difficulty6",
-        "Difficulty7",
-        "Difficulty8"
+        "Elixir Speed",
+        "Game Duration",
+        "Troop Health Multiplyer",
+        "Troop Damage Multiplyer",
+        "Tower Health Multiplyer",
+        "Tower Damage Multiplyer",
     };
     
     Color ELIXIR_COLOR = Color.RED; // Elixir color

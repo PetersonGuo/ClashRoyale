@@ -17,14 +17,15 @@ public class MainWorld extends Worlds {
     private Timer timer;
     private Text allyScoreText, enemyScoreText;
     private King enemyKingTower, allyKingTower;
+
     /**
      * Constructor for objects of class MainWorld.
      * 
      * @param stats The stats of the game
      */
     public MainWorld(Map<String, Double> stats) {
-        enemyElixir = new ElixirBar(stats.get("Start Elixir").intValue(), stats.get("Max Elixir").intValue(), stats.get("Elixir Time").intValue());
-        allyElixir = new ElixirBar(stats.get("Start Elixir").intValue(), stats.get("Max Elixir").intValue(), stats.get("Elixir Time").intValue());
+        enemyElixir = new ElixirBar(stats.get("Start Elixir").intValue(), stats.get("Max Elixir").intValue(), stats.get("Elixir Speed").intValue());
+        allyElixir = new ElixirBar(stats.get("Start Elixir").intValue(), stats.get("Max Elixir").intValue(), stats.get("Elixir Speed").intValue());
         addObject(allyElixir, 250, 730);
         addObject(enemyElixir, 250, 20);
         
@@ -38,15 +39,15 @@ public class MainWorld extends Worlds {
         
         Towers.resetTowers();
         //towers
-        allyKingTower = new King(true);
-        addObject(new Princess(true), 93, 512);
+        allyKingTower = new King(true, stats.get("Tower Health Multiplyer").doubleValue());
+        addObject(new Princess(true, stats.get("Tower Health Multiplyer").doubleValue()), 93, 512);
         addObject(allyKingTower, 213, 586);
-        addObject(new Princess(true), 333, 512);
+        addObject(new Princess(true, stats.get("Tower Health Multiplyer").doubleValue()), 333, 512);
 
-        enemyKingTower = new King(false);
-        addObject(new Princess(false), 93, 248);
+        enemyKingTower = new King(false, stats.get("Tower Health Multiplyer").doubleValue());
+        addObject(new Princess(false, stats.get("Tower Health Multiplyer").doubleValue()), 93, 248);
         addObject(enemyKingTower, 213, 177);
-        addObject(new Princess(false), 333, 248);
+        addObject(new Princess(false, stats.get("Tower Health Multiplyer").doubleValue()), 333, 248);
 
         //bridge
         addObject(new Bridge(), 93, 381);
@@ -77,20 +78,6 @@ public class MainWorld extends Worlds {
         
         nextCard(true);
         nextCard(false);
-    }
-    
-    public void act() {
-        // Get all 8 ally and enemy cards a separate them
-        List<Card> allyCards = new ArrayList<>(), enemyCards = new ArrayList<>();
-        for (Card c : getObjects(Card.class))
-            if (c.isPlayable())
-                if (c.isAlly()) allyCards.add(c);
-                else enemyCards.add(c);
-                
-        if ((int) (Math.random() * 60) == 0) // 1/60 percent chance of spawning or 1 per second
-            allyCards.get((int) (Math.random() * allyCards.size())).selectCard((int) (Math.random() * 60) + 20);
-        if ((int) (Math.random() * 60) == 0)
-            enemyCards.get((int) (Math.random() * enemyCards.size())).selectCard((int) (Math.random() * 60) + 20);
     }
     
     /**
@@ -131,6 +118,7 @@ public class MainWorld extends Worlds {
      * nextWorld - Go to the next world
      */
     public void nextWorld() {
+        // To Do: Set Timer, keep track of crowns
         Greenfoot.setWorld(new EndScreen(Towers.getCrowns()));
     }
     

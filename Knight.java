@@ -7,8 +7,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class Knight extends Troops {
-    public Knight(boolean ally) {
-        super(ally);
+    public Knight(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
+        super(ally, hpMultiplyer, dmgMultiplyer);
         
         //speed stats
         maxSpeed = 1;
@@ -40,7 +40,7 @@ public class Knight extends Troops {
         
         setImage(walkImages[0]);
         
-        healthBar = new SuperStatBar(maxHealth, currentHealth, this, size, 10, -size / 2, filledColor, missingColor, false);
+        healthBar = new SuperStatBar((int)maxHealth, (int)currentHealth, this, size, 10, -size / 2, filledColor, missingColor, false);
     }
     
     /**

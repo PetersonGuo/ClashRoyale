@@ -7,7 +7,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class Projectile extends Actor {
-    protected int speed, damage; //speed and damage of the projectile
+    protected int speed; //speed of projectiles
+    protected double damage; //damage of the projectile
     protected Actor target; //target of the projectile
     protected int targetX, targetY; //target's x and y coordinates
     protected GreenfootImage image; //image of the projectile

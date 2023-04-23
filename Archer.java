@@ -15,8 +15,8 @@ public class Archer extends Troops {
      * 
      * @param ally true if ally, false if enemy
      */
-    public Archer(boolean ally) {
-        super(ally);
+    public Archer(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
+        super(ally, hpMultiplyer, dmgMultiplyer);
         
         //speed stats
         maxSpeed = 1;
@@ -24,10 +24,10 @@ public class Archer extends Troops {
         animationSpeed = 10;
         
         //health stats
-        currentHealth = maxHealth = 25;
+        currentHealth = maxHealth = 25 * hpMultiplyer;
         
         //attack stats
-        damage = 3;
+        damage = 3 * dmgMultiplyer;
         size = 25;
         attackRange = 40 + size;
         attackSound = new GreenfootSound("ArcherAttack.mp3");
@@ -48,7 +48,7 @@ public class Archer extends Troops {
     
         setImage(walkImages[0]);
         
-        healthBar = new SuperStatBar(maxHealth, currentHealth, this, size, 10, -size / 2, filledColor, missingColor, false);
+        healthBar = new SuperStatBar((int)maxHealth, (int)currentHealth, this, size, 10, -size / 2, filledColor, missingColor, false);
     }
     
     /**
@@ -107,7 +107,7 @@ public class Archer extends Troops {
      * Shoot an arrow at the target
      */
     private void shootArrowAtTarget() {
-        getWorld().addObject(new Arrow(target), getX(), getY());
+        getWorld().addObject(new Arrow(target, damage), getX(), getY());
         actCounter = 0;
     }
 }

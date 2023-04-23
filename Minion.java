@@ -12,8 +12,8 @@ public class Minion extends Troops
      * Act - do whatever the Minion wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Minion(boolean ally) {
-        super(ally);
+    public Minion(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
+        super(ally, hpMultiplyer, dmgMultiplyer);
         
         //speed stats
         maxSpeed = 2;
@@ -46,7 +46,7 @@ public class Minion extends Troops
         
         setImage(walkImages[0]);
         
-        healthBar = new SuperStatBar(maxHealth, currentHealth, this, size, 10, -size / 2, filledColor, missingColor, false);
+        healthBar = new SuperStatBar((int)maxHealth, (int)currentHealth, this, size, 10, -size / 2, filledColor, missingColor, false);
     }
     
     /**

@@ -8,7 +8,8 @@ import greenfoot.*;
  * @version (a version number or a date)
  */
 public class Arrow extends Actor { 
-    private int speed, damage; //speed and damage of arrow
+    private int speed; //speed of the arrow
+    private double damage; //damage of arrow
     private Actor target; //target of arrow
     private int targetX, targetY; //target's x and y coordinates 
     private GreenfootImage image; //image of arrow
@@ -18,10 +19,10 @@ public class Arrow extends Actor {
      * 
      * @param target the target of the arrow
      */
-    public Arrow(Actor target) {
+    public Arrow(Actor target, double dmgMultiplyer) {
         // initialise instance variables
         speed = 5;
-        damage = 5;
+        damage = 3 * dmgMultiplyer;
         this.target = target;
         GreenfootImage img = new GreenfootImage("Arrow.png");
         img.scale(img.getWidth()/2, img.getHeight()/2);

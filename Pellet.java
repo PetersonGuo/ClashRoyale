@@ -12,13 +12,15 @@ public class Pellet extends Projectile {
      * 
      * @param target
      */
-    public Pellet(Actor target) {
+    public Pellet(Actor target, double dmgMultiplyer) {
         super(target);
         
         speed = 5;
         damage = 7;
         this.target = target;
-        image = new GreenfootImage("Arrow.png");
+        image = new GreenfootImage("Bullet.png");
+        image.scale(10, 10);
+        setImage(image);
     }
     
     /**

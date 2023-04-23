@@ -14,8 +14,8 @@ public class Musketeer extends Troops
      * 
      * @param ally whether the troop is on the player's side or not
      */
-    public Musketeer(boolean ally) {
-        super(ally);
+    public Musketeer(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
+        super(ally, hpMultiplyer, dmgMultiplyer);
         
         //speed stats
         maxSpeed = 1;
@@ -47,7 +47,7 @@ public class Musketeer extends Troops
         
         setImage(walkImages[0]);
         
-        healthBar = new SuperStatBar(maxHealth, currentHealth, this, size, 10, -size / 2, filledColor, missingColor, false);
+        healthBar = new SuperStatBar((int)maxHealth, (int)currentHealth, this, size, 10, -size / 2, filledColor, missingColor, false);
     }
     
     public void act()
@@ -86,8 +86,8 @@ public class Musketeer extends Troops
      */
     public void attack(Actor a) { // Attack the target
         animate(attackImages);
+        target = a;
         if (actCounter % attackSpeed == 0) { // If the attack counter is reached
-            target = a;
             if (a instanceof Troops  && ((Troops)a).isAlive()) { //If target is a troop
                 shootPelletAtTarget();
                 ((Troops)a).getHit(damage);
@@ -104,7 +104,7 @@ public class Musketeer extends Troops
      * Shoot a pellet at the target
      */
     private void shootPelletAtTarget() {
-        getWorld().addObject(new Pellet(target), getX(), getY());
+        getWorld().addObject(new Pellet(target, damage), getX(), getY());
         actCounter = 0;
     }
 }

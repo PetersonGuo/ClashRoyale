@@ -8,9 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MiniPekka extends Troops
 {
-    
-    public MiniPekka(boolean ally) {
-        super(ally);
+    public MiniPekka(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
+        super(ally, hpMultiplyer, dmgMultiplyer);
         
         //speed stats
         maxSpeed = 1;
@@ -42,7 +41,7 @@ public class MiniPekka extends Troops
         
         setImage(walkImages[0]);
         
-        healthBar = new SuperStatBar(maxHealth, currentHealth, this, size, 10, -size / 2, filledColor, missingColor, false);
+        healthBar = new SuperStatBar((int)maxHealth, (int)currentHealth, this, size, 10, -size / 2, filledColor, missingColor, false);
     }
     
     /**

@@ -12,8 +12,8 @@ public class Princess extends Towers {
      * 
      * @param ally Whether the tower is on the left or right side
      */
-    public Princess(boolean ally) {
-        super(ally);
+    public Princess(boolean ally, double hpMultiplyer) {
+        super(ally, hpMultiplyer);
         hp = 100;
         range = 120;
         shootingCooldown = 45;
@@ -22,12 +22,12 @@ public class Princess extends Towers {
         setImage(image);
         destroyedSound = new GreenfootSound("TowerDestroyed.mp3");
         
-        hpBar = new SuperStatBar(hp, hp, this, 45, 10, (ally)? 25 : -25, Color.GREEN, Color.RED, false);        
+        hpBar = new SuperStatBar((int)hp, (int)hp, this, 45, 10, (ally)? 25 : -25, Color.GREEN, Color.RED, false);        
     }
     
-    public void getHit(int dmg) {
+    public void getHit(double dmg) {
         hp -= dmg;
-        hpBar.update(hp);
+        hpBar.update((int)hp);
         //tower destroyed
         if (hp <= 0) {
             alive = false;
