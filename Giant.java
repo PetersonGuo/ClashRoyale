@@ -27,10 +27,10 @@ public class Giant extends Troops {
         animationSpeed = 30;
         
         //health stats
-        currentHealth = maxHealth = 70;
+        currentHealth = maxHealth = 60 * hpMultiplyer;
         
         //attack stats
-        damage = 12;
+        damage = 10 * dmgMultiplyer;
         size = 45;
         attackRange = 10 + size;
         attackSound = new GreenfootSound("GiantAttack.mp3");

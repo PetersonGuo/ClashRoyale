@@ -59,7 +59,7 @@ public class Arrow extends Actor {
             else if(target instanceof Towers && ((Towers)target).isAlive())
                 ((Towers)target).getHit(damage);
             getWorld().removeObject(this);
-        } else if (Math.abs(getX()-targetX) < 6 || Math.abs(getY()-targetY) < 6 ) // miss
+        } else if (Math.abs(getX()-targetX) < 3 || Math.abs(getY()-targetY) < 3 ) // miss
             getWorld().removeObject(this);
     }
 }

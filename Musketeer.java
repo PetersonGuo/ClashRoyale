@@ -24,14 +24,14 @@ public class Musketeer extends Troops {
         
         //speed stats
         maxSpeed = 1;
-        attackSpeed = 85;  //the higher the number the slower the attacks
+        attackSpeed = 90;  //the higher the number the slower the attacks
         animationSpeed = 15;
         
         //health stats
-        currentHealth = maxHealth = 25;
+        currentHealth = maxHealth = 30 * hpMultiplyer;
         
         //attack stats
-        damage = 9;
+        damage = 7 * dmgMultiplyer;
         size = 25;
         attackRange = 60 + size;
         attackSound = new GreenfootSound("MusketeerAttack.mp3");

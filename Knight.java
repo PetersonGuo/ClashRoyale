@@ -28,10 +28,10 @@ public class Knight extends Troops {
         animationSpeed = 12;
         
         //health stats
-        currentHealth = maxHealth = 55;
+        currentHealth = maxHealth = 50 * hpMultiplyer;
         
         //attack stats
-        damage = 6;
+        damage = 6 * dmgMultiplyer;
         size = 25;
         attackRange = 15 + size;
         attackSound = new GreenfootSound("KnightAttack.mp3");
