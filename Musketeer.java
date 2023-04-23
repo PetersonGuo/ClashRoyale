@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * to display its health. The class includes methods for attacking and 
  * shooting pellets at the target.
  * 
- * @author Isaac Chan
+ * @author Isaac Chan, Kevin Luo
  * @version 1.0
  */
 public class Musketeer extends Troops {

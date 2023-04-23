@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Pellet class for all bullets in the game
  * 
- * @author Kevin Luo
+ * @author Kevin Luo, Isaac Chan
  * @version 1.0
  */
 public class Pellet extends Projectile {
