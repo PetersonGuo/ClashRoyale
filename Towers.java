@@ -140,7 +140,7 @@ public abstract class Towers extends Actor {
     /**
      * Resets the number of towers on each side
      */
-    public static void resetTowers(){
+    public static void resetTowers() {
         numAllyTowers = 0;
         numEnemyTowers = 0;
     }
