@@ -7,7 +7,7 @@ import greenfoot.*;
  * to it, and if the target is a Troop or a Tower, the getHit() method is called. 
  * If the arrow misses the target, it is removed from the world.
  * 
- * @author Kelby To 
+ * @author Kelby To, Isaac Chan
  * @version 1.0
  */
 public class Arrow extends Actor { 

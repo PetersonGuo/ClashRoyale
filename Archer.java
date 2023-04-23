@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * well as a SuperStatBar to display its health. The class includes methods for attacking
  * and shooting arrows at the target.
  * 
- * @author Kevin Luo
+ * @author Kevin Luo, Isaac Chan
  * @version 1.0
  */
 public class Archer extends Troops {

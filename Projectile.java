@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * accordingly. If the target is null or the projectile misses the target, it 
  * is removed from the world.
  * 
- * @author Kevin Luo 
+ * @author Kevin Luo, Isaac Chan
  * @version 1.0
  */
 public class Projectile extends Actor {

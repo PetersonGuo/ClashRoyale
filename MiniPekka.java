@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * and attack speed, as well as a SuperStatBar to display its health. The class 
  * includes methods for attacking at the target.
  * 
- * @author Isaac Chan
+ * @author Isaac Chan, Kelby To
  * @version 1.0
  */
 public class MiniPekka extends Troops {

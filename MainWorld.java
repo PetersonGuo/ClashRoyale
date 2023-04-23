@@ -5,7 +5,11 @@ import java.util.*;
  * Main world for the game where all the action happens. This is a simulation of the 
  * game Clash Royale and spawns troops into the world based on the card that is selected.
  * Cards are chosen at random and can only deploy troops if there is enough elixir 
- * available to the ally/enemy. Troops will fight each other until the tower 
+ * available to the ally/enemy. Troops will fight each other until either one teams king
+ * tower dies or the timer ends. The winner is decided based on the number of towers destroyed
+ * or if the king tower is destroyed. This simulation was created by the following people:
+ * Isaac Chan, Peterson Guo, Kelby To, Kevin Luo, Jett Miyasaki. Credit goes to Mr.Cohen for
+ * providing the following classes: SuperStatBar, Button
  * 
  * Sources:
  * Chevron https://www.pngimages.pics/images/quotes/english/general/transparent-background-arrow-head-png-52650-242281.png
