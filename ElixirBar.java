@@ -1,8 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class ElixirBar here.
- * Add text animation later :(
+ * An bar that shows the amount of elixir that the ally or enemy has
  * 
  * @author Peterson Guo
  * @version 1.0

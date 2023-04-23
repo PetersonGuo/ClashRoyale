@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Chevron here.
+ * Buttons that are used to select changes in variables
  * 
  * @author Peterson Guo
  * @version 1.0

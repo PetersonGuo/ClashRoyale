@@ -1,9 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Bridge here.
+ * A bridge for troops to cross
  * 
- * @author Isaac Chan
+ * @author Kelby To
  * @version 1.0
  */
 public class Bridge extends Actor {

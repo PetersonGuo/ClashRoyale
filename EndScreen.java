@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 /**
- * Write a description of class EndScreen here.
+ * The end screen; either a win, loss, or draw
  * 
  * @author Peterson Guo
  * @version 1.0

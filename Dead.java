@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Dead here.
+ * This actor is created when troop dies
  * 
  * @author Issac
  * @version 1.0

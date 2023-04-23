@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 /**
- * ClashRoyale card deck class
+ * ClashRoyale card deck class that shows all cards in play
  * 
  * @author Peterson Guo
  * @version 1.0

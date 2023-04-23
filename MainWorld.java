@@ -2,10 +2,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Map;
 import java.util.*;
 /**
- * Main world for the game where all the action happens
+ * Main world for the game where all the action happens. This is a simulation of the 
+ * game Clash Royale and spawns troops into the world based on the card that is selected.
+ * Cards are chosen at random and can only deploy troops if there is enough elixir 
+ * available to the ally/enemy. Troops will fight each other until the tower 
  * 
  * Sources:
  * Chevron https://www.pngimages.pics/images/quotes/english/general/transparent-background-arrow-head-png-52650-242281.png
+ * Clash Royale Sounds https://jayuzumi.com/clash-royale-sounds
+ * Visuals (Background and Actors, except cards) Jett Miyasaki
+ * Cards Clash Royale Game
  * 
  * @author Peterson Guo 
  * @version 1.0
