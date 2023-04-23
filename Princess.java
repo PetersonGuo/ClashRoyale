@@ -12,10 +12,11 @@ public class Princess extends Towers {
      * 
      * @param ally Whether the tower is on the left or right side
      */
-    public Princess(boolean ally, double hpMultiplyer) {
-        super(ally, hpMultiplyer);
+    public Princess(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
+        super(ally, hpMultiplyer, dmgMultiplyer);
         hp = 100;
         range = 120;
+        damage = 6;
         shootingCooldown = 45;
         image = (ally) ? new GreenfootImage("PrincessTower1.png") : new GreenfootImage("PrincessTower2.png") ;
         image.scale(55,55);

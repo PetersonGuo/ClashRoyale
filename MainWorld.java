@@ -40,15 +40,15 @@ public class MainWorld extends Worlds {
         
         Towers.resetTowers();
         //towers
-        allyKingTower = new King(true, stats.get("Tower Health Multiplyer").doubleValue());
-        addObject(new Princess(true, stats.get("Tower Health Multiplyer").doubleValue()), 93, 512);
+        allyKingTower = new King(true, stats.get("Tower Health Multiplyer").doubleValue(), stats.get("Tower Damage Multiplyer").doubleValue());
+        addObject(new Princess(true, stats.get("Tower Health Multiplyer").doubleValue(), stats.get("Tower Damage Multiplyer").doubleValue()), 93, 512);
         addObject(allyKingTower, 213, 586);
-        addObject(new Princess(true, stats.get("Tower Health Multiplyer").doubleValue()), 333, 512);
+        addObject(new Princess(true, stats.get("Tower Health Multiplyer").doubleValue(), stats.get("Tower Damage Multiplyer").doubleValue()), 333, 512);
 
-        enemyKingTower = new King(false, stats.get("Tower Health Multiplyer").doubleValue());
-        addObject(new Princess(false, stats.get("Tower Health Multiplyer").doubleValue()), 93, 248);
+        enemyKingTower = new King(false, stats.get("Tower Health Multiplyer").doubleValue(), stats.get("Tower Damage Multiplyer").doubleValue());
+        addObject(new Princess(false, stats.get("Tower Health Multiplyer").doubleValue(), stats.get("Tower Damage Multiplyer").doubleValue()), 93, 248);
         addObject(enemyKingTower, 213, 177);
-        addObject(new Princess(false, stats.get("Tower Health Multiplyer").doubleValue()), 333, 248);
+        addObject(new Princess(false, stats.get("Tower Health Multiplyer").doubleValue(), stats.get("Tower Damage Multiplyer").doubleValue()), 333, 248);
 
         //bridge
         addObject(new Bridge(), 93, 381);

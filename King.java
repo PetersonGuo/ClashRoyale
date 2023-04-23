@@ -12,10 +12,11 @@ public class King extends Towers {
      * 
      * @param ally Whether the tower is on the left or right side
      */
-    public King(boolean ally, double hpMultiplyer) {
-        super(ally, hpMultiplyer);
+    public King(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
+        super(ally, hpMultiplyer, dmgMultiplyer);
         hp = 200;
         range = 150;
+        damage = 8;
         shootingCooldown = 30;
         
         image = (ally) ? new GreenfootImage("KingTower1.png") : new GreenfootImage("KingTower2.png") ;

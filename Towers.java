@@ -10,7 +10,7 @@ public abstract class Towers extends Actor {
     protected boolean ally; // true if ally, false if enemy
     protected GreenfootImage image; //the image of the tower
     protected int range, shootingCooldown, actsSinceShooting;  //range is the radius of the tower
-    protected double hp, damage;
+    protected double hp, damage, hpMultiplyer, dmgMultiplyer;
     protected Troops target; //the troop to target
     protected SuperStatBar hpBar;
     protected GreenfootSound destroyedSound;
@@ -24,9 +24,11 @@ public abstract class Towers extends Actor {
      * 
      * @param ally true if ally, false if enemy
      */
-    public Towers(boolean ally, double hpMultiplyer) {
+    public Towers(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
         alive = true;
         this.ally = ally;
+        this.hpMultiplyer = hpMultiplyer;
+        this.dmgMultiplyer = dmgMultiplyer;
         if(ally)
             numAllyTowers++;
         else
