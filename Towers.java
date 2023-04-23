@@ -17,7 +17,7 @@ public abstract class Towers extends Actor {
     protected double hp, damage, hpMultiplyer, dmgMultiplyer; //hp is the health of the tower, damage is the damage of the tower
     protected Troops target; //the troop to target
     protected SuperStatBar hpBar; //the health bar of the tower
-    protected GreenfootSound destroyedSound; //the sound to play when the tower is destroyed
+    protected Sound destroyedSound; //the sound to play when the tower is destroyed
     protected boolean alive; //true if the tower is alive, false if the tower is destroyed
     
     protected static int numAllyTowers = 0;

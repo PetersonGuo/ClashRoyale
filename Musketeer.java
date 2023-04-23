@@ -34,7 +34,7 @@ public class Musketeer extends Troops {
         damage = 7 * dmgMultiplyer;
         size = 25;
         attackRange = 60 + size;
-        attackSound = new GreenfootSound("MusketeerAttack.mp3");
+        attackSound = new Sound("MusketeerAttack.mp3");
         
         //miscellaneous stats
         elixirCost = 4;

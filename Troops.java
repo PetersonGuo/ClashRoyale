@@ -31,7 +31,7 @@ public abstract class Troops extends Actor {
     protected GreenfootImage[] walkImages; //images for walking
     protected GreenfootImage[] attackImages; //images for attacking
     
-    protected GreenfootSound spawnSound, dieSound, attackSound; //sounds for spawning, dying, and attacking
+    protected Sound spawnSound, dieSound, attackSound; //sounds for spawning, dying, and attacking
     
     /**
      * Constructor for objects of class Troops
@@ -57,7 +57,7 @@ public abstract class Troops extends Actor {
      * @param w the world the troop is added to
      */
     public void addedToWorld(World w) {
-        spawnSound = new GreenfootSound("spawn.mp3");
+        spawnSound = new Sound("spawn.mp3");
         spawnSound.play();
     }
     
@@ -200,7 +200,7 @@ public abstract class Troops extends Actor {
      */
     protected void die() {
         if (currentHealth <= 0) {
-            dieSound = new GreenfootSound("death.mp3");
+            dieSound = new Sound("death.mp3");
             dieSound.play();
             alive = false;
             getWorld().addObject(new Dead(size), getX(), getY());

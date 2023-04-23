@@ -2,7 +2,7 @@ import greenfoot.GreenfootSound;
 import java.util.ArrayList;
 
 /**
- * An extension of GreenfootSound to give it more functionality and easier interface such as sounds in parallel and singular instance functions
+ * An extension of Sound to give it more functionality and easier interface such as sounds in parallel and singular instance functions
  * Taken from Grade 11 CS Final and improved
  * 
  * @author Peterson Guo

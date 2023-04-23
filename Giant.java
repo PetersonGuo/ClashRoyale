@@ -33,7 +33,7 @@ public class Giant extends Troops {
         damage = 10 * dmgMultiplyer;
         size = 45;
         attackRange = 10 + size;
-        attackSound = new GreenfootSound("GiantAttack.mp3");
+        attackSound = new Sound("GiantAttack.mp3");
         
         //miscellaneous stats
         size = 40;

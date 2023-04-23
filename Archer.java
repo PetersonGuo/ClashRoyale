@@ -37,7 +37,7 @@ public class Archer extends Troops {
         damage = 3 * dmgMultiplyer;
         size = 25;
         attackRange = 40 + size;
-        attackSound = new GreenfootSound("ArcherAttack.mp3");
+        attackSound = new Sound("ArcherAttack.mp3");
         
         //miscellaneous stats
         elixirCost = 3;
