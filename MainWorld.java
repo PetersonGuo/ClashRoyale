@@ -79,6 +79,20 @@ public class MainWorld extends Worlds {
         nextCard(false);
     }
     
+    public void act() {
+        // Get all 8 ally and enemy cards a separate them
+        List<Card> allyCards = new ArrayList<>(), enemyCards = new ArrayList<>();
+        for (Card c : getObjects(Card.class))
+            if (c.isPlayable())
+                if (c.isAlly()) allyCards.add(c);
+                else enemyCards.add(c);
+                
+        if ((int) (Math.random() * 60) == 0) // 1/60 percent chance of spawning or 1 per second
+            allyCards.get((int) (Math.random() * allyCards.size())).selectCard((int) (Math.random() * 60) + 20);
+        if ((int) (Math.random() * 60) == 0)
+            enemyCards.get((int) (Math.random() * enemyCards.size())).selectCard((int) (Math.random() * 60) + 20);
+    }
+    
     /**
      * Get the next card
      * 
@@ -117,7 +131,6 @@ public class MainWorld extends Worlds {
      * nextWorld - Go to the next world
      */
     public void nextWorld() {
-        // To Do: Set Timer, keep track of crowns
         Greenfoot.setWorld(new EndScreen(Towers.getCrowns()));
     }
     

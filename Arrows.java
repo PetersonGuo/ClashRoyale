@@ -12,8 +12,8 @@ public class Arrows extends Spells {
      * 
      * @param ally Whether the tower is on the left or right side
      */
-    public Arrows(boolean ally) {
-        super(ally);
+    public Arrows(boolean ally, Actor target) {
+        super(ally, target);
         
         speed = 15;
         areaOfEffect = 50;

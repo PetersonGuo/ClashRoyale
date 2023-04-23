@@ -18,19 +18,9 @@ public class Spells extends Actor {
      * 
      * @param ally true if ally, false if enemy
      */
-    public Spells(boolean ally) { 
+    public Spells(boolean ally, Actor target) { 
         this.ally = ally;
-    }
-    
-    class Comp implements Comparator<Troops> {
-        private King tower;
-        public Comp(King t) {
-            tower = t;
-        }
-        
-        public int compare(Troops a, Troops b) {
-            return (int)Math.sqrt(Math.pow(tower.getX() - b.getX(), 2) + Math.pow(tower.getY() - b.getY(), 2)) - (int)Math.sqrt(Math.pow(b.getX() - tower.getX(), 2) + Math.pow(b.getY() - tower.getY(), 2));
-        }
+        this.target = target;
     }
     
     /**
@@ -39,38 +29,7 @@ public class Spells extends Actor {
      * @param w the world the spell is added to
      */
     public void addedToWorld (World w) {
-        tower = ((MainWorld)getWorld()).getKingTower(ally);
-        List<Troops> targets = new ArrayList<>();
-        for (Troops t : w.getObjects(Troops.class))
-            if (t.isAlly() ^ ally)
-                targets.add(t);
-        Collections.sort(targets, new Comp(tower));
-        if (targets.size() > 0) { // if there are troops, turn towards troops first
-            targetX = targets.get(0).getX();
-            targetY = targets.get(0).getY();
-            turnTowards(targetX, targetY);
-            target = targets.get(0);
-        } else { //if no troops, turn and target towers
-            targetX = towerTarget().getX();
-            targetY = towerTarget().getY();
-            turnTowards(targetX, targetY);
-            target = towerTarget();
-        }
-    }
-    
-    /**
-     * Get the tower with the lowest hp to target
-     * @return the tower with the lowest hp
-     */
-    public Towers towerTarget() {
-        List<Towers> towers = new ArrayList<>();
-        for (Towers t : getWorld().getObjects(Towers.class))
-            if (t.isAlly() ^ ally)
-                towers.add(t);
-        Towers lowest = towers.get(0);
-        for (Towers t: towers)  //check for the lowest hp tower to target
-            lowest = lowest.getHp() > t.getHp() ? t : lowest;
-        return lowest;
+        turnTowards(target.getX(), target.getY());
     }
     
     /**

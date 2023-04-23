@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.*;
 /**
  * ClashRoyale card deck class
  * 
@@ -7,9 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Card extends Actor {
     private GreenfootImage img; // Image for the card
-    private int cost, x, y, type; // Cost of the card, x and y coordinates, and type of card 
-    private boolean playable, mouseIsDown, clicked, enemy; // Is the card playable, is the mouse down, is the card clicked, and is the card an enemy card
-    
+    private int cost, x, xSpeed, y, ySpeed, type, width, height, time; // Cost of the card, x and y coordinates, and type of card 
+    private boolean playable, playing, mouseIsDown, selected, enemy; // Is the card playable, is the mouse down, is the card clicked, and is the card an enemy card
+    private Actor target;
     /**
      * Constructor for objects of class Card
      * 
@@ -38,6 +39,10 @@ public class Card extends Actor {
         this.playable = playable;
         this.enemy = enemy;
         this.type = type;
+        this.width = width;
+        this.height = height;
+        playing = false;
+        selected = false;
     }
     
     /**
@@ -63,29 +68,33 @@ public class Card extends Actor {
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() {
-        if (playable) { // If the card is playable
-            MouseInfo m = Greenfoot.getMouseInfo();
-            if (Greenfoot.mousePressed(this))   // If the mouse is pressed on the card
-                mouseIsDown = true;
-            else if (Greenfoot.mouseClicked(this)) { // If the mouse is clicked on the card
-                mouseIsDown = false;
-                for (Card c : getWorld().getObjects(Card.class)) // Set all other cards to not clicked
-                    c.setClicked(false);
-                clicked = true;
-                if (((!enemy && y - m.getY() >= img.getHeight()) || (enemy && m.getY() - y >= img.getHeight())) && ((MainWorld)getWorld()).getElixir(enemy).useElixir(FINAL.ELIXIR_COST[type])) { // Play card
-                    Card c = ((MainWorld)getWorld()).nextCard(enemy);
-                    spawnCard();
-                    getWorld().addObject(new Card(1, getWidth(), getHeight(), true, enemy, c.getType()), x, y);
-                    ((MainWorld)getWorld()).addCardToQueue(type, !enemy);
-                    getWorld().removeObject(this);
+        if (Math.abs(y - getY()) >= img.getHeight())
+            img.scale(42, 53);
+        else
+            img.scale(width, height);
+        setImage(img);
+        
+        if (selected) { // Select Card
+            time --;
+            if (time <= 0) {
+                int randTime = ((int) (Math.random() * 60)) + 30;
+                if (type >= 2) 
+                    playCard(FINAL.WORLD_WIDTH / 2 + ((int) (Math.random() * 2) == 0 ? -FINAL.WORLD_WIDTH / 3 : FINAL.WORLD_WIDTH / 3), enemy ? 200 : FINAL.WORLD_HEIGHT - 200, randTime);
+                else {
+                    target = selectTarget();
+                    playCard(target.getX(), target.getY(), randTime);
                 }
             }
-            if (mouseIsDown) // If the mouse is down, move the card to the mouse
-                setLocation(m.getX(), m.getY()); 
-            else if (Greenfoot.mouseMoved(this) || clicked) // If the mouse is moved over the card or the card is clicked, move the card to the original position
-                setLocation(x, enemy ? y + 5 : y - 5);
-            else if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this)) // If the mouse is moved off the card, move the card to the original position
-                setLocation(x, y);
+        } else if (playing) { // Play Card
+            time--;
+            setLocation(getX() + xSpeed, getY() + ySpeed);
+            if (time <= 0 && ((MainWorld)getWorld()).getElixir(enemy).useElixir(FINAL.ELIXIR_COST[type])) {
+                Card c = ((MainWorld)getWorld()).nextCard(enemy);
+                spawnCard();
+                getWorld().addObject(new Card(1, getWidth(), getHeight(), true, enemy, c.getType()), x, y);
+                ((MainWorld)getWorld()).addCardToQueue(type, !enemy);
+                getWorld().removeObject(this);
+            }
         }
     }
     
@@ -93,24 +102,75 @@ public class Card extends Actor {
      * Spawn a card
      */
     private void spawnCard() { // Spawn a character card
-        int x = FINAL.WORLD_WIDTH / 2 + FINAL.WORLD_WIDTH / 3 * ((int)(Math.random() * 2) == 0 ? 1 : -1), y = enemy ? 150 : FINAL.WORLD_HEIGHT - 150; // Spawn the card at a random location on the enemy side
         King tower = ((MainWorld) getWorld()).getKingTower(enemy);
         if (type == 0) // Spawn an arrow card
-            getWorld().addObject(new Arrows(!enemy), tower.getX(), tower.getY());
+            getWorld().addObject(new Arrows(!enemy, target), tower.getX(), tower.getY());
         else if (type == 1) // Spawn a fireball card
-            getWorld().addObject(new Fireball(!enemy), tower.getX(), tower.getY());
+            getWorld().addObject(new Fireball(!enemy, target), tower.getX(), tower.getY());
         else if (type == 2) // Spawn an archer card
-            getWorld().addObject(new Archer(enemy), x, y);
+            getWorld().addObject(new Archer(enemy), getX(), getY());
         else if (type == 3) // Spawn a giant card
-            getWorld().addObject(new Giant(enemy), x, y);
+            getWorld().addObject(new Giant(enemy), getX(), getY());
         else if (type == 4) // Spawn a knight card
-            getWorld().addObject(new Knight(enemy), x, y);
+            getWorld().addObject(new Knight(enemy), getX(), getY());
         else if (type == 5) // Spawn a minion card
-            getWorld().addObject(new Minion(enemy), x, y);
+            getWorld().addObject(new Minion(enemy), getX(), getY());
         else if (type == 6) // Spawn a musketeer card
-            getWorld().addObject(new Musketeer(enemy), x, y);
+            getWorld().addObject(new Musketeer(enemy), getX(), getY());
         else if (type == 7)
-            getWorld().addObject(new MiniPekka(enemy), x, y);
+            getWorld().addObject(new MiniPekka(enemy), getX(), getY());
+    }
+    
+    public void selectCard(int time) {
+        for (Card c : getWorld().getObjects(Card.class)) // Set all other cards to not selected
+            c.setSelected(false);
+        selected = true;
+        setLocation(x, enemy ? y + 5 : y - 5);
+        this.time = time;
+    }
+    
+    private void playCard(int x, int y, int time) {
+        selected = false;
+        playing = true;
+        xSpeed = (x - getX()) / time;
+        ySpeed = (y - getY()) / time;
+        this.time = time;
+    }
+    
+    class Comp implements Comparator<Troops> {
+        private King tower;
+        public Comp(King t) {
+            tower = t;
+        }
+        
+        public int compare(Troops a, Troops b) {
+            return (int)Math.sqrt(Math.pow(tower.getX() - b.getX(), 2) + Math.pow(tower.getY() - b.getY(), 2)) - (int)Math.sqrt(Math.pow(b.getX() - tower.getX(), 2) + Math.pow(b.getY() - tower.getY(), 2));
+        }
+    }
+    
+    private Actor selectTarget() {
+        King tower = ((MainWorld)getWorld()).getKingTower(!enemy);
+        List<Troops> targets = new ArrayList<>();
+        for (Troops t : getWorld().getObjects(Troops.class))
+            if (t.isAlly() ^ !enemy)
+                targets.add(t);
+        Collections.sort(targets, new Comp(tower));
+        return targets.size() > 0 ? targets.get(0) : towerTarget();
+    }
+    
+    /**
+     * Get the tower with the lowest hp to target
+     * @return the tower with the lowest hp
+     */
+    private Towers towerTarget() {
+        List<Towers> towers = new ArrayList<>();
+        for (Towers t : getWorld().getObjects(Towers.class))
+            if (t.isAlly() ^ !enemy)
+                towers.add(t);
+        Towers lowest = towers.get(0);
+        for (Towers t: towers)  //check for the lowest hp tower to target
+            lowest = lowest.getHp() > t.getHp() ? t : lowest;
+        return lowest;
     }
     
     /**
@@ -118,7 +178,7 @@ public class Card extends Actor {
      * @return The width of the card
      */
     public int getWidth() {
-        return img.getWidth();
+        return width;
     }
     
     /**
@@ -126,15 +186,23 @@ public class Card extends Actor {
      * @return The height of the card
      */
     public int getHeight() {
-        return img.getHeight();
+        return height;
     }
     
     /**
      * Set the card to clicked
      * @param clicked Whether the card is clicked
      */
-    public void setClicked(boolean clicked) {
-        this.clicked = clicked;
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+    
+    public boolean isPlayable() {
+        return playable;
+    }
+    
+    public boolean isAlly() {
+        return !enemy;
     }
     
     /**

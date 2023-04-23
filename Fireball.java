@@ -12,8 +12,8 @@ public class Fireball extends Spells {
      * 
      * @param ally Whether the tower is on the left or right side
      */
-    public Fireball(boolean ally) {
-        super(ally);
+    public Fireball(boolean ally, Actor target) {
+        super(ally, target);
         
         speed = 20;
         damage = 8;

@@ -32,8 +32,4 @@ comment8.text=\n\ Gets\ the\ distance\ from\ the\ tower\ to\ the\ troop\n\ \n\ @
 comment9.params=
 comment9.target=boolean\ isAlly()
 comment9.text=\n\ Gets\ whether\ the\ tower\ is\ an\ ally\n\ \n\ @return\ true\ if\ ally,\ false\ if\ enemy\n
-<<<<<<< HEAD
-numComments=12
-=======
 numComments=13
->>>>>>> origin/end

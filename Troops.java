@@ -6,8 +6,7 @@ import java.util.*;
  * @author Isaac Chan 
  * @version (a version number or a date)
  */
-public abstract class Troops extends Actor
-{
+public abstract class Troops extends Actor {
     protected double speed, maxSpeed, attackSpeed, animationSpeed, direction; //speed is in pixels per act
     protected int distX, distY; //distance between the troop and the target
     protected boolean crossedBridge = false; //true if the troop has crossed the bridge, false if not
