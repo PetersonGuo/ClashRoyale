@@ -4,10 +4,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class Musketeer here.
  * 
  * @author (your name) 
- * @version (a version number or a date)
+ * @version 1.0
  */
-public class Musketeer extends Troops
-{
+public class Musketeer extends Troops {
     protected Actor target; //the target of the troop
     /**
      * Constructor for objects of class Musketeer
@@ -50,31 +49,35 @@ public class Musketeer extends Troops
         healthBar = new SuperStatBar(maxHealth, currentHealth, this, size, 10, -size / 2, filledColor, missingColor, false);
     }
     
-    public void act()
-    {
+    /**
+     * Act - do whatever the Musketeer wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act() {
         super.act();
-        if (spawning) {
+        if (spawning)
             spawn();
-        } else if (alive) {
+        else if (alive) {
             Actor troop = findTarget(Troops.class);
-            if (troop != null) { //If there is a target
+            if (troop != null) //If there is a target
                 moveTowardsTarget(troop);
-            }
             else if (!crossedBridge) { //If have not crossed bridge
                 moveTowardsTarget(findTarget(Bridge.class));
-                if (isTouching(Bridge.class)) {
+                if (isTouching(Bridge.class))
                     crossBridge();
-                }
             } 
-            else{ //If there is no target
+            else //If there is no target
                 moveTowardsTarget(findTarget(Towers.class));
-            }
             die();
-        } else {
+        } else
             getWorld().removeObject(this);
-        }
     } 
     
+    /**
+     * Added to world method
+     * 
+     * @param w the world the object is added to
+     */
     public void addedToWorld(World w) {
         w.addObject(healthBar, 0, 0);
     }
@@ -91,13 +94,12 @@ public class Musketeer extends Troops
             if (a instanceof Troops  && ((Troops)a).isAlive()) { //If target is a troop
                 shootPelletAtTarget();
                 ((Troops)a).getHit(damage);
-            }else if (a instanceof Towers && ((Towers)a).isAlive()) { //If target is a tower
+            } else if (a instanceof Towers && ((Towers)a).isAlive()) { //If target is a tower
                 shootPelletAtTarget();
                 ((Towers)a).getHit(damage);
             }
-        } else if (actCounter % attackSpeed <= 10){
+        } else if (actCounter % attackSpeed <= 10)
             setImage(walkImages[0]);
-        }
     }
     
     /**

@@ -5,7 +5,7 @@ import greenfoot.*;
  * The arrow will do damage to the target when it hits it.
  * 
  * @author Kelby To 
- * @version (a version number or a date)
+ * @version 1.0
  */
 public class Arrow extends Actor { 
     private int speed, damage; //speed and damage of arrow

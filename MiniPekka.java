@@ -4,11 +4,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class MiniPekka here.
  * 
  * @author (your name) 
- * @version (a version number or a date)
+ * @version 1.0
  */
-public class MiniPekka extends Troops
-{
-    
+public class MiniPekka extends Troops {
+    /**
+     * Constructor for objects of class MiniPekka
+     * 
+     * @param ally The team the troop is on
+     */
     public MiniPekka(boolean ally) {
         super(ally);
         
@@ -49,27 +52,23 @@ public class MiniPekka extends Troops
      * Act - do whatever the Knight wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act()
-    {
+    public void act() {
         super.act();
-        if (spawning) {
+        if (spawning)
             spawn();
-        } else if (alive) {
+        else if (alive) {
             Actor troop = findTarget(Troops.class);
-            if (troop != null && !((Troops)troop).isAir()) { //If there is a target that is not air
+            if (troop != null && !((Troops)troop).isAir()) //If there is a target that is not air
                 moveTowardsTarget(troop);
-            }else if (!crossedBridge) { //If have not crossed bridge
+            else if (!crossedBridge) { //If have not crossed bridge
                 moveTowardsTarget(findTarget(Bridge.class));
-                if (isTouching(Bridge.class)) {
+                if (isTouching(Bridge.class))
                     crossBridge();
-                }
-            }else{ //If there is no target
+            } else //If there is no target
                 moveTowardsTarget(findTarget(Towers.class));
-            } 
             die();
-        } else {
+        } else
             getWorld().removeObject(this);
-        }
     }
     
     public void addedToWorld(World w) {
@@ -84,14 +83,12 @@ public class MiniPekka extends Troops
     public void attack(Actor a) {
         animate(attackImages);
         if (actCounter % attackSpeed == 0) { // If the attack counter is reached
-            if (a instanceof Troops) { //If target is a troop
+            if (a instanceof Troops) //If target is a troop
                 ((Troops)a).getHit(damage);
-            }else if (a instanceof Towers) { //If target is a tower
+            else if (a instanceof Towers) //If target is a tower
                 ((Towers)a).getHit(damage);
-            }
-        } else if (actCounter % attackSpeed <= 10){
+        } else if (actCounter % attackSpeed <= 10)
             setImage(walkImages[0]);
-        }   
     }
 }
 

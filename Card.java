@@ -122,6 +122,10 @@ public class Card extends Actor {
             getWorld().addObject(new MiniPekka(enemy), getX(), getY());
     }
     
+    /**
+     * Select card method which indicates that the card is selected and will be played soon
+     * @param time the time it takes to play the card
+     */
     public void selectCard(int time) {
         for (Card c : getWorld().getObjects(Card.class)) // Set all other cards to not selected
             c.setSelected(false);
@@ -129,7 +133,13 @@ public class Card extends Actor {
         setLocation(x, enemy ? y + 5 : y - 5);
         this.time = time;
     }
-    
+
+    /**
+     * Play the card by dragging it to the target
+     * @param x the x coordinate of the target
+     * @param y the y coordinate of the target
+     * @param time the time it takes to play the card
+     */
     private void playCard(int x, int y, int time) {
         selected = false;
         playing = true;
@@ -138,17 +148,34 @@ public class Card extends Actor {
         this.time = time;
     }
     
+    /**
+     * Compare the distance between the king tower and the troops
+     */
     class Comp implements Comparator<Troops> {
         private King tower;
+        /**
+         * Constructor for the comparator
+         * @param t the king tower
+         */
         public Comp(King t) {
             tower = t;
         }
         
+        /**
+         * Compare the distance between the king tower and the troops
+         * @param a the first troop
+         * @param b the second troop
+         * @return the difference between the distance between the king tower and the troops
+         */
         public int compare(Troops a, Troops b) {
             return (int)Math.sqrt(Math.pow(tower.getX() - b.getX(), 2) + Math.pow(tower.getY() - b.getY(), 2)) - (int)Math.sqrt(Math.pow(b.getX() - tower.getX(), 2) + Math.pow(b.getY() - tower.getY(), 2));
         }
     }
     
+    /**
+     * Select the target to attack
+     * @return the target to attack
+     */
     private Actor selectTarget() {
         King tower = ((MainWorld)getWorld()).getKingTower(!enemy);
         List<Troops> targets = new ArrayList<>();
@@ -198,10 +225,18 @@ public class Card extends Actor {
         this.selected = selected;
     }
     
+    /**
+     * Get whether the card is playable
+     * @return Whether the card is playable
+     */
     public boolean isPlayable() {
         return playable;
     }
     
+    /**
+     * Return whether the card is an ally or not
+     * @return Whether the card is an ally or not
+     */
     public boolean isAlly() {
         return !enemy;
     }

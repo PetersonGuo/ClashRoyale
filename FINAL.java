@@ -14,16 +14,17 @@ public interface FINAL {
     int STAT_SECTION_SIZE = WORLD_HEIGHT / 4;   // Size of the stat section
     int CARD_SPACING = 4; // Spacing between cards
     
-    double[][] DEFAULT_VALUES = { // Default values for the stats
-        {5, 0, 20, 1}, // First Value: Default value, Second: Min Value, Third: Max Value, Fourth: Increment
-        {10, 0, 20, 1},
-        {1, 0, 20, 1},
-        {1, 0, 20, 1},
-        {1, 0, 20, 1},
-        {1, 0, 20, 1},
-        {1, 0, 20, 1},
-        {1, 0, 20, 1},
-        {1, 0, 20, 1}
+    // Default values for the stats
+    double[][] DEFAULT_VALUES = { // First Value: Default value, Second: Min Value, Third: Max Value, Fourth: Increment
+        {5, 0, 20, 1}, // Start Elixir
+        {10, 0, 20, 1}, // Max Elixir
+        {1, 0, 20, 1}, // Elixir Time
+        {1, 0, 20, 1}, // Difficulty3
+        {1, 0, 20, 1}, // Difficulty4
+        {1, 0, 20, 1}, // Difficulty5
+        {1, 0, 20, 1}, // Difficulty6
+        {1, 0, 20, 1}, // Difficulty7
+        {1, 0, 20, 1}  // Difficulty8
     };
     
     int NUM_OF_TROOPS = 8; // Number of troops

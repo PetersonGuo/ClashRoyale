@@ -1,20 +1,19 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class dead here.
+ * Write a description of class Dead here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Issac
+ * @version 1.0
  */
-public class Dead extends Actor
-{
+public class Dead extends Actor {
     private GreenfootImage image;
     private int size, transparency;
     /**
      * Act - do whatever the dead wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Dead(int size){
+    public Dead(int size) {
         image = new GreenfootImage("dead.png");
         this.size = size;
         transparency = 200;
@@ -23,8 +22,11 @@ public class Dead extends Actor
         setImage(image);
     }
     
-    public void act()
-    {
+    /**
+     * Act - do whatever the dead wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act() {
         transparency-=5;
         image.setTransparency(transparency);
         if(transparency <= 0){

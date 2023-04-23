@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class Archers here.
  * 
  * @author (your name) 
- * @version (a version number or a date)
+ * @version 1.0
  */
 public class Archer extends Troops {
     protected Actor target; // The target of the archer
@@ -78,6 +78,11 @@ public class Archer extends Troops {
         }
     }
     
+    /**
+     * Added to world
+     * 
+     * @param w the world
+     */
     public void addedToWorld(World w) {
         w.addObject(healthBar, 0, 0);
     }

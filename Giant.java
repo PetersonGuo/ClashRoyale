@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class Giant here.
  * 
  * @author (your name) 
- * @version (a version number or a date)
+ * @version 1.0
  */
 public class Giant extends Troops {
     /**

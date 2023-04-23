@@ -35,6 +35,9 @@ public class ChooseScreen extends Worlds {
         public int getY() {return y;}
     }
     
+    /**
+     * Tuple to store values held by the stats
+     */
     class Tuple {
         double value, min, max, inc;
         Tuple(double value, double min, double max, double inc) {

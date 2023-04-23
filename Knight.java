@@ -4,9 +4,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class Knight here.
  * 
  * @author (your name) 
- * @version (a version number or a date)
+ * @version 1.0
  */
 public class Knight extends Troops {
+    /**
+     * Constructor for objects of class Knight
+     * 
+     * @param ally Whether the tower is on the left or right side
+     */
     public Knight(boolean ally) {
         super(ally);
         
@@ -66,6 +71,11 @@ public class Knight extends Troops {
             getWorld().removeObject(this);
     }
     
+    /**
+     * Method addedToWorld
+     * 
+     * @param w The world the object is added to
+     */
     public void addedToWorld(World w) {
         w.addObject(healthBar, 0, 0);
     }

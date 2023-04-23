@@ -4,7 +4,7 @@ import java.util.*;
  * Write a description of class Troops here.
  * 
  * @author Isaac Chan 
- * @version (a version number or a date)
+ * @version 1.0
  */
 public abstract class Troops extends Actor {
     protected double speed, maxSpeed, attackSpeed, animationSpeed, direction; //speed is in pixels per act
