@@ -34,7 +34,7 @@ public class MiniPekka extends Troops {
         damage = 12 * dmgMultiplyer;
         size = 30;
         attackRange = 15 + size;
-        attackSound = new GreenfootSound("MiniPekkaAttack.mp3");
+        attackSound = new Sound("MiniPekkaAttack.mp3");
 
         //miscellaneous stats
         elixirCost = 4;

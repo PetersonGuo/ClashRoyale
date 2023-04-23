@@ -34,7 +34,7 @@ public class Knight extends Troops {
         damage = 6 * dmgMultiplyer;
         size = 25;
         attackRange = 15 + size;
-        attackSound = new GreenfootSound("KnightAttack.mp3");
+        attackSound = new Sound("KnightAttack.mp3");
 
         //miscellaneous stats
         elixirCost = 3;

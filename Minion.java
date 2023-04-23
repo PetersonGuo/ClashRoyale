@@ -33,7 +33,7 @@ public class Minion extends Troops {
         damage = 3 * dmgMultiplyer;
         size = 25;
         attackRange = 15 + size; 
-        attackSound = new GreenfootSound("MinionAttack.mp3");
+        attackSound = new Sound("MinionAttack.mp3");
         
         //miscellaneous stats
         elixirCost = 3;
