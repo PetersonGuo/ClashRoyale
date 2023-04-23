@@ -29,11 +29,11 @@ public class Spells extends Actor {
      * @param w the world the spell is added to
      */
     public void addedToWorld (World w) {
-        try{
+        try {
             targetX = target.getX();
             targetY = target.getY();
             turnTowards(targetX, targetY);
-        }catch(Exception e){
+        } catch(Exception e) {
             getWorld().removeObject(this);
         }
     }

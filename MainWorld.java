@@ -93,9 +93,9 @@ public class MainWorld extends Worlds {
                 if (c.isAlly()) allyCards.add(c);
                 else enemyCards.add(c);
                 
-        if ((int) (Math.random() * 60) == 0) // 1/60 percent chance of spawning or 1 per second
+        if ((int) (Math.random() * (allyElixir.maxElixir() - allyElixir.getElixir()) * 10) == 0) // 1/60 percent chance of spawning or 1 per second
             allyCards.get((int) (Math.random() * allyCards.size())).selectCard((int) (Math.random() * 60) + 20);
-        if ((int) (Math.random() * 60) == 0)
+        if ((int) (Math.random() * (enemyElixir.maxElixir() - enemyElixir.getElixir()) * 10) == 0)
             enemyCards.get((int) (Math.random() * enemyCards.size())).selectCard((int) (Math.random() * 60) + 20);
     }
     

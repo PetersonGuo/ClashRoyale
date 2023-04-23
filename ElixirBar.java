@@ -85,4 +85,12 @@ public class ElixirBar extends Actor {
         drawImg();
         return true;
     }
+    
+    public int getElixir() {
+        return elixir;
+    }
+    
+    public int maxElixir() {
+        return maxElixir;
+    }
 }
