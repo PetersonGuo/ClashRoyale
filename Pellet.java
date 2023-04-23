@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Bullet here.
+ * Pellet class for all bullets in the game
  * 
  * @author Kevin Luo
  * @version 1.0

@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 /**
- * Write a description of class Troops here.
+ * The wrapper class for all troops in the game
  * 
  * @author Isaac Chan 
  * @version 1.0

@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class King here.
+ * King class for all king towers in the game
  * 
  * @author Kelby To 
  * @version 1.0

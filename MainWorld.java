@@ -2,7 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Map;
 import java.util.*;
 /**
- * Write a description of class MainWorld here.
+ * Main world for the game where all the action happens
  * 
  * Sources:
  * Chevron https://www.pngimages.pics/images/quotes/english/general/transparent-background-arrow-head-png-52650-242281.png

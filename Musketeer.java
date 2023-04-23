@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Musketeer here.
+ * Musketeer class for the Musketeer troop in the game
  * 
  * @author Isaac Chan
  * @version 1.0

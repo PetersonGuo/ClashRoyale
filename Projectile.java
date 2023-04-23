@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Projectile here.
+ * Projectile class for all projectiles in the game such as fireballs, arrows, etc.
  * 
  * @author Kevin Luo 
  * @version 1.0

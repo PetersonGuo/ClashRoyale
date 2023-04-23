@@ -1,12 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 /**
- * Write a description of class Spells here.
+ * Wrapper class for all spells in the game
  * 
  * @author Peterson Guo
  * @version 1.0
  */
-public class Spells extends Actor {
+public abstract class Spells extends Actor {
     protected int speed, damage, elixir, areaOfEffect, targetX, targetY; //speed, damage, elixir cost, area of effect, target's x and y coordinates
     protected boolean ally; //true if ally, false if enemy
     private King tower; //the tower that casted the spell

@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MiniPekka here.
+ * Mini Pekka class for all mini pekkas in the game
  * 
  * @author Isaac Chan
  * @version 1.0

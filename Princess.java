@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Normal here.
+ * Princess tower class for the game Clash Royale
  * 
  * @author Kelby To 
  * @version 1.0

@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 /**
- * Towers will shoot any enemy targets within its range
+ * The abstract class for all towers in the game
+ * Wraps all the common methods and variables for all towers
  * 
  * @author Kelby To 
  * @version 1.0
