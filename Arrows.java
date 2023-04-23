@@ -15,11 +15,12 @@ public class Arrows extends Spells {
     public Arrows(boolean ally, Actor target) {
         super(ally, target);
         
-        speed = 15;
+        speed = 5;
         areaOfEffect = 50;
         damage = 5;
         image = new GreenfootImage("ArrowSpell0.png");
-        image = new GreenfootImage("ArrowSpell1.png");
+        image.scale(image.getWidth()/3, image.getHeight()/3);
+        setImage(image);
     }
     
     /**
