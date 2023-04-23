@@ -25,7 +25,7 @@ public class Fireball extends Spells {
         
         speed = 5;
         damage = 8;
-        areaOfEffect = 30;
+        areaOfEffect = 50;
         image = new GreenfootImage("Fireball0.png");
         image.scale(image.getWidth()/2, image.getHeight()/2);
         setImage(image);

@@ -24,7 +24,7 @@ public class Arrows extends Spells {
         super(ally, target);
         
         speed = 5;
-        areaOfEffect = 50;
+        areaOfEffect = 60;
         damage = 5;
         image = new GreenfootImage("ArrowSpell0.png");
         image.scale(image.getWidth()/3, image.getHeight()/3);

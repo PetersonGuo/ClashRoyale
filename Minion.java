@@ -27,10 +27,10 @@ public class Minion extends Troops {
         animationSpeed = 10;
         
         //health stats
-        currentHealth = maxHealth = 25;
+        currentHealth = maxHealth = 25 * hpMultiplyer;
         
         //attack stats
-        damage = 3;
+        damage = 3 * dmgMultiplyer;
         size = 25;
         attackRange = 15 + size; 
         attackSound = new GreenfootSound("MinionAttack.mp3");

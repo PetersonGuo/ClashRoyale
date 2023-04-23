@@ -28,10 +28,10 @@ public class MiniPekka extends Troops {
         animationSpeed = 25;
         
         //health stats
-        currentHealth = maxHealth = 40;
+        currentHealth = maxHealth = 35 * hpMultiplyer;
         
         //attack stats
-        damage = 14;
+        damage = 12 * dmgMultiplyer;
         size = 30;
         attackRange = 15 + size;
         attackSound = new GreenfootSound("MiniPekkaAttack.mp3");
