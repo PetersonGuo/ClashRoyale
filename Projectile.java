@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class Projectile here.
  * 
  * @author Kevin Luo 
- * @version (a version number or a date)
+ * @version 1.0
  */
 public class Projectile extends Actor {
     protected int speed; //speed of projectiles
@@ -33,15 +33,6 @@ public class Projectile extends Actor {
         targetX = target.getX();
         targetY = target.getY();
         turnTowards(targetX, targetY);
-    }
-    
-    /**
-     * Act - do whatever the Projectile wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        // Add your action code here.
     }
     
     /**

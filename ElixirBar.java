@@ -5,7 +5,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Add text animation later :(
  * 
  * @author Peterson Guo
- * @version (a version number or a date)
+ * @version 1.0
  */
 public class ElixirBar extends Actor {
     private int elixir, elixirTimer, sectionSize, elixirTime, maxElixir; // elixir, elixirTimer, sectionSize, elixirTime, maxElixir

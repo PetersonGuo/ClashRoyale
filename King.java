@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class King here.
  * 
  * @author Kelby To 
- * @version (a version number or a date)
+ * @version 1.0
  */
 public class King extends Towers {
     /**
@@ -25,12 +25,20 @@ public class King extends Towers {
         hpBar = new SuperStatBar((int)hp, (int)hp, this, 50, 10, (ally)? 25 : -25, Color.GREEN, Color.RED, true);
     }
     
+    /**
+     * Act - do whatever the King wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act(){
         if(hp < 200 || (numAllyTowers < 3 && ally) || (numEnemyTowers < 3 && !ally)){
             super.act();
         }
     }    
     
+    /**
+     * Take damage from a projectile or troop
+     * @param dmg The amount of damage taken
+     */
     public void getHit(double dmg) {
         hp -= dmg;
         hpBar.update((int)hp);

@@ -82,6 +82,24 @@ public class MainWorld extends Worlds {
     }
     
     /**
+     * Act - do whatever the MainWorld wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act() {
+        // Get all 8 ally and enemy cards a separate them
+        List<Card> allyCards = new ArrayList<>(), enemyCards = new ArrayList<>();
+        for (Card c : getObjects(Card.class))
+            if (c.isPlayable())
+                if (c.isAlly()) allyCards.add(c);
+                else enemyCards.add(c);
+                
+        if ((int) (Math.random() * 60) == 0) // 1/60 percent chance of spawning or 1 per second
+            allyCards.get((int) (Math.random() * allyCards.size())).selectCard((int) (Math.random() * 60) + 20);
+        if ((int) (Math.random() * 60) == 0)
+            enemyCards.get((int) (Math.random() * enemyCards.size())).selectCard((int) (Math.random() * 60) + 20);
+    }
+    
+    /**
      * Get the next card
      * 
      * @param enemy Is the card for the enemy
@@ -103,6 +121,12 @@ public class MainWorld extends Worlds {
         return c;
     }
     
+    /**
+     * Add a card to the queue
+     * 
+     * @param type The type of card
+     * @param ally Is the card for the ally
+     */
     public void addCardToQueue(int type, boolean ally) {
         if (ally)
             allyCards.add(type);
@@ -110,6 +134,11 @@ public class MainWorld extends Worlds {
             enemyCards.add(type);
     }
     
+    /**
+     * Update the score / crowns
+     * @param allyScore The ally score
+     * @param enemyScore The enemy score
+     */
     public void updateScore(int allyScore, int enemyScore){
         allyScoreText.updateText(allyScore);
         enemyScoreText.updateText(enemyScore);
@@ -133,6 +162,11 @@ public class MainWorld extends Worlds {
         return enemy ? enemyElixir : allyElixir;
     }
     
+    /**
+     * Get the king tower
+     * @param enemy Ally or enemy tower to return
+     * @return The king tower corresponding to the parameter
+     */
     public King getKingTower(boolean enemy) {
         return enemy ? enemyKingTower : allyKingTower;
     }

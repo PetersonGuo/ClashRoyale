@@ -14,8 +14,9 @@ public interface FINAL {
     int STAT_SECTION_SIZE = WORLD_HEIGHT / 4;   // Size of the stat section
     int CARD_SPACING = 4; // Spacing between cards
     
-    double[][] DEFAULT_VALUES = { // Default values for the stats
-        {5, 0, 20, 1}, // First Value: Default value, Second: Min Value, Third: Max Value, Fourth: Increment
+    // Default values for the stats
+    double[][] DEFAULT_VALUES = { // First Value: Default value, Second: Min Value, Third: Max Value, Fourth: Increment
+        {5, 0, 20, 1}, 
         {10, 1, 20, 1},
         {1, 0, 4, 0.25},
         {120, 30, 300, 10},

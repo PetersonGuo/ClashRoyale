@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class Normal here.
  * 
  * @author Kelby To 
- * @version (a version number or a date)
+ * @version 1.0
  */
 public class Princess extends Towers {
     /**
@@ -25,6 +25,10 @@ public class Princess extends Towers {
         hpBar = new SuperStatBar((int)hp, (int)hp, this, 45, 10, (ally)? 25 : -25, Color.GREEN, Color.RED, false);        
     }
     
+    /**
+     * Take damage from a projectile or troop
+     * @param dmg The amount of damage taken
+     */
     public void getHit(double dmg) {
         hp -= dmg;
         hpBar.update((int)hp);

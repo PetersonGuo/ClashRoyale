@@ -47,16 +47,27 @@ public class Chevron extends Actor {
             ((ChooseScreen) getWorld()).setValue(this);
     }
     
-    // Getters and setters
+    /**
+     * Get the selector
+     * @return The selector
+     */
     public String getSelector() {
         return selector;
     }
     
-    public boolean isLeft() { // Is the chevron on the left
+    /**
+     * Is the chevron on the left
+     * @return Whether the chevron is on the left
+     */
+    public boolean isLeft() {
         return left;
     }
     
-    public Text getText() { // Get the text
+    /**
+     * Get the text
+     * @return The text
+     */
+    public Text getText() {
         return text;
     }
 }

@@ -32,6 +32,9 @@ public class EndScreen extends Worlds {
         addObject(new Text("Press '" + FINAL.NEXT_WORLD_BUTTON + "' to continue", Color.BLACK, 30), FINAL.WORLD_WIDTH / 2, FINAL.WORLD_HEIGHT * 3 / 4);
     }
     
+    /**
+     * act - Check if the user wants to go to the next world
+     */
     public void act() {
         if (Greenfoot.isKeyDown(FINAL.NEXT_WORLD_BUTTON)) {
             nextWorld();

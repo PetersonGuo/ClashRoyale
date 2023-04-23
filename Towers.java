@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * Towers will shoot any enemy targets within its range
  * 
  * @author Kelby To 
- * @version (a version number or a date)
+ * @version 1.0
  */
 public abstract class Towers extends Actor {
     protected boolean ally; // true if ally, false if enemy
@@ -33,6 +33,10 @@ public abstract class Towers extends Actor {
             numEnemyTowers++;
     }
     
+    /**
+     * Added to world event
+     * @param w the world the tower is added to
+     */
     public void addedToWorld(World w){
         w.addObject(hpBar, 0, 0);
     }
@@ -84,6 +88,11 @@ public abstract class Towers extends Actor {
      */
     public abstract void getHit(double dmg);
  
+    /**
+     * Gets the hp of the tower
+     * 
+     * @return the hp of the tower
+     */
     public double getHp() {
         return hp;
     }
@@ -108,14 +117,27 @@ public abstract class Towers extends Actor {
         return ally;
     }
     
+    /**
+     * Gets whether the tower is alive
+     * 
+     * @return true if alive, false if dead
+     */
     public boolean isAlive(){
         return alive;
     }
     
+    /**
+     * Gets the number of towers on each side
+     * 
+     * @return an array with the number of towers on each side
+     */
     public static int[] getCrowns() {
         return new int[]{3-numEnemyTowers, 3-numAllyTowers};
     }
     
+    /**
+     * Resets the number of towers on each side
+     */
     public static void resetTowers(){
         numAllyTowers = 0;
         numEnemyTowers = 0;

@@ -3,8 +3,8 @@ import java.util.*;
 /**
  * Write a description of class Spells here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Peterson Guo
+ * @version 1.0
  */
 public class Spells extends Actor {
     protected int speed, damage, elixir, areaOfEffect, targetX, targetY; //areaOfEffect is the radius of the spell

@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class Bullet here.
  * 
  * @author Kevin Luo
- * @version (a version number or a date)
+ * @version 1.0
  */
 public class Pellet extends Projectile {
     /**
