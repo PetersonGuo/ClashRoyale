@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * Write a description of class Spells here.
  * 
- * @author (your name) 
+ * @author Peterson Guo
  * @version 1.0
  */
 public class Spells extends Actor {

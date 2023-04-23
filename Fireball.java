@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Fireball here.
  * 
- * @author (your name) 
+ * @author Isaac Chan
  * @version 1.0
  */
 public class Fireball extends Spells {
