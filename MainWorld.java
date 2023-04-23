@@ -95,6 +95,10 @@ public class MainWorld extends Worlds {
         background.loop();
     }
     
+    public void stopped(){
+        background.stop();
+    }
+    
     /**
      * Act - do whatever the MainWorld wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
