@@ -1,4 +1,4 @@
 #BlueJ class context
 comment0.target=FINAL
-comment0.text=\r\n\ Holds\ all\ Final\ variables\ for\ the\ simulation\ which\ should\ only\ be\ modified\ outside\ of\ the\ simulation.\r\n\ \r\n\ @author\ Peterson\ Guo\r\n\ @version\ 1.0\r\n
+comment0.text=\n\ Holds\ all\ Final\ variables\ for\ the\ simulation\ which\ should\ only\ be\ modified\ outside\ of\ the\ simulation.\n\ \n\ @author\ Peterson\ Guo\n\ @version\ 1.0\n
 numComments=1

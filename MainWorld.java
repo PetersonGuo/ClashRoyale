@@ -17,13 +17,14 @@ public class MainWorld extends Worlds {
     private Timer timer;
     private Text allyScoreText, enemyScoreText;
     private King enemyKingTower, allyKingTower;
-
+    static Map<String, Double> stats;
     /**
      * Constructor for objects of class MainWorld.
      * 
      * @param stats The stats of the game
      */
     public MainWorld(Map<String, Double> stats) {
+        MainWorld.stats = stats;
         enemyElixir = new ElixirBar(stats.get("Start Elixir").intValue(), stats.get("Max Elixir").intValue(), stats.get("Elixir Speed").intValue());
         allyElixir = new ElixirBar(stats.get("Start Elixir").intValue(), stats.get("Max Elixir").intValue(), stats.get("Elixir Speed").intValue());
         addObject(allyElixir, 250, 730);
