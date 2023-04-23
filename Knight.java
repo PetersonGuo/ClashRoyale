@@ -1,7 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Knight here.
+ * Knights are a type of Troops, which can be either allies or enemies. The Knight's 
+ * behavior involves finding a target on ground, moving towards it, and attacking it 
+ * using an ax. If there is no target, the Knight will move towards the Towers class. 
+ * The Knight has various stats, such as health, attack damage, and attack speed, as 
+ * well as a SuperStatBar to display its health. The class includes methods for 
+ * attacking at the target.
  * 
  * @author Isaac Chan
  * @version 1.0
@@ -11,6 +16,8 @@ public class Knight extends Troops {
      * Constructor for objects of class Knight
      * 
      * @param ally Whether the tower is on the left or right side
+     * @param hpMultiplyer The health multiplyer of the troop
+     * @param dmgMultiplyer The damage multiplyer of the troop
      */
     public Knight(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
         super(ally, hpMultiplyer, dmgMultiplyer);

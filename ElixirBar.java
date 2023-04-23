@@ -1,8 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class ElixirBar here.
- * Add text animation later :(
+ * An bar that shows the amount of elixir that the ally or enemy has
  * 
  * @author Peterson Guo
  * @version 1.0
@@ -28,6 +27,11 @@ public class ElixirBar extends Actor {
         sectionSize = img.getWidth() / maxElixir;
     }
     
+    /**
+     * addedToWorld - Add the text to the world
+     * 
+     * @param w The world
+     */
     public void addedToWorld(World w) {
         elixirText = new Text(elixir, Color.WHITE, 35);
         w.addObject(elixirText, (int)(getX() - img.getWidth() / 2.6), getY() + img.getHeight() / 4 * (getY() < FINAL.WORLD_HEIGHT / 2 ? 1 : -1));
@@ -86,10 +90,18 @@ public class ElixirBar extends Actor {
         return true;
     }
     
+    /**
+     * Get current elixir
+     * @return - Current elixir
+     */
     public int getElixir() {
         return elixir;
     }
     
+    /**
+     * Get Max elixir
+     * @return - Max elixir
+     */
     public int maxElixir() {
         return maxElixir;
     }

@@ -1,9 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Arrows here.
+ * This code implements the Arrows class, which extends the Spells class. Arrows 
+ * represents a type of spell that shoots arrows at a target. The constructor of 
+ * Arrows takes two parameters, a boolean ally representing whether the spell is 
+ * cast by an ally or an enemy, and an Actor target representing the target of 
+ * the spell. Arrows checks whether the spell has hit its target by calling the
+ * hit method inherited from Spells. If the spell hits its target, the damage 
+ * method of Spells is called to damage all troops and towers within the spell's 
+ * areaOfEffect, and the Arrows object is removed from the world.
  * 
- * @author Isaac Chan
+ * @author Peterson Guo, Kevin Luo
  * @version 1.0
  */
 public class Arrows extends Spells {
@@ -11,6 +18,7 @@ public class Arrows extends Spells {
      * Constructor for objects of class Arrows
      * 
      * @param ally Whether the tower is on the left or right side
+     * @param target The target of the tower
      */
     public Arrows(boolean ally, Actor target) {
         super(ally, target);

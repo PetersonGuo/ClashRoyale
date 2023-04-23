@@ -2,10 +2,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Map;
 import java.util.*;
 /**
- * Write a description of class MainWorld here.
+ * Main world for the game where all the action happens. This is a simulation of the 
+ * game Clash Royale and spawns troops into the world based on the card that is selected.
+ * Cards are chosen at random and can only deploy troops if there is enough elixir 
+ * available to the ally/enemy. Troops will fight each other until the tower 
  * 
  * Sources:
  * Chevron https://www.pngimages.pics/images/quotes/english/general/transparent-background-arrow-head-png-52650-242281.png
+ * Clash Royale Sounds https://jayuzumi.com/clash-royale-sounds
+ * Visuals (Background and Actors, except cards) Jett Miyasaki
+ * Cards Clash Royale Game
  * 
  * @author Peterson Guo 
  * @version 1.0
@@ -14,10 +20,10 @@ public class MainWorld extends Worlds {
     private Card enemyNext, allyNext; // The next cards for the enemy and ally
     private ElixirBar enemyElixir, allyElixir; // The elixir bars
     private Queue<Integer> enemyCards, allyCards; // Card orders
-    private Timer timer;
-    private Text allyScoreText, enemyScoreText;
-    private King enemyKingTower, allyKingTower;
-    static Map<String, Double> stats;
+    private Timer timer; // The timer
+    private Text allyScoreText, enemyScoreText; // The score texts
+    private King enemyKingTower, allyKingTower; // The king towers
+    static Map<String, Double> stats; // The stats of the game
     /**
      * Constructor for objects of class MainWorld.
      * 

@@ -1,7 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Projectile here.
+ * It has instance variables to store speed, damage, target, target's x and y 
+ * coordinates, image, direction and rotation of the projectile. It has a 
+ * constructor that takes a target as a parameter. It also has a hit method 
+ * that checks if the target intersects with the projectile and deals damage 
+ * accordingly. If the target is null or the projectile misses the target, it 
+ * is removed from the world.
  * 
  * @author Kevin Luo 
  * @version 1.0
@@ -39,11 +44,11 @@ public class Projectile extends Actor {
      * Hit method
      */
     protected void hit() {
-        if (intersects(target)) {
+        if (target != null && intersects(target)) {
             //hit
             if(target instanceof Troops){ //if the target is a troop
                 ((Troops)target).getHit(damage);
-            } else if (target instanceof Towers){ //if the target is a tower
+            } else if (target instanceof Towers && ((Towers)target).isAlive()){ //if the target is a tower
                 ((Towers)target).getHit(damage);
             }
             getWorld().removeObject(this);

@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Timer here.
+ * Timer for the game to end
  * 
  * @author Kevin Luo
  * @version 1.0
@@ -13,7 +13,7 @@ public class Timer extends Actor {
      * Constructor for objects of class Timer
      */
     public Timer() {
-        timer = FINAL.GAME_TIME;
+        timer = (MainWorld.stats.get("Game Duration")).intValue() * 60;
         updateImage();
     }
      

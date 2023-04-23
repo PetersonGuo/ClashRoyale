@@ -1,6 +1,6 @@
 import greenfoot.*;
 /**
- * Write a description of class Worlds here.
+ * Wrapper class for all worlds in the game
  * 
  * @author Peterson Guo 
  * @version 1.0

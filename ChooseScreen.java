@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
 /**
- * Write a description of class ChooseScreen here.
+ * The world that allows the user to change variables in the simulation
  * 
  * @author Peterson Guo
  * @version 1.0

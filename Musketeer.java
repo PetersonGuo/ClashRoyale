@@ -1,7 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Musketeer here.
+ * Musketeers are a type of Troops, which can be either allies or enemies. 
+ * The Musketeer's behavior involves finding a target, moving towards it, 
+ * and attacking it using a musket. If there is no target, the Musketeer 
+ * will move towards the Towers class. The Musketeer has various stats, 
+ * such as health, attack damage, and attack speed, as well as a SuperStatBar
+ * to display its health. The class includes methods for attacking and 
+ * shooting pellets at the target.
  * 
  * @author Isaac Chan
  * @version 1.0
@@ -9,9 +15,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Musketeer extends Troops {
     protected Actor target; //the target of the troop
     /**
-     * Constructor for objects of class Musketeer
-     * 
      * @param ally whether the troop is on the player's side or not
+     * @param hpMultiplyer the hpMultiplyer of the troop
+     * @param dmgMultiplyer the dmgMultiplyer of the troop
      */
     public Musketeer(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
         super(ally, hpMultiplyer, dmgMultiplyer);

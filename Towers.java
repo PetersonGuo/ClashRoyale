@@ -1,7 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 /**
- * Towers will shoot any enemy targets within its range
+ * The code is a Java class called Towers which represents a tower in a game. 
+ * It has properties such as ally/enemy, range, hp, damage, and a Troops target. 
+ * It also has methods to find a target, shoot an arrow at the target, and get 
+ * the distance from the tower to a troop. The class also keeps track of the 
+ * number of ally and enemy towers and can reset these numbers.
  * 
  * @author Kelby To 
  * @version 1.0
@@ -10,11 +14,11 @@ public abstract class Towers extends Actor {
     protected boolean ally; // true if ally, false if enemy
     protected GreenfootImage image; //the image of the tower
     protected int range, shootingCooldown, actsSinceShooting;  //range is the radius of the tower
-    protected double hp, damage, hpMultiplyer, dmgMultiplyer;
+    protected double hp, damage, hpMultiplyer, dmgMultiplyer; //hp is the health of the tower, damage is the damage of the tower
     protected Troops target; //the troop to target
-    protected SuperStatBar hpBar;
-    protected GreenfootSound destroyedSound;
-    protected boolean alive;
+    protected SuperStatBar hpBar; //the health bar of the tower
+    protected GreenfootSound destroyedSound; //the sound to play when the tower is destroyed
+    protected boolean alive; //true if the tower is alive, false if the tower is destroyed
     
     protected static int numAllyTowers = 0;
     protected static int numEnemyTowers = 0;
@@ -79,7 +83,7 @@ public abstract class Towers extends Actor {
      * Shoots an arrow at the target
      */
     private void shootArrowAtTarget() {
-        getWorld().addObject(new Arrow(target, damage), getX(), getY());
+        getWorld().addObject(new Arrow(target, dmgMultiplyer), getX(), getY());
         actsSinceShooting = 0;
     }
     

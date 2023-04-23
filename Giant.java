@@ -1,7 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Giant here.
+ * Giants are a type of Troops, which can be either allies or enemies. The Giant's 
+ * behavior involves finding a tower, moving towards it, and attacking it.The Giant
+ * has various stats, such as health, attack damage, and attack speed, as well as a 
+ * SuperStatBar to display its health. The class includes methods for attacking the 
+ * target.
  * 
  * @author Isaac Chan
  * @version 1.0
@@ -11,6 +15,8 @@ public class Giant extends Troops {
      * Constructor for objects of class Giant
      * 
      * @param ally Whether the tower is on the left or right side
+     * @param hpMultiplyer The health multiplyer of the troop
+     * @param dmgMultiplyer The damage multiplyer of the troop
      */
     public Giant(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
         super(ally, hpMultiplyer, dmgMultiplyer);
@@ -82,10 +88,9 @@ public class Giant extends Troops {
      */
     public void attack(Actor a) { // Attack the target
         animate(attackImages);
-        if (actCounter % attackSpeed == 0) { // If the attack counter is reached
+        if (actCounter % attackSpeed == 0) // If the attack counter is reached
             ((Towers)a).getHit(damage);
-        } else if (actCounter % attackSpeed <= 10){
+        else if (actCounter % attackSpeed <= 10)
             setImage(walkImages[0]);
-        }
     }
 }

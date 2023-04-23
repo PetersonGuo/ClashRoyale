@@ -1,22 +1,29 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 /**
- * Write a description of class Spells here.
+ * This is a class called "Spells" that represents a spell that can be cast by 
+ * a tower or by the player. It has instance variables that store the speed, 
+ * damage, elixir cost, area of effect, target coordinates, and whether the 
+ * spell was cast by an ally or an enemy. It also has a reference to the tower 
+ * that cast the spell and the target that the spell is aimed at. The class has 
+ * a constructor that initializes the instance variables and an addedToWorld 
+ * method that sets the target coordinates and turns the spell towards the target. 
  * 
- * @author Peterson Guo
+ * @author Peterson Guo, Kevin Luo
  * @version 1.0
  */
-public class Spells extends Actor {
-    protected int speed, damage, elixir, areaOfEffect, targetX, targetY; //areaOfEffect is the radius of the spell
+public abstract class Spells extends Actor {
+    protected int speed, damage, elixir, areaOfEffect, targetX, targetY; //speed, damage, elixir cost, area of effect, target's x and y coordinates
     protected boolean ally; //true if ally, false if enemy
-    private King tower;
-    private Actor target;
+    private King tower; //the tower that casted the spell
+    private Actor target; //the target of the spell
     protected GreenfootImage image, image2; //the image of the spell
     
     /**
      * Constructor for objects of class Spells
      * 
      * @param ally true if ally, false if enemy
+     * @param target the target of the spell
      */
     public Spells(boolean ally, Actor target) { 
         this.ally = ally;
