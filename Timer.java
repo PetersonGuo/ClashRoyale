@@ -13,7 +13,7 @@ public class Timer extends Actor {
      * Constructor for objects of class Timer
      */
     public Timer() {
-        timer = FINAL.GAME_TIME;
+        timer = (MainWorld.stats.get("Game Duration")).intValue() * 60;
         updateImage();
     }
      

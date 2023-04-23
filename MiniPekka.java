@@ -1,7 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MiniPekka here.
+ * Mini Pekkas are a type of Troops, which can be either allies or enemies. The Mini 
+ * Pekka's behavior involves finding a target on ground, moving towards it, and 
+ * attacking it using an ax. If there is no target, the Mini Pekka will move towards 
+ * the Towers class. The Mini Pekka has various stats, such as health, attack damage, 
+ * and attack speed, as well as a SuperStatBar to display its health. The class 
+ * includes methods for attacking at the target.
  * 
  * @author Isaac Chan
  * @version 1.0

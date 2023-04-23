@@ -1,7 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Archers here.
+ * Archers are a type of Troops, which can be either allies or enemies. The Archer's
+ * behavior involves finding a target, moving towards it, and attacking it using a bow 
+ * and arrow. If there is no target, the Archer will move towards the Towers class. 
+ * The Archer has various stats, such as health, attack damage, and attack speed, as 
+ * well as a SuperStatBar to display its health. The class includes methods for attacking
+ * and shooting arrows at the target.
  * 
  * @author Kevin Luo
  * @version 1.0

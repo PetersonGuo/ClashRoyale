@@ -1,8 +1,11 @@
 import greenfoot.*;
 
 /**
- * An arrow that is launched from a Troop or a Tower.
- * The arrow will do damage to the target when it hits it.
+ * This code defines the Arrow class, which is used to create arrows that can be
+ * launched from a Troop or a Tower to hit a target. The arrow has a speed, a 
+ * damage value, and an image. When the arrow hits the target, it deals damage 
+ * to it, and if the target is a Troop or a Tower, the getHit() method is called. 
+ * If the arrow misses the target, it is removed from the world.
  * 
  * @author Kelby To 
  * @version 1.0
@@ -50,10 +53,10 @@ public class Arrow extends Actor {
      */
     public void act() {
         move(speed);
-        if (intersects(target)) { //hit
+        if (target != null && intersects(target)) { //hit
             if(target instanceof Troops)
                 ((Troops)target).getHit(damage);
-            else if(target instanceof Towers)
+            else if(target instanceof Towers && ((Towers)target).isAlive())
                 ((Towers)target).getHit(damage);
             getWorld().removeObject(this);
         } else if (Math.abs(getX()-targetX) < 6 || Math.abs(getY()-targetY) < 6 ) // miss

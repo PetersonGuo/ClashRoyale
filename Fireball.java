@@ -1,9 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Fireball here.
+ * This code implements the Fireball class, which extends the Spells class. Fireball
+ * represents a type of spell that shoots arrows at a target. The constructor of 
+ * FirebLL takes two parameters, a boolean ally representing whether the spell is 
+ * cast by an ally or an enemy, and an Actor target representing the target of 
+ * the spell. Fireballs checks whether the spell has hit its target by calling the
+ * hit method inherited from Spells. If the spell hits its target, the damage 
+ * method of Spells is called to damage all troops and towers within the spell's 
+ * areaOfEffect, and the Fireball object is removed from the world.
  * 
- * @author Isaac Chan
+ * @author Peterson Guo, Kevin Luo
  * @version 1.0
  */
 public class Fireball extends Spells {
@@ -21,7 +28,6 @@ public class Fireball extends Spells {
         image = new GreenfootImage("Fireball0.png");
         image.scale(image.getWidth()/2, image.getHeight()/2);
         setImage(image);
-        //image2 = new GreenfootImage("Fireball1.png");
     }
     
     /**

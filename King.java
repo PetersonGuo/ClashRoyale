@@ -1,7 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class King here.
+ * This is a Java code for a tower defense game, specifically the class for a tower 
+ * called "King". The class extends another class called "Towers" and has a constructor 
+ * that sets the tower's attributes such as health points, range, damage, shooting
+ * cooldown, and image. The class also has a method for the tower to take damage
+ * and update its health bar, and an "act" method that checks if the tower should 
+ * act based on its health and number of ally or enemy towers. Finally, if the 
+ * tower's health drops to zero, it is removed from the game world.
  * 
  * @author Kelby To 
  * @version 1.0

@@ -1,7 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 /**
- * Write a description of class Troops here.
+ * This is a Java code that defines an abstract class named Troops. This class extends the Actor class of the Greenfoot 
+ * library and provides the basic functionalities and properties that any troop in a game could have. The Troops class 
+ * also provides two protected methods, findTarget(Class<T> c) and moveTowardsTarget(Actor a). The findTarget(Class<T> c) 
+ * method takes a Class<T> object as an argument and returns an Actor object. The moveTowardsTarget(Actor a) method takes 
+ * an Actor object as an argument and moves the troop towards that object. Both of these methods are used to search for new 
+ * targets and move the troops towards them. By moving towards a target, the troop then has a choice of attacking it.
  * 
  * @author Isaac Chan 
  * @version 1.0
