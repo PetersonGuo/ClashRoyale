@@ -88,13 +88,18 @@ public class Card extends Actor {
         } else if (playing) { // Play Card
             time--;
             setLocation(getX() + xSpeed, getY() + ySpeed);
-            if (time <= 0 && ((MainWorld)getWorld()).getElixir(enemy).useElixir(FINAL.ELIXIR_COST[type])) {
-                playing = false;
-                Card c = ((MainWorld)getWorld()).nextCard(enemy);
-                spawnCard();
-                getWorld().addObject(new Card(1, getWidth(), getHeight(), true, enemy, c.getType()), x, y);
-                ((MainWorld)getWorld()).addCardToQueue(type, !enemy);
-                getWorld().removeObject(this);
+            if (time <= 0) {
+                if (((MainWorld)getWorld()).getElixir(enemy).useElixir(FINAL.ELIXIR_COST[type])) {
+                    playing = false;
+                    Card c = ((MainWorld)getWorld()).nextCard(enemy);
+                    spawnCard();
+                    getWorld().addObject(new Card(1, getWidth(), getHeight(), true, enemy, c.getType()), x, y);
+                    ((MainWorld)getWorld()).addCardToQueue(type, !enemy);
+                    getWorld().removeObject(this);
+                } else {
+                    playing = false;
+                    setLocation(x, y);
+                }
             }
         }
     }
