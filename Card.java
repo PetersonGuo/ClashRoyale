@@ -185,7 +185,7 @@ public class Card extends Actor {
         King tower = ((MainWorld)getWorld()).getKingTower(!enemy);
         List<Troops> targets = new ArrayList<>();
         for (Troops t : getWorld().getObjects(Troops.class))
-            if (t.isAlly() ^ !enemy)
+            if (t.isAlly() ^ enemy)
                 targets.add(t);
         Collections.sort(targets, new Comp(tower));
         return targets.size() > 0 ? targets.get(0) : towerTarget();

@@ -52,7 +52,7 @@ public class Spells extends Actor {
      */
     public void damage() {
         for (Troops enemy : getObjectsInRange(areaOfEffect, Troops.class))
-            if (enemy.isAlly() ^ ally)
+            if (enemy.isAlly() ^ !ally)
                 enemy.getHit(damage * 2);
         for (Towers enemy : getObjectsInRange(areaOfEffect, Towers.class))
             enemy.getHit(damage * 2);
