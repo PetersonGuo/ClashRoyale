@@ -15,6 +15,8 @@ public class Giant extends Troops {
      * Constructor for objects of class Giant
      * 
      * @param ally Whether the tower is on the left or right side
+     * @param hpMultiplyer The health multiplyer of the troop
+     * @param dmgMultiplyer The damage multiplyer of the troop
      */
     public Giant(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
         super(ally, hpMultiplyer, dmgMultiplyer);
@@ -86,10 +88,9 @@ public class Giant extends Troops {
      */
     public void attack(Actor a) { // Attack the target
         animate(attackImages);
-        if (actCounter % attackSpeed == 0) { // If the attack counter is reached
+        if (actCounter % attackSpeed == 0) // If the attack counter is reached
             ((Towers)a).getHit(damage);
-        } else if (actCounter % attackSpeed <= 10){
+        else if (actCounter % attackSpeed <= 10)
             setImage(walkImages[0]);
-        }
     }
 }

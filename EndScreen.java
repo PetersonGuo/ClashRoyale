@@ -7,10 +7,11 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class EndScreen extends Worlds {
-    private int towersLeft,towerHp, towerHp2, allyTowers, EnemyTowers;
-    private GreenfootImage end;
+    private int towersLeft,towerHp, towerHp2, allyTowers, EnemyTowers; // The number of towers left, the hp of the towers, the hp of the towers, the number of ally towers, the number of enemy towers
+    private GreenfootImage end; // The image of the end screen
     /**
      * Constructor for objects of class EndScreen.
+     * @param crowns The number of crowns each team has
      */
     public EndScreen(int[] crowns) {
         int allyCrowns = crowns[0];

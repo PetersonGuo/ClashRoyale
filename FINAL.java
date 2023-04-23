@@ -16,7 +16,7 @@ public interface FINAL {
     
     // Default values for the stats
     double[][] DEFAULT_VALUES = { // First Value: Default value, Second: Min Value, Third: Max Value, Fourth: Increment
-        {5, 0, 20, 1}, 
+        {5, 0, 20, 1},
         {10, 1, 20, 1},
         {1, 0, 4, 0.25},
         {120, 30, 300, 10},

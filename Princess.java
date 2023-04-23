@@ -18,6 +18,8 @@ public class Princess extends Towers {
      * Constructor for objects of class Princess
      * 
      * @param ally Whether the tower is on the left or right side
+     * @param hpMultiplyer The health multiplyer of the tower
+     * @param dmgMultiplyer The damage multiplyer of the tower
      */
     public Princess(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
         super(ally, hpMultiplyer, dmgMultiplyer);

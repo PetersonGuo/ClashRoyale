@@ -16,6 +16,8 @@ public class Musketeer extends Troops {
     protected Actor target; //the target of the troop
     /**
      * @param ally whether the troop is on the player's side or not
+     * @param hpMultiplyer the hpMultiplyer of the troop
+     * @param dmgMultiplyer the dmgMultiplyer of the troop
      */
     public Musketeer(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
         super(ally, hpMultiplyer, dmgMultiplyer);

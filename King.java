@@ -17,6 +17,8 @@ public class King extends Towers {
      * Constructor for objects of class King
      * 
      * @param ally Whether the tower is on the left or right side
+     * @param hpMultiplyer The hp multiplyer of the tower
+     * @param dmgMultiplyer The damage multiplyer of the tower
      */
     public King(boolean ally, double hpMultiplyer, double dmgMultiplyer) {
         super(ally, hpMultiplyer, dmgMultiplyer);

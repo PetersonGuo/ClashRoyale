@@ -6,8 +6,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Isaac Chan
  * @version 1.0
  */
-public class Bridge extends Actor
-{
+public class Bridge extends Actor {
+    /**
+     * Constructor for objects of class Bridge
+     */
     public Bridge() {
         GreenfootImage image = new GreenfootImage(48,50);
         image.setColor(new Color(100,0,0,100));

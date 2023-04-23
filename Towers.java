@@ -14,11 +14,11 @@ public abstract class Towers extends Actor {
     protected boolean ally; // true if ally, false if enemy
     protected GreenfootImage image; //the image of the tower
     protected int range, shootingCooldown, actsSinceShooting;  //range is the radius of the tower
-    protected double hp, damage, hpMultiplyer, dmgMultiplyer;
+    protected double hp, damage, hpMultiplyer, dmgMultiplyer; //hp is the health of the tower, damage is the damage of the tower
     protected Troops target; //the troop to target
-    protected SuperStatBar hpBar;
-    protected GreenfootSound destroyedSound;
-    protected boolean alive;
+    protected SuperStatBar hpBar; //the health bar of the tower
+    protected GreenfootSound destroyedSound; //the sound to play when the tower is destroyed
+    protected boolean alive; //true if the tower is alive, false if the tower is destroyed
     
     protected static int numAllyTowers = 0;
     protected static int numEnemyTowers = 0;

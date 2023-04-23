@@ -18,6 +18,7 @@ public class Fireball extends Spells {
      * Constructor for objects of class Fireball
      * 
      * @param ally Whether the tower is on the left or right side
+     * @param target The target of the tower
      */
     public Fireball(boolean ally, Actor target) {
         super(ally, target);

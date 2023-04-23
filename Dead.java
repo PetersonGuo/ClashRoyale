@@ -7,11 +7,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version 1.0
  */
 public class Dead extends Actor {
-    private GreenfootImage image;
-    private int size, transparency;
+    private GreenfootImage image; // The image of the dead
+    private int size, transparency; // The size and transparency of the dead
     /**
-     * Act - do whatever the dead wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Constructor for objects of class Dead
+     * @param size The size of the image 
      */
     public Dead(int size) {
         image = new GreenfootImage("dead.png");
