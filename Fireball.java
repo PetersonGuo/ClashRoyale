@@ -15,11 +15,13 @@ public class Fireball extends Spells {
     public Fireball(boolean ally, Actor target) {
         super(ally, target);
         
-        speed = 20;
+        speed = 5;
         damage = 8;
         areaOfEffect = 30;
         image = new GreenfootImage("Fireball0.png");
-        image2 = new GreenfootImage("Fireball1.png");
+        image.scale(image.getWidth()/2, image.getHeight()/2);
+        setImage(image);
+        //image2 = new GreenfootImage("Fireball1.png");
     }
     
     /**

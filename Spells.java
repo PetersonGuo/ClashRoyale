@@ -29,7 +29,13 @@ public class Spells extends Actor {
      * @param w the world the spell is added to
      */
     public void addedToWorld (World w) {
-        turnTowards(target.getX(), target.getY());
+        try{
+            targetX = target.getX();
+            targetY = target.getY();
+            turnTowards(targetX, targetY);
+        }catch(Exception e){
+            getWorld().removeObject(this);
+        }
     }
     
     /**
@@ -56,7 +62,8 @@ public class Spells extends Actor {
      * Hit method
      */
     protected void hit() {
-        if (intersects(target)) { // hit
+        if (intersects(target) || 
+            Math.abs(getX()-targetX) < speed || Math.abs(getY()-targetY) < speed) { // hit
             damage();
             getWorld().removeObject(this);
         }
